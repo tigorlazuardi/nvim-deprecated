@@ -8,8 +8,6 @@ vim.lsp.handlers['textDocument/documentSymbol'] = require'lsputil.symbols'.docum
 vim.lsp.handlers['workspace/symbol'] = require'lsputil.symbols'.workspace_handler
 
 require'lspinstall'.setup() -- important
-local nvim_lsp = require('lspconfig')
-
 local chain_complete_list = {
     default = {
         {complete_items = {'lsp', 'snippet'}},
@@ -63,9 +61,9 @@ local on_attach = function(client, bufnr)
     if client.resolved_capabilities.document_highlight then
         vim.api.nvim_exec([[
         augroup lsp_document_highlight
-        autocmd!
-        autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
-        autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
+            autocmd!
+            autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
+            autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
         augroup END
         ]], false)
     end

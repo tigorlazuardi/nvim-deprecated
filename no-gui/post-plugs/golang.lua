@@ -1,4 +1,3 @@
-lua << EOF
 require('go').setup({
     max_len = 120,
 })
@@ -26,4 +25,3 @@ function go_organize_imports_sync(timeoutms)
 end
 
 vim.api.nvim_command("au BufWritePre *.go lua go_organize_imports_sync(500)")
-EOF
