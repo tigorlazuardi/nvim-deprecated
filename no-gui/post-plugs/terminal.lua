@@ -1,4 +1,4 @@
-require("toggleterm").setup{
+require("toggleterm").setup {
     -- size can be a number or function which is passed the current terminal
     size = function(term)
         if term.direction == "horizontal" then
@@ -18,15 +18,13 @@ require("toggleterm").setup{
     insert_mappings = true, -- whether or not the open mapping applies in insert mode
     persist_size = true,
     direction = 'float',
-    close_on_exit = true, -- close the terminal window when the process exits
+    close_on_exit = true -- close the terminal window when the process exits
 }
 
-local Terminal  = require('toggleterm.terminal').Terminal
-local lazygit = Terminal:new({ cmd = "lazygit", hidden = true })
+local Terminal = require('toggleterm.terminal').Terminal
+local lazygit = Terminal:new({cmd = "lazygit", hidden = true})
 
-function _lazygit_toggle()
-  lazygit:toggle()
-end
+function _lazygit_toggle() lazygit:toggle() end
 
-vim.api.nvim_set_keymap("n", "<leader>g", "<cmd>lua _lazygit_toggle()<CR>", {noremap = true, silent = true})
-
+vim.api.nvim_set_keymap("n", "<leader>g", "<cmd>lua _lazygit_toggle()<CR>",
+                        {noremap = true, silent = true})
