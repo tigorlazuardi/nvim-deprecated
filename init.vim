@@ -1,4 +1,4 @@
-if has('win32')
+if has('win32') || has('win64')
     let g:split_rc = split($MYVIMRC, '\')
     let g:config_folder = g:split_rc[0:-2]
     let g:config = join(g:config_folder, '\')
@@ -25,45 +25,38 @@ if !filereadable(vimplug_exists)
     echo "Installing Vim-Plug..."
     echo ""
     silent exec "!"curl_exists" -fLo " . shellescape(vimplug_exists) . " --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
-    let g:not_finish_vimplug = "yes"
-
     autocmd VimEnter * PlugInstall
 endif
 
-
 if exists('g:vscode')
+    call plug#begin()
     for f in split(glob(g:config.'/vscode/**/*.vim'), '\n')
         exe 'source' f
     endfor
+    call plug#end()
+    autocmd VimEnter *
+            \  if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
+            \|   PlugInstall --sync | q
+            \| endif
+
 elseif exists('g:started_by_firenvim')
+    call plug#begin()
     for f in split(glob(g:config.'/firenvim/*.vim'), '\n')
         exe 'source' f
     endfor
+    call plug#end()
+    autocmd VimEnter *
+            \  if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
+            \|   PlugInstall --sync | q
+            \| endif
 else
     for f in split(glob(g:config.'/no-gui/*.vim'), '\n')
         exe 'source' f
     endfor
-
-    call plug#begin()
-    for f in split(glob(g:config.'/no-gui/plugs/**/*.vim'), '\n')
-        exe 'source' f
-    endfor
-    call plug#end()
-
-    for f in split(glob(g:config.'/no-gui/post-plugs/**/*.vim'), '\n')
-        exe 'source' f
-    endfor
-
-    for f in split(glob(g:config.'/no-gui/post-plugs/**/*.lua'), '\n')
-        exe 'luafile' f
-    endfor
+    lua require('plugins')
 endif
 
 
-autocmd VimEnter *
-            \  if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
-            \|   PlugInstall --sync | q
-            \| endif
 
 if has('termguicolors')
     set termguicolors
