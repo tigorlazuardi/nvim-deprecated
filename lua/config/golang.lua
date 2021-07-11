@@ -1,4 +1,5 @@
-local autocmds = function()
+local run = function()
+    require("go").setup({max_line_len = 120})
     ---@diagnostic disable-next-line
     function go_organize_imports_sync(timeoutms)
         local context = {source = {organizeImports = true}}
@@ -23,12 +24,6 @@ local autocmds = function()
     end
 
     vim.api.nvim_command("au BufWritePost *.go lua go_organize_imports_sync(500)")
-end
-
-local run = function()
-    require("go").setup({max_line_len = 120})
-
-    autocmds()
 end
 
 return function(use) use {"ray-x/go.nvim", config = run, ft = {"go"}} end
