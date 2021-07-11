@@ -69,6 +69,14 @@ require("formatter").setup({
                     stdin = true
                 }
             end
+        },
+        sh = {
+            -- luafmt
+            function() return {exe = "beautysh", stdin = false} end
+        },
+        zsh = {
+            -- luafmt
+            function() return {exe = "beautysh", stdin = false} end
         }
     }
 })
@@ -76,6 +84,6 @@ require("formatter").setup({
 vim.api.nvim_exec([[
 augroup FormatAutogroup
   autocmd!
-  autocmd BufWritePost *.js,*.rs,*.lua,*.ts,*.tsx,*.jsx FormatWrite
+  autocmd BufWritePost *.js,*.rs,*.lua,*.ts,*.tsx,*.jsx,*.sh,*.zsh*, FormatWrite
 augroup END
 ]], false)

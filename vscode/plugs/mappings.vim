@@ -13,17 +13,6 @@ vnoremap gl $
 vnoremap < <gv
 vnoremap > >gv
 
-" Alt+J and Alt+K to swap lines
-" nnoremap <A-j> :m .+1<CR>==
-" nnoremap <A-k> :m .-2<CR>==
-" inoremap <A-k> :m .-2<CR>==gi
-" inoremap <A-j> :m .+1<CR>==gi
-" vnoremap <A-j> :m '>+1<CR>gv=gv
-" vnoremap <A-k> :m '<-2<CR>gv=gv
-
-nnoremap xx dd
-nnoremap X D
-
 nnoremap <silent> gD :<C-u>call VSCodeNotify('editor.action.peekDefinition')<CR>
 nnoremap <silent> ? :<C-u>call VSCodeNotify('workbench.action.findInFiles', { 'query': expand('<cword>')})<CR>
 nnoremap <silent> <F4> :<C-u>call VSCodeNotify('workbench.action.findInFiles', { 'query': expand('<cword>')})<CR>

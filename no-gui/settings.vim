@@ -13,6 +13,7 @@ set cmdheight=2
 set updatetime=50
 set signcolumn=yes:1
 set hidden
+set clipboard+=unnamedplus
 
 augroup highlight_yank
     autocmd!

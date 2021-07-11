@@ -32,7 +32,7 @@ endif
 
 
 if exists('g:vscode')
-    for f in split(glob(g:config.'/vscode/*.vim'), '\n')
+    for f in split(glob(g:config.'/vscode/**/*.vim'), '\n')
         exe 'source' f
     endfor
 elseif exists('g:started_by_firenvim')

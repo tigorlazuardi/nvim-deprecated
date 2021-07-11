@@ -6,5 +6,6 @@ Plug 'RishabhRD/popfix'
 Plug 'RishabhRD/nvim-lsputils'
 Plug 'steelsojka/completion-buffers'
 
-let g:completion_confirm_key = "\<C-y>"
+imap <c-y> <Plug>(completion_confirm_completion)
+let g:completion_confirm_key = ""
 imap <silent> <c-space> <Plug>(completion_trigger)
