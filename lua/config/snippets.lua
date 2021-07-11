@@ -1,6 +1,18 @@
 local function run()
-    require"snippets".use_suggested_mappings()
-    vim.cmd([[let g:completion_enable_snippet = "snippets.nvim"]])
+    vim.cmd([[
+        imap <expr> <C-j>   vsnip#expandable()  ? '<Plug>(vsnip-expand)'         : '<C-j>'
+        smap <expr> <C-j>   vsnip#expandable()  ? '<Plug>(vsnip-expand)'         : '<C-j>'
+
+        " Expand or jump
+        imap <expr> <C-l>   vsnip#available(1)  ? '<Plug>(vsnip-expand-or-jump)' : '<C-l>'
+        smap <expr> <C-l>   vsnip#available(1)  ? '<Plug>(vsnip-expand-or-jump)' : '<C-l>'
+
+        " Jump forward or backward
+        imap <expr> <Tab>   vsnip#jumpable(1)   ? '<Plug>(vsnip-jump-next)'      : '<Tab>'
+        smap <expr> <Tab>   vsnip#jumpable(1)   ? '<Plug>(vsnip-jump-next)'      : '<Tab>'
+        imap <expr> <S-Tab> vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)'      : '<S-Tab>'
+        smap <expr> <S-Tab> vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)'      : '<S-Tab>'
+    ]])
 end
 
-return function(use) use {"norcalli/snippets.nvim", config = run} end
+return function(use) use {"hrsh7th/vim-vsnip-integ", requires = "hrsh7th/vim-vsnip", config = run} end
