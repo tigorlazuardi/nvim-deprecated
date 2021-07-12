@@ -7,9 +7,8 @@ local run = function()
                     return {
                         exe = "prettier",
                         args = {
-                            "--stdin-filepath", vim.api.nvim_buf_get_name(0),
-                            "--single-quote", "--no-semi", "--trailing-comma",
-                            "all", "--tab-width", "4"
+                            "--stdin-filepath", vim.api.nvim_buf_get_name(0), "--single-quote", "--no-semi",
+                            "--trailing-comma", "all", "--tab-width", "4"
                         },
                         stdin = true
                     }
@@ -20,9 +19,8 @@ local run = function()
                     return {
                         exe = "prettier",
                         args = {
-                            "--stdin-filepath", vim.api.nvim_buf_get_name(0),
-                            "--single-quote", "--no-semi", "--trailing-comma",
-                            "all", "--tab-width", "4"
+                            "--stdin-filepath", vim.api.nvim_buf_get_name(0), "--single-quote", "--no-semi",
+                            "--trailing-comma", "all", "--tab-width", "4"
                         },
                         stdin = true
                     }
@@ -33,9 +31,8 @@ local run = function()
                     return {
                         exe = "prettier",
                         args = {
-                            "--stdin-filepath", vim.api.nvim_buf_get_name(0),
-                            "--single-quote", "--no-semi", "--trailing-comma",
-                            "all", "--tab-width", "4"
+                            "--stdin-filepath", vim.api.nvim_buf_get_name(0), "--single-quote", "--no-semi",
+                            "--trailing-comma", "all", "--tab-width", "4"
                         },
                         stdin = true
                     }
@@ -47,9 +44,8 @@ local run = function()
                     return {
                         exe = "prettier",
                         args = {
-                            "--stdin-filepath", vim.api.nvim_buf_get_name(0),
-                            "--single-quote", "--no-semi", "--trailing-comma",
-                            "all", "--tab-width", "4"
+                            "--stdin-filepath", vim.api.nvim_buf_get_name(0), "--single-quote", "--no-semi",
+                            "--trailing-comma", "all", "--tab-width", "4"
                         },
                         stdin = true
                     }
@@ -57,38 +53,25 @@ local run = function()
             },
             rust = {
                 -- Rustfmt
-                function()
-                    return {
-                        exe = "rustfmt",
-                        args = {"--emit=stdout"},
-                        stdin = true
-                    }
-                end
+                function() return {exe = "rustfmt", args = {"--emit=stdout"}, stdin = true} end
             },
             lua = {
                 -- luafmt
                 function()
                     return {
                         exe = "lua-format",
-                        args = {
-                            "--single-quote-to-double-quote",
-                            "--column-limit=120"
-                        },
+                        args = {"--single-quote-to-double-quote", "--column-limit=120", "--spaces-inside-table-braces"},
                         stdin = true
                     }
                 end
             },
             sh = {
                 -- luafmt
-                function()
-                    return {exe = "beautysh", stdin = false}
-                end
+                function() return {exe = "beautysh", stdin = false} end
             },
             zsh = {
                 -- luafmt
-                function()
-                    return {exe = "beautysh", stdin = false}
-                end
+                function() return {exe = "beautysh", stdin = false} end
             }
         }
     })

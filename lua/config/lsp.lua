@@ -1,4 +1,9 @@
 local function luadev_setup()
+    local capabilities = vim.lsp.protocol.make_client_capabilities()
+    capabilities.textDocument.completion.completionItem.snippetSupport = true
+    capabilities.textDocument.completion.completionItem.resolveSupport = {
+        properties = {"documentation", "detail", "additionalTextEdits"}
+    }
     require"lspconfig".sumneko_lua.setup(require"lua-dev".setup({
         library = {
             vimruntime = true, -- runtime path
@@ -10,9 +15,16 @@ local function luadev_setup()
         -- pass any additional options that will be merged in the final lsp config
         lspconfig = {
             cmd = {"lua-language-server"},
+            capabilities = capabilities,
             on_attach = function(client, bufnr)
                 local chain_complete_list = {
-                    default = {{complete_items = {"lsp", "snippet"}}, {complete_items = {"path", "buffers"}}},
+                    -- LuaFormatter off
+                    default = {
+                        {complete_items = {"lsp", "snippet"}},
+                        {complete_items = {"path"}, triggered_only = {"/"}},
+                        {complete_items = {"buffers"}},
+                    },
+                    -- LuaFormatter on
                     string = {{complete_items = {"path"}, triggered_only = {"/"}}},
                     comment = {{complete_items = {"path", "buffers"}}}
                 }
@@ -42,8 +54,6 @@ local function luadev_setup()
                 buf_set_keymap("n", "[d", "<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>", opts)
                 buf_set_keymap("n", "]d", "<cmd>lua vim.lsp.diagnostic.goto_next()<CR>", opts)
                 buf_set_keymap("n", "<leader>q", "<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>", opts)
-                -- buf_set_keymap("i", "<c-j>", "<Plug>(completion_next_source)", {silent = true})
-                -- buf_set_keymap("i", "<c-k>", "<Plug>(completion_prev_source)", {silent = true})
 
                 -- Set some keybinds conditional on server capabilities
                 if client.resolved_capabilities.document_formatting then
@@ -55,12 +65,12 @@ local function luadev_setup()
                 -- Set autocommands conditional on server_capabilities
                 if client.resolved_capabilities.document_highlight then
                     vim.api.nvim_exec([[
-        augroup lsp_document_highlight
-            autocmd!
-            autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
-            autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
-        augroup END
-        ]], false)
+                    augroup lsp_document_highlight
+                        autocmd!
+                        autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
+                        autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
+                    augroup END
+                    ]], false)
                 end
             end
         }
@@ -121,10 +131,19 @@ local function lspinstallconf()
         end
     end
     local function setup_servers()
+        local capabilities = vim.lsp.protocol.make_client_capabilities()
+        capabilities.textDocument.completion.completionItem.snippetSupport = true
+        capabilities.textDocument.completion.completionItem.resolveSupport = {
+            properties = {"documentation", "detail", "additionalTextEdits"}
+        }
         require"lspinstall".setup()
         local servers = require"lspinstall".installed_servers()
         for _, server in pairs(servers) do
-            require"lspconfig"[server].setup {on_attach = on_attach, flags = {debounce_text_changes = 150}}
+            require"lspconfig"[server].setup {
+                on_attach = on_attach,
+                capabilities = capabilities,
+                flags = {debounce_text_changes = 150}
+            }
         end
     end
 
@@ -148,11 +167,20 @@ local lsputilsconf = function()
     vim.lsp.handlers["workspace/symbol"] = require"lsputil.symbols".workspace_handler
 end
 
+local function completion_conf()
+    vim.g.completion_enable_auto_paren = 1
+    vim.g.completion_auto_change_source = 1
+    vim.g.completion_enable_auto_signature = 0
+    vim.g.completion_confirm_key = ""
+    vim.api.nvim_set_keymap("i", "<c-l>", "<Plug>(completion_next_source)", {})
+    vim.api.nvim_set_keymap("i", "<c-h>", "<Plug>(completion_prev_source)", {})
+end
+
 return function(use)
     -- completion config
     vim.cmd([[
         imap <c-y> <Plug>(completion_confirm_completion)
-        let g:completion_confirm_key = ""
+        let g:completion_confirm_key = "<CR>"
         imap <silent> <c-space> <Plug>(completion_trigger)
     ]])
 
@@ -160,7 +188,7 @@ return function(use)
     use {"neovim/nvim-lspconfig"}
     use {"kabouzeid/nvim-lspinstall", config = lspinstallconf}
     use "ray-x/lsp_signature.nvim"
-    use {"nvim-lua/completion-nvim"}
+    use {"nvim-lua/completion-nvim", config = completion_conf}
     use {"RishabhRD/nvim-lsputils", requires = "RishabhRD/popfix", config = lsputilsconf}
     use "steelsojka/completion-buffers"
     use {"folke/lua-dev.nvim", config = luadev_setup}
