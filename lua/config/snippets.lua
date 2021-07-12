@@ -1,11 +1,7 @@
 local function run()
     vim.cmd([[
-        imap <expr> <C-j>   vsnip#expandable()  ? '<Plug>(vsnip-expand)'         : '<C-j>'
-        smap <expr> <C-j>   vsnip#expandable()  ? '<Plug>(vsnip-expand)'         : '<C-j>'
-
-        " Expand or jump
-        imap <expr> <C-l>   vsnip#available(1)  ? '<Plug>(vsnip-expand-or-jump)' : '<C-l>'
-        smap <expr> <C-l>   vsnip#available(1)  ? '<Plug>(vsnip-expand-or-jump)' : '<C-l>'
+        imap <expr> <C-j>   vsnip#expandable()  ? '<Plug>(vsnip-expand-or-jump)'         : '<C-j>'
+        smap <expr> <C-j>   vsnip#expandable()  ? '<Plug>(vsnip-expand-or-jump)'         : '<C-j>'
 
         " Jump forward or backward
         imap <expr> <Tab>   vsnip#jumpable(1)   ? '<Plug>(vsnip-jump-next)'      : '<Tab>'
@@ -15,4 +11,4 @@ local function run()
     ]])
 end
 
-return function(use) use {"hrsh7th/vim-vsnip-integ", requires = "hrsh7th/vim-vsnip", config = run} end
+return function(use) use { "hrsh7th/vim-vsnip-integ", requires = "hrsh7th/vim-vsnip", config = run } end

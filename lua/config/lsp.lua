@@ -2,7 +2,7 @@ local function luadev_setup()
     local capabilities = vim.lsp.protocol.make_client_capabilities()
     capabilities.textDocument.completion.completionItem.snippetSupport = true
     capabilities.textDocument.completion.completionItem.resolveSupport = {
-        properties = {"documentation", "detail", "additionalTextEdits"}
+        properties = { "documentation", "detail", "additionalTextEdits" }
     }
     require"lspconfig".sumneko_lua.setup(require"lua-dev".setup({
         library = {
@@ -14,7 +14,7 @@ local function luadev_setup()
         },
         -- pass any additional options that will be merged in the final lsp config
         lspconfig = {
-            cmd = {"lua-language-server"},
+            cmd = { "lua-language-server" },
             capabilities = capabilities,
             on_attach = function(client, bufnr)
                 local chain_complete_list = {
@@ -25,12 +25,12 @@ local function luadev_setup()
                         {complete_items = {"buffers"}},
                     },
                     -- LuaFormatter on
-                    string = {{complete_items = {"path"}, triggered_only = {"/"}}},
-                    comment = {{complete_items = {"path", "buffers"}}}
+                    string = { { complete_items = { "path" }, triggered_only = { "/" } } },
+                    comment = { { complete_items = { "path", "buffers" } } }
                 }
 
                 require("completion").on_attach({
-                    matching_strategy_list = {"exact", "substring", "fuzzy"},
+                    matching_strategy_list = { "exact", "substring", "fuzzy" },
                     chain_complete_list = chain_complete_list
                 })
                 require"lsp_signature".on_attach()
@@ -38,7 +38,7 @@ local function luadev_setup()
                 local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
                 buf_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
                 -- Mappings
-                local opts = {noremap = true, silent = true}
+                local opts = { noremap = true, silent = true }
                 buf_set_keymap("n", "gD", "<Cmd>lua vim.lsp.buf.declaration()<CR>", opts)
                 buf_set_keymap("n", "gd", "<Cmd>lua vim.lsp.buf.definition()<CR>", opts)
                 buf_set_keymap("n", "K", "<Cmd>lua vim.lsp.buf.hover()<CR>", opts)
@@ -80,13 +80,13 @@ end
 local function lspinstallconf()
     local on_attach = function(client, bufnr)
         local chain_complete_list = {
-            default = {{complete_items = {"lsp", "snippet"}}, {complete_items = {"path", "buffers"}}},
-            string = {{complete_items = {"path"}, triggered_only = {"/"}}},
-            comment = {{complete_items = {"path", "buffers"}}}
+            default = { { complete_items = { "lsp", "snippet" } }, { complete_items = { "path", "buffers" } } },
+            string = { { complete_items = { "path" }, triggered_only = { "/" } } },
+            comment = { { complete_items = { "path", "buffers" } } }
         }
 
         require("completion").on_attach({
-            matching_strategy_list = {"exact", "substring", "fuzzy"},
+            matching_strategy_list = { "exact", "substring", "fuzzy" },
             chain_complete_list = chain_complete_list
         })
         require"lsp_signature".on_attach()
@@ -94,7 +94,7 @@ local function lspinstallconf()
         local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
         buf_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
         -- Mappings
-        local opts = {noremap = true, silent = true}
+        local opts = { noremap = true, silent = true }
         buf_set_keymap("n", "gD", "<Cmd>lua vim.lsp.buf.declaration()<CR>", opts)
         buf_set_keymap("n", "gd", "<Cmd>lua vim.lsp.buf.definition()<CR>", opts)
         buf_set_keymap("n", "K", "<Cmd>lua vim.lsp.buf.hover()<CR>", opts)
@@ -134,7 +134,7 @@ local function lspinstallconf()
         local capabilities = vim.lsp.protocol.make_client_capabilities()
         capabilities.textDocument.completion.completionItem.snippetSupport = true
         capabilities.textDocument.completion.completionItem.resolveSupport = {
-            properties = {"documentation", "detail", "additionalTextEdits"}
+            properties = { "documentation", "detail", "additionalTextEdits" }
         }
         require"lspinstall".setup()
         local servers = require"lspinstall".installed_servers()
@@ -142,7 +142,7 @@ local function lspinstallconf()
             require"lspconfig"[server].setup {
                 on_attach = on_attach,
                 capabilities = capabilities,
-                flags = {debounce_text_changes = 150}
+                flags = { debounce_text_changes = 150 }
             }
         end
     end
@@ -167,29 +167,29 @@ local lsputilsconf = function()
     vim.lsp.handlers["workspace/symbol"] = require"lsputil.symbols".workspace_handler
 end
 
-local function completion_conf()
-    vim.g.completion_enable_auto_paren = 1
+local function set_globals()
+    vim.g.completion_enable_auto_paren = 0
     vim.g.completion_auto_change_source = 1
     vim.g.completion_enable_auto_signature = 0
     vim.g.completion_confirm_key = ""
     vim.api.nvim_set_keymap("i", "<c-l>", "<Plug>(completion_next_source)", {})
     vim.api.nvim_set_keymap("i", "<c-h>", "<Plug>(completion_prev_source)", {})
-end
-
-return function(use)
     -- completion config
     vim.cmd([[
         imap <c-y> <Plug>(completion_confirm_completion)
         let g:completion_confirm_key = "<CR>"
         imap <silent> <c-space> <Plug>(completion_trigger)
     ]])
+end
 
+return function(use)
+    set_globals()
     --
-    use {"neovim/nvim-lspconfig"}
-    use {"kabouzeid/nvim-lspinstall", config = lspinstallconf}
+    use { "neovim/nvim-lspconfig" }
+    use { "kabouzeid/nvim-lspinstall", config = lspinstallconf }
     use "ray-x/lsp_signature.nvim"
-    use {"nvim-lua/completion-nvim", config = completion_conf}
-    use {"RishabhRD/nvim-lsputils", requires = "RishabhRD/popfix", config = lsputilsconf}
+    use { "nvim-lua/completion-nvim" }
+    use { "RishabhRD/nvim-lsputils", requires = "RishabhRD/popfix", config = lsputilsconf }
     use "steelsojka/completion-buffers"
-    use {"folke/lua-dev.nvim", config = luadev_setup}
+    use { "folke/lua-dev.nvim", config = luadev_setup }
 end
