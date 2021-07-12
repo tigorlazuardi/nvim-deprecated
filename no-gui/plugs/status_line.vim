@@ -1,1 +1,0 @@
-Plug 'glepnir/galaxyline.nvim'
