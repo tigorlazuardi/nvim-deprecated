@@ -178,15 +178,47 @@ local function set_globals()
     vim.g.completion_auto_change_source = 1
     vim.g.completion_enable_auto_signature = 0
     vim.g.completion_confirm_key = ""
+    -- BUG: seems to not working
     vim.api.nvim_set_keymap("i", "<c-l>", "<Plug>(completion_next_source)", {})
     vim.api.nvim_set_keymap("i", "<c-h>", "<Plug>(completion_prev_source)", {})
+    -- endbug
+
     -- completion config
     vim.cmd([[
         imap <c-y> <Plug>(completion_confirm_completion)
         let g:completion_confirm_key = "<CR>"
         imap <silent> <c-space> <Plug>(completion_trigger)
     ]])
+
+    vim.g.symbols_outline = {
+        highlight_hovered_item = true,
+        show_guides = true,
+        auto_preview = true,
+        position = "right",
+        show_numbers = false,
+        show_relative_numbers = false,
+        show_symbol_details = true,
+        keymaps = {
+            close = "<Esc>",
+            goto_location = "<Cr>",
+            focus_location = "o",
+            hover_symbol = "<C-space>",
+            rename_symbol = "r",
+            code_actions = "a"
+        },
+        lsp_blacklist = {}
+    }
 end
+
+local function set_symbols_outline()
+    vim.api.nvim_set_keymap("n", "gs", ":SymbolsOutline<cr>", { silent = true, noremap = true })
+end
+
+local function set_lsp_colors()
+    require("lsp-colors").setup({ Error = "#db4b4b", Warning = "#e0af68", Information = "#0db9d7", Hint = "#10B981" })
+end
+
+local function set_lspkind() require("lspkind").init({}) end
 
 return function(use)
     set_globals()
@@ -198,4 +230,7 @@ return function(use)
     use { "RishabhRD/nvim-lsputils", requires = "RishabhRD/popfix", config = lsputilsconf }
     use "steelsojka/completion-buffers"
     use { "folke/lua-dev.nvim", config = luadev_setup }
+    use { "folke/lsp-colors.nvim", config = set_lsp_colors }
+    use { "onsails/lspkind-nvim", config = set_lspkind }
+    use { "simrat39/symbols-outline.nvim", config = set_symbols_outline }
 end

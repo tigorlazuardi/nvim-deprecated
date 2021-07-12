@@ -34,4 +34,12 @@ return require("packer").startup(function(use)
     require("config.treesitter")(use)
 
     require("config.textobjects")(use)
+
+    require("config.dashboard")(use)
+
+    use { 'glacambre/firenvim', run = function() vim.fn['firenvim#install'](0) end }
+
+    use {'iamcco/markdown-preview.nvim', run = 'cd app && npm install', cmd = 'MarkdownPreview'}
+
+    require("config.indent_blankline")(use)
 end)

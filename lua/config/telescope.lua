@@ -4,7 +4,8 @@ local function run()
     vim.api.nvim_set_keymap("n", "<leader>fg", "<cmd>lua require('telescope.builtin').live_grep()<cr>", opts)
     vim.api.nvim_set_keymap("n", "<leader>fb", "<cmd>lua require('telescope.builtin').buffers()<cr>", opts)
     vim.api.nvim_set_keymap("n", "<leader>fh", "<cmd>lua require('telescope.builtin').help_tags()<cr>", opts)
-    vim.api.nvim_set_keymap("n", "gs", "<cmd>lua require('telescope.builtin').lsp_document_symbols()<cr>", opts)
+    -- gs now uses outline symbols
+    -- vim.api.nvim_set_keymap("n", "gs", "<cmd>lua require('telescope.builtin').lsp_document_symbols()<cr>", opts)
     vim.api.nvim_set_keymap("n", "gi", "<cmd>lua require('telescope.builtin').lsp_implementations()<cr>", opts)
     vim.api.nvim_set_keymap("n", "gr", "<cmd>lua require('telescope.builtin').lsp_references()<cr>", opts)
     vim.api
