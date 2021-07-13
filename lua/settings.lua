@@ -15,7 +15,7 @@ cmd("set cmdheight=2")
 cmd("set updatetime=50")
 cmd("set signcolumn=yes:1")
 cmd("set hidden")
-cmd("set clipboard+=unnamedplus")
+-- cmd("set clipboard+=unnamedplus")
 
 vim.cmd([[
     augroup highlight_yank
