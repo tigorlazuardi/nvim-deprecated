@@ -50,4 +50,8 @@ return require("packer").startup(function(use)
     require("config.surround")(use)
 
     require("config.register")(use)
+
+    require("config.transparent")(use)
+
+    require("config.tabs")(use)
 end)
