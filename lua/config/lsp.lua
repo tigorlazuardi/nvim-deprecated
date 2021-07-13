@@ -2,13 +2,13 @@ local function luadev_setup()
     local capabilities = vim.lsp.protocol.make_client_capabilities()
     capabilities.textDocument.completion.completionItem.snippetSupport = true
     capabilities.textDocument.completion.completionItem.resolveSupport = {
-        properties = { "documentation", "detail", "additionalTextEdits" }
+        properties = { "documentation", "detail", "additionalTextEdits" },
     }
     require"lspconfig".sumneko_lua.setup(require"lua-dev".setup({
         library = {
             vimruntime = true, -- runtime path
             types = true, -- full signature, docs and completion of vim.api, vim.treesitter, vim.lsp and others
-            plugins = true -- installed opt or start plugins in packpath
+            plugins = true, -- installed opt or start plugins in packpath
             -- you can also specify the list of plugins to make available as a workspace library
             -- plugins = { "nvim-treesitter", "plenary.nvim", "telescope.nvim" },
         },
@@ -26,16 +26,20 @@ local function luadev_setup()
                     },
                     -- LuaFormatter on
                     string = { { complete_items = { "path" }, triggered_only = { "/" } } },
-                    comment = { { complete_items = { "path", "buffers" } } }
+                    comment = { { complete_items = { "path", "buffers" } } },
                 }
 
                 require("completion").on_attach({
                     matching_strategy_list = { "exact", "substring", "fuzzy" },
-                    chain_complete_list = chain_complete_list
+                    chain_complete_list = chain_complete_list,
                 })
                 require"lsp_signature".on_attach()
-                local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
-                local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
+                local function buf_set_keymap(...)
+                    vim.api.nvim_buf_set_keymap(bufnr, ...)
+                end
+                local function buf_set_option(...)
+                    vim.api.nvim_buf_set_option(bufnr, ...)
+                end
                 buf_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
                 -- Mappings
                 local opts = { noremap = true, silent = true }
@@ -48,7 +52,7 @@ local function luadev_setup()
                 buf_set_keymap("n", "<leader>wa", "<cmd>lua vim.lsp.buf.add_workspace_folder()<CR>", opts)
                 buf_set_keymap("n", "<leader>wr", "<cmd>lua vim.lsp.buf.remove_workspace_folder()<CR>", opts)
                 buf_set_keymap("n", "<leader>wl",
-                               "<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>", opts)
+                    "<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<CR>", opts)
                 buf_set_keymap("n", "<leader>D", "<cmd>lua vim.lsp.buf.type_definition()<CR>", opts)
                 buf_set_keymap("n", "<leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
                 -- Replaced by telescope
@@ -56,7 +60,8 @@ local function luadev_setup()
                 buf_set_keymap("n", "<leader>d", "<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>", opts)
                 buf_set_keymap("n", "[d", "<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>", opts)
                 buf_set_keymap("n", "]d", "<cmd>lua vim.lsp.diagnostic.goto_next()<CR>", opts)
-                buf_set_keymap("n", "<leader>q", "<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>", opts)
+                -- uses telescope instead
+                -- buf_set_keymap("n", "<leader>q", "<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>", opts)
 
                 -- Set some keybinds conditional on server capabilities
                 if client.resolved_capabilities.document_formatting then
@@ -75,8 +80,8 @@ local function luadev_setup()
                     augroup END
                     ]], false)
                 end
-            end
-        }
+            end,
+        },
     }))
 end
 
@@ -85,16 +90,20 @@ local function lspinstallconf()
         local chain_complete_list = {
             default = { { complete_items = { "lsp", "snippet" } }, { complete_items = { "path", "buffers" } } },
             string = { { complete_items = { "path" }, triggered_only = { "/" } } },
-            comment = { { complete_items = { "path", "buffers" } } }
+            comment = { { complete_items = { "path", "buffers" } } },
         }
 
         require("completion").on_attach({
             matching_strategy_list = { "exact", "substring", "fuzzy" },
-            chain_complete_list = chain_complete_list
+            chain_complete_list = chain_complete_list,
         })
         require"lsp_signature".on_attach()
-        local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
-        local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
+        local function buf_set_keymap(...)
+            vim.api.nvim_buf_set_keymap(bufnr, ...)
+        end
+        local function buf_set_option(...)
+            vim.api.nvim_buf_set_option(bufnr, ...)
+        end
         buf_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
         -- Mappings
         local opts = { noremap = true, silent = true }
@@ -114,7 +123,7 @@ local function lspinstallconf()
         buf_set_keymap("n", "<leader>d", "<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>", opts)
         buf_set_keymap("n", "[d", "<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>", opts)
         buf_set_keymap("n", "]d", "<cmd>lua vim.lsp.diagnostic.goto_next()<CR>", opts)
-        buf_set_keymap("n", "<leader>q", "<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>", opts)
+        -- buf_set_keymap("n", "<leader>q", "<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>", opts)
         -- buf_set_keymap("i", "<c-j>", "<Plug>(completion_next_source)", {silent = true})
         -- buf_set_keymap("i", "<c-k>", "<Plug>(completion_prev_source)", {silent = true})
 
@@ -140,7 +149,7 @@ local function lspinstallconf()
         local capabilities = vim.lsp.protocol.make_client_capabilities()
         capabilities.textDocument.completion.completionItem.snippetSupport = true
         capabilities.textDocument.completion.completionItem.resolveSupport = {
-            properties = { "documentation", "detail", "additionalTextEdits" }
+            properties = { "documentation", "detail", "additionalTextEdits" },
         }
         require"lspinstall".setup()
         local servers = require"lspinstall".installed_servers()
@@ -148,7 +157,7 @@ local function lspinstallconf()
             require"lspconfig"[server].setup {
                 on_attach = on_attach,
                 capabilities = capabilities,
-                flags = { debounce_text_changes = 150 }
+                flags = { debounce_text_changes = 150 },
             }
         end
     end
@@ -177,18 +186,8 @@ local function set_globals()
     vim.g.completion_enable_auto_paren = 0
     vim.g.completion_auto_change_source = 1
     vim.g.completion_enable_auto_signature = 0
-    vim.g.completion_confirm_key = ""
-    -- BUG: seems to not working
-    vim.api.nvim_set_keymap("i", "<c-l>", "<Plug>(completion_next_source)", {})
-    vim.api.nvim_set_keymap("i", "<c-h>", "<Plug>(completion_prev_source)", {})
-    -- endbug
-
-    -- completion config
-    vim.cmd([[
-        imap <c-y> <Plug>(completion_confirm_completion)
-        let g:completion_confirm_key = "<CR>"
-        imap <silent> <c-space> <Plug>(completion_trigger)
-    ]])
+    vim.api.nvim_set_keymap("i", "<c-y>", "<Plug>(completion_confirm_completion)", { silent = true })
+    vim.api.nvim_set_keymap("i", "<c-space>", "<Plug>(completion_trigger)", { silent = true })
 
     vim.g.symbols_outline = {
         highlight_hovered_item = true,
@@ -204,21 +203,23 @@ local function set_globals()
             focus_location = "o",
             hover_symbol = "<C-space>",
             rename_symbol = "r",
-            code_actions = "a"
+            code_actions = "a",
         },
-        lsp_blacklist = {}
+        lsp_blacklist = {},
     }
 end
 
-local function set_symbols_outline()
-    vim.api.nvim_set_keymap("n", "gs", ":SymbolsOutline<cr>", { silent = true, noremap = true })
-end
+-- local function set_symbols_outline()
+--     vim.api.nvim_set_keymap("n", "gs", ":SymbolsOutline<cr>", { silent = true, noremap = true })
+-- end
 
 local function set_lsp_colors()
     require("lsp-colors").setup({ Error = "#db4b4b", Warning = "#e0af68", Information = "#0db9d7", Hint = "#10B981" })
 end
 
-local function set_lspkind() require("lspkind").init({}) end
+local function set_lspkind()
+    require("lspkind").init({})
+end
 
 return function(use)
     set_globals()
@@ -232,5 +233,5 @@ return function(use)
     use { "folke/lua-dev.nvim", config = luadev_setup }
     use { "folke/lsp-colors.nvim", config = set_lsp_colors }
     use { "onsails/lspkind-nvim", config = set_lspkind }
-    use { "simrat39/symbols-outline.nvim", config = set_symbols_outline }
+    -- use { "simrat39/symbols-outline.nvim", config = set_symbols_outline }
 end

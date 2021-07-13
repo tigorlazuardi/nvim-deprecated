@@ -11,4 +11,11 @@ local function run()
     ]])
 end
 
-return function(use) use { "hrsh7th/vim-vsnip-integ", requires = "hrsh7th/vim-vsnip", config = run } end
+local function globals()
+    vim.g.completion_enable_snippet = "vim-vsnip"
+end
+
+return function(use)
+    globals()
+    use { "hrsh7th/vim-vsnip-integ", requires = "hrsh7th/vim-vsnip", config = run }
+end
