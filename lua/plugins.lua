@@ -42,4 +42,12 @@ return require("packer").startup(function(use)
     use {'iamcco/markdown-preview.nvim', run = 'cd app && npm install', cmd = 'MarkdownPreview'}
 
     require("config.indent_blankline")(use)
+
+    require("config.subversive")(use)
+
+    require("config.cutlass")(use)
+
+    require("config.surround")(use)
+
+    require("config.register")(use)
 end)
