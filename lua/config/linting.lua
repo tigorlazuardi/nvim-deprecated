@@ -1,24 +1,33 @@
-local function set_globals()
-    vim.g.ale_disable_lsp = 1
-    vim.g.ale_completion_enabled = 0
-    vim.g.ale_linters = { go = { "golangci-lint", "govet", "revive" } }
-    vim.g.ale_go_golangci_lint_package = 1
-    vim.g.ale_virtualtext_cursor = 1
+return function()
+    local lspconfig = require "lspconfig"
 
-    vim.g.ale_go_golangci_lint_options = "--presets bugs"
-end
+    local eslint = {
+        lintCommand = "eslint_d -f unix --stdin --stdin-filename ${INPUT}",
+        lintStdin = true,
+        lintFormats = { "%f:%l:%c: %m" },
+        lintIgnoreExitCode = true,
+        formatCommand = "eslint_d --fix-to-stdout --stdin --stdin-filename=${INPUT}",
+        formatStdin = true,
+    }
 
-return function(use)
-    set_globals()
-    use "dense-analysis/ale"
-    use {
-        "nathunsmitty/nvim-ale-diagnostic",
-        config = function()
-            require("nvim-ale-diagnostic")
-
-            vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
-                vim.lsp.diagnostic.on_publish_diagnostics,
-                { underline = false, virtual_text = false, signs = true, update_in_insert = false })
-        end,
+    lspconfig.efm.setup {
+        settings = {
+            languages = {
+                javascript = { eslint },
+                javascriptreact = { eslint },
+                ["javascript.jsx"] = { eslint },
+                typescript = { eslint },
+                ["typescript.tsx"] = { eslint },
+                typescriptreact = { eslint },
+            },
+        },
+        filetypes = {
+            "javascript",
+            "javascriptreact",
+            "javascript.jsx",
+            "typescript",
+            "typescript.tsx",
+            "typescriptreact",
+        },
     }
 end
