@@ -188,6 +188,7 @@ local function set_globals()
     vim.g.completion_enable_auto_signature = 0
     vim.api.nvim_set_keymap("i", "<c-y>", "<Plug>(completion_confirm_completion)", { silent = true })
     vim.api.nvim_set_keymap("i", "<c-space>", "<Plug>(completion_trigger)", { silent = true })
+    vim.g.completion_confirm_key = ""
 
     vim.g.symbols_outline = {
         highlight_hovered_item = true,

@@ -37,9 +37,14 @@ return require("packer").startup(function(use)
 
     require("config.dashboard")(use)
 
-    use { 'glacambre/firenvim', run = function() vim.fn['firenvim#install'](0) end }
+    use {
+        "glacambre/firenvim",
+        run = function()
+            vim.fn["firenvim#install"](0)
+        end,
+    }
 
-    use {'iamcco/markdown-preview.nvim', run = 'cd app && npm install', cmd = 'MarkdownPreview'}
+    use { "iamcco/markdown-preview.nvim", run = "cd app && npm install", cmd = "MarkdownPreview" }
 
     require("config.indent_blankline")(use)
 
@@ -55,5 +60,5 @@ return require("packer").startup(function(use)
 
     require("config.tabs")(use)
 
-    require("config.linting")(use)
+    -- require("config.linting")(use)
 end)

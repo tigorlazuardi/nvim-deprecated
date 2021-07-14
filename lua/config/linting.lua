@@ -4,6 +4,8 @@ local function set_globals()
     vim.g.ale_linters = { go = { "golangci-lint", "govet", "revive" } }
     vim.g.ale_go_golangci_lint_package = 1
     vim.g.ale_virtualtext_cursor = 1
+
+    vim.g.ale_go_golangci_lint_options = "--presets bugs"
 end
 
 return function(use)

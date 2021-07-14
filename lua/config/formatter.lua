@@ -111,7 +111,7 @@ local run = function()
     vim.cmd([[
         augroup FormatAutogroup
           autocmd!
-          autocmd BufWritePost *.js,*.rs,*.lua,*.ts,*.tsx,*.jsx,*.sh,*.zsh*, FormatWrite
+          autocmd BufWritePre *.js,*.rs,*.lua,*.ts,*.tsx,*.jsx,*.sh,*.zsh*, FormatWrite
         augroup END
     ]])
 end
