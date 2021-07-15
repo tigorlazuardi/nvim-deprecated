@@ -1,13 +1,27 @@
 # nvim
 Neovim 0.5.X configuration
 
-Support only Linux for now.
+# Installation
+
+Install Packer Nvim
+
+```sh
+git clone https://github.com/wbthomason/packer.nvim\
+ ~/.local/share/nvim/site/pack/packer/start/packer.nvim
+```
+
+Run `:PackerInstall` then followed by `:PackerCompile`
+
+Support only Linux for now (nvim lspinstall really hinders the cross-platform-ness of this config)
 
 TODO
 
-* [ ] Extend TextObject support
-* [ ] Move config to pure lua
-* [ ] Extend `on_attach` lsp function with callbacks
+* [X] Extend TextObject support
+* [X] Move config to pure lua
+* [X] Extend `on_attach` lsp function with callbacks
 * [ ] Per language lsp configuration instead of generic
-* [ ] Ditch `vim-plug` in favor of `packer`
+* [X] Ditch `vim-plug` in favor of `packer`
 * [ ] Find some way to make the config cross-platform
+* [ ] Integrate more with snippets
+* [ ] Make TSServer integration better
+* [ ] Integrate EFM-Langserver more
