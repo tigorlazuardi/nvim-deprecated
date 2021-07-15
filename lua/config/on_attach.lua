@@ -1,21 +1,21 @@
 return function(client, bufnr)
     require("config.linting")()
-    local chain_complete_list = {
-        -- LuaFormatter off
-                    default = {
-                        {complete_items = {"lsp", "snippet"}},
-                        {complete_items = {"path"}, triggered_only = {"/"}},
-                        {complete_items = {"buffers"}},
-                    },
-                    -- LuaFormatter on
-        string = { { complete_items = { "path" }, triggered_only = { "/" } } },
-        comment = { { complete_items = { "path", "buffers" } } },
-    }
+    -- local chain_complete_list = {
+    --     -- LuaFormatter off
+    --                 default = {
+    --                     {complete_items = {"lsp", "snippet"}},
+    --                     {complete_items = {"path"}, triggered_only = {"/"}},
+    --                     {complete_items = {"buffers"}},
+    --                 },
+    --                 -- LuaFormatter on
+    --     string = { { complete_items = { "path" }, triggered_only = { "/" } } },
+    --     comment = { { complete_items = { "path", "buffers" } } },
+    -- }
 
-    require("completion").on_attach({
-        matching_strategy_list = { "exact", "substring", "fuzzy" },
-        chain_complete_list = chain_complete_list,
-    })
+    -- require("completion").on_attach({
+    --     matching_strategy_list = { "exact", "substring", "fuzzy" },
+    --     chain_complete_list = chain_complete_list,
+    -- })
     require"lsp_signature".on_attach()
     local function buf_set_keymap(...)
         vim.api.nvim_buf_set_keymap(bufnr, ...)
@@ -54,12 +54,12 @@ return function(client, bufnr)
 
     -- Set autocommands conditional on server_capabilities
     if client.resolved_capabilities.document_highlight then
-        vim.api.nvim_exec([[
+        vim.cmd([[
             augroup lsp_document_highlight
                 autocmd!
                 autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
                 autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
             augroup END
-        ]], false)
+        ]])
     end
 end

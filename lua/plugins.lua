@@ -6,7 +6,6 @@ return require("packer").startup(function(use)
     -- Auto cwd to workspace root
     require("config.rooter")(use)
     require("config.theme")(use)
-
     require("config.autopairs")(use)
 
     require("config.kommentary")(use)
@@ -66,5 +65,10 @@ return require("packer").startup(function(use)
 
     require("config.tabs")(use)
 
-    -- require("config.linting")(use)
+    require("config.linting")()
+
+    -- use "yamatsum/nvim-cursorline"
+
+    require("config.completion")(use)
+
 end)

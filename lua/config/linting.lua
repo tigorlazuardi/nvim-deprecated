@@ -11,6 +11,7 @@ return function()
     }
 
     lspconfig.efm.setup {
+        cmd = { "/home/tigor/go/bin/efm-langserver" },
         settings = {
             languages = {
                 javascript = { eslint },

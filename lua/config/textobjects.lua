@@ -1,6 +1,6 @@
 return function(use)
     use "kana/vim-textobj-user" -- Base dependencies
-    use "gcmt/wildfire.vim" -- Enter key
+    -- use "gcmt/wildfire.vim" -- Enter key
     use "wellle/targets.vim" -- enhance default motions
     use "kana/vim-textobj-entire" -- buffer select. e motion key
     use "sgur/vim-textobj-parameter" -- argument select. a motion key
