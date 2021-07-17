@@ -6,7 +6,6 @@ local function lsp_setup()
             vim.cmd([[
                 augroup formatter
                     autocmd!
-                    autocmd InsertLeave <buffer> lua vim.lsp.buf.formatting()     
                     autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting()
                 augroup end
             ]])
