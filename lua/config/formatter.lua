@@ -73,11 +73,11 @@ local run = function()
                     return { exe = 'rustfmt', args = { '--emit=stdout' }, stdin = true }
                 end,
             },
-            go = {
-                function()
-                    return { exe = 'goimports', stdin = true }
-                end,
-            },
+            -- go = {
+            --     function()
+            --         return { exe = 'goimports', stdin = true }
+            --     end,
+            -- },
             lua = {
                 -- luafmt
                 function()

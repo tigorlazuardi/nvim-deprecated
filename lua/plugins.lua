@@ -12,7 +12,7 @@ return require('packer').startup(function(use)
 
     require('config.explorer')(use)
 
-    require('config.formatter')(use)
+    -- require('config.formatter')(use)
 
     require('config.git')(use)
 

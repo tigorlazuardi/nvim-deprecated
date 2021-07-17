@@ -1,22 +1,18 @@
 local function lsp_setup()
     local lspconfig = require('lspconfig')
-    local languages = {
-        javascript = { require('lsp.typescript').efm_config },
-        javascriptreact = { require('lsp.typescript').efm_config },
-        ['javascript.jsx'] = { require('lsp.typescript').efm_config },
-        typescript = { require('lsp.typescript').efm_config },
-        typescriptreact = { require('lsp.typescript').efm_config },
-        ['typescript.tsx'] = { require('lsp.typescript').efm_config },
-    }
     lspconfig.efm.setup {
-        filetypes = vim.tbl_keys(languages),
+        cmd = { 'efm-langserver' },
+        on_attach = function()
+            vim.cmd([[
+                augroup formatter
+                    autocmd!
+                    autocmd InsertLeave <buffer> lua vim.lsp.buf.formatting()     
+                    autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting()
+                augroup end
+            ]])
+        end,
+        filetypes = { 'typescript', 'javascript', 'typescriptreact', 'javascriptreact', 'go', 'lua', 'yaml', 'markdown' },
         init_options = { documentFormatting = true, codeAction = true },
-        settings = {
-            rootMarkers = lspconfig.util.root_pattern('package.json', 'cargo.toml', 'go.mod', '.git'),
-            languages = languages,
-            log_level = 1,
-            log_file = '~/.efm.log',
-        },
     }
 end
 

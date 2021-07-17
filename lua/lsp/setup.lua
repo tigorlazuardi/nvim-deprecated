@@ -3,5 +3,6 @@ return function()
     require('lsp.go').lsp_setup()
     require('lsp.go').golangcilsp_setup()
     require('lsp.typescript').lsp_setup()
-    -- require('lsp.efm').lsp_setup()
+    require('lsp.efm').lsp_setup()
+    require('lsp.yaml').lsp_setup()
 end
