@@ -4,7 +4,7 @@ local function setup()
     vim.g.nvim_tree_follow = 1
     vim.g.nvim_tree_git_hl = 1
     vim.g.nvim_tree_lsp_diagnostics = 1
-    vim.g.nvim_tree_disable_window_picker = 1
+    vim.g.nvim_tree_disable_window_picker = 0
 
     vim.g.nvim_tree_icons = {
         default = "",
