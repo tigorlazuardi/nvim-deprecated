@@ -15,5 +15,4 @@ return function(use)
     use { "RishabhRD/nvim-lsputils", requires = "RishabhRD/popfix", config = lsputilsconf }
     use { "folke/lua-dev.nvim" }
     use { "folke/lsp-colors.nvim" }
-    use { "onsails/lspkind-nvim" }
 end

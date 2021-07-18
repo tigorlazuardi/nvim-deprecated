@@ -36,8 +36,23 @@ local function run()
         inoremap <silent><expr> <C-d>     compe#scroll({ 'delta': -4 })
         inoremap <silent><expr> <C-y>     compe#confirm('<c-y>')
     ]])
+
+    require('lspkind').init({
+        -- enables text annotations
+        --
+        -- default: true
+        with_text = true,
+
+        -- default symbol map
+        -- can be either 'default' or
+        -- 'codicons' for codicon preset (requires vscode-codicons font installed)
+        --
+        -- default: 'default'
+        preset = 'default',
+    })
 end
 
 return function(use)
     use { 'hrsh7th/nvim-compe', config = run }
+    use { 'onsails/lspkind-nvim' }
 end
