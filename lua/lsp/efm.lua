@@ -1,13 +1,13 @@
 local function lsp_setup()
     local lspconfig = require('lspconfig')
     lspconfig.efm.setup {
-        cmd = { 'efm-langserver' },
+        cmd = { 'efm-langserver', '-c', vim.fn.expand("$HOME") .. '/.config/nvim/efm/config.yaml' },
         on_attach = function()
             vim.cmd([[
                 augroup formatter
                     autocmd!
                     autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting()
-                    autocmd InsertLeave <buffer> lua vim.lsp.buf.formatting()
+                    autocmd InsertLeave *.go,*.lua lua vim.lsp.buf.formatting()
                 augroup end
             ]])
         end,
