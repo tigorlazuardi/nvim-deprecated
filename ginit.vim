@@ -1,4 +1,4 @@
-set guifont=FuraCode\ Nerd\ Font\ Mono,\ Medium:h16
+set guifont=Hack\ NF,\ Medium:h16
 
 if exists('g:fvim_loaded')
     nnoremap <A-CR> :FVimToggleFullScreen<CR>

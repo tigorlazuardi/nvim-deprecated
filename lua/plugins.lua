@@ -73,4 +73,6 @@ return require('packer').startup(function(use)
 
     require('config.debugger')(use)
 
+    require('config.discord')(use)
+
 end)

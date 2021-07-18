@@ -43,4 +43,9 @@ local signs_config = function()
     }
 end
 
-return function(use) use {"lewis6991/gitsigns.nvim", requires = "nvim-lua/plenary.nvim", config = signs_config} end
+return function(use) 
+    -- BUG: Broken on windows
+    if vim.fn.has('mac') == 1 or vim.fn.has('unix') == 1 then
+        use {"lewis6991/gitsigns.nvim", requires = "nvim-lua/plenary.nvim", config = signs_config} 
+    end
+end
