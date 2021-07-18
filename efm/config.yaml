@@ -1,0 +1,73 @@
+---
+version: 2
+root-markers:
+    - .git/
+lint-debounce: 1s
+
+tools:
+    go-format: &go-format
+        format-command: goimports
+        format-stdin: true
+
+    lua-format: &lua-format
+        format-command: >
+            lua-format -i
+            --double-quote-to-single-quote
+            --column-limit=120
+            --spaces-inside-table-braces
+            --no-keep-simple-function-one-line
+            --no-keep-simple-control-block-one-line
+            --extra-sep-at-table-end
+            --no-align-args
+            --no-align-parameter
+            --chop-down-table
+        format-stdin: true
+
+    yaml-yamllint: &yaml-yamllint
+        lint-command: "yamllint -f parsable -"
+        lint-stdin: true
+
+    common-prettier: &common-prettier
+        format-command: >
+            prettier
+            --print-width 120
+            --tab-width 4
+            --no-semi
+            --stdin-filepath ${INPUT}
+            --single-quote
+        format-stdin: true
+
+    eslintd: &eslintd
+        lint-command: eslint_d -f unix --stdin --stdin-filename ${INPUT}
+        lint-stdin: true
+        lint-formats: ["%f:%l:%c: %m"]
+        lint-ignore-exit-code: true
+
+languages:
+    go:
+        - <<: *go-format
+
+    lua:
+        - <<: *lua-format
+
+    typescript:
+        - <<: *common-prettier
+        - <<: *eslintd
+
+    typescriptreact:
+        - <<: *common-prettier
+        - <<: *eslintd
+
+    javascript:
+        - <<: *common-prettier
+        - <<: *eslintd
+
+    javascriptreact:
+        - <<: *common-prettier
+        - <<: *eslintd
+
+    yaml:
+        - <<: *yaml-yamllint
+
+    markdown:
+        - <<: *common-prettier
