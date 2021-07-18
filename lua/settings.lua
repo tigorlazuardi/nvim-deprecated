@@ -30,6 +30,8 @@ vim.cmd([[
     endif
 ]])
 
+cmd('set noswapfile')
+
 vim.cmd([[autocmd FileType yaml setlocal shiftwidth=4 tabstop=4]])
 
 return {}
