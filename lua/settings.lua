@@ -19,9 +19,9 @@ cmd('set clipboard+=unnamedplus')
 
 -- see https://unix.stackexchange.com/questions/149209/refresh-changed-content-of-file-opened-in-vim#:~:text=If%20you%20have%20made%20modifications,thus%20be%20done%20by%20%3Ae!&text=to%20make%20Vim%20automatically%20refresh,t%20been%20edited%20by%20Vim.
 -- auto refresh if file is edited outside
-cmd('set autoread')
+-- cmd('set autoread')
 -- trigger autoread on focus gain
-cmd([[au FocusGained,BufEnter * :checktime]])
+-- cmd([[au FocusGained,BufEnter * :checktime]])
 
 vim.cmd([[
     augroup highlight_yank

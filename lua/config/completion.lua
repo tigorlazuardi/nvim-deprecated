@@ -49,6 +49,7 @@ local function run()
         --
         -- default: 'default'
         preset = 'default',
+        symbol_map = { Field = '' },
     })
 end
 

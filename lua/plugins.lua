@@ -75,4 +75,6 @@ return require('packer').startup(function(use)
 
     require('config.discord')(use)
 
+    require('config.lint')(use)
+
 end)

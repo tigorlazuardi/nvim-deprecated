@@ -43,9 +43,15 @@ tools:
         lint-formats: ["%f:%l:%c: %m"]
         lint-ignore-exit-code: true
 
+    golangci-lint: &golangci-lint
+        lint-command: >
+            golangci-lint --out-format tab --presets bugs run ./...
+        lint-formats: ["%f:%l%c: %m"]
+
 languages:
     go:
         - <<: *go-format
+        - <<: *golangci-lint
 
     lua:
         - <<: *lua-format

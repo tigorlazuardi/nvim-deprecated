@@ -4,10 +4,6 @@ local function lsp_setup()
     lspconfig.gopls.setup {
         capabilities = capabilities,
         on_attach = function(client, bufnr)
-            -- Handled by EFM
-            if client.config.flags then
-                client.config.flags.allow_incremental_sync = true
-            end
             client.resolved_capabilities.document_formatting = false
             require('lsp.on_attach')(client, bufnr)
         end,
@@ -16,27 +12,25 @@ local function lsp_setup()
             '-remote=auto', --[[ debug options ]] --
             '-remote.debug=:0',
         },
-        flags = { allow_incremental_sync = true, debounce_text_changes = 500 },
         settings = {
             gopls = {
                 -- more settings: https://github.com/golang/tools/blob/master/gopls/doc/settings.md
-                -- flags = {allow_incremental_sync = true, debounce_text_changes = 500},
-                -- not supported
+                ['local'] = 'goimports -local',
                 analyses = { unusedparams = true, unreachable = false },
                 codelenses = {
                     generate = true, -- show the `go generate` lens.
                     gc_details = true, --  // Show a code lens toggling the display of gc's choices.
                 },
-                usePlaceholders = true,
+                usePlaceholders = false,
                 completeUnimported = true,
-                staticcheck = true,
+                staticcheck = false, -- handled by efm
                 matcher = 'fuzzy',
-                experimentalDiagnosticsDelay = '500ms',
-                -- diagnosticsDelay = "500ms",
+                experimentalDiagnosticsDelay = '1000ms',
+                -- diagnosticsDelay = '500ms',
                 -- experimentalWatchedFileDelay = "100ms",
                 symbolMatcher = 'fuzzy',
-                gofumpt = false, -- true, -- turn on for new repos, gofmpt is good but also create code turmoils
-                buildFlags = { '-tags', 'integration' },
+                gofumpt = true, -- true, -- turn on for new repos, gofmpt is good but also create code turmoils
+                -- buildFlags = { '-tags', 'integration' },
                 -- buildFlags = {"-tags", "functional"}
             },
         },
@@ -78,15 +72,15 @@ local function golangcilsp_setup()
                         'golangci-lint',
                         'run',
                         '--out-format=json',
-                        '--disable-all',
+                        -- '--disable-all',
                         '--fix',
-                        -- default golang cli-line
+                        -- default golang
                         '--enable=deadcode',
                         '--enable=errcheck',
                         '--enable=gosimple',
                         '--enable=govet',
                         '--enable=ineffassign',
-                        -- "--enable=staticcheck", --included in lsp
+                        '--enable=staticcheck',
                         '--enable=structcheck',
                         '--enable=typecheck',
                         '--enable=unused',
@@ -105,7 +99,7 @@ local function golangcilsp_setup()
                         '--enable=rowserrcheck',
                         '--enable=sqlclosecheck',
                         '--enable=gocritic',
-                        -- "--enable=revive", -- annoying
+                        '--enable=revive', -- annoying
                         -- style
                         '--enable=dupl',
                         '--enable=goconst',
@@ -114,12 +108,15 @@ local function golangcilsp_setup()
                         '--enable=gofumpt',
                         '--enable=whitespace',
                         '--enable=goimports',
+                        -- exclusions
+                        -- '--exclude=capitalized',
                     },
                 },
             },
         }
     end
-    lspconfig.golangcilsp.setup { filetypes = { 'go' }, flags = { debounce_text_changes = 150 } }
+
+    lspconfig.golangcilsp.setup { filetypes = { 'go' } }
 end
 
 return { lsp_setup = lsp_setup, rayxgo_setup = rayxgo_setup, golangcilsp_setup = golangcilsp_setup }

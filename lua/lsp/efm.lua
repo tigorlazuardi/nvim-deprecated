@@ -6,12 +6,11 @@ local function lsp_setup()
             vim.cmd([[
                 augroup formatter
                     autocmd!
-                    autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting()
+                    autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync(nil, 500)
                 augroup end
             ]])
         end,
-        flags = { debounce_text_changes = 150 },
-        filetypes = { 'typescript', 'javascript', 'typescriptreact', 'javascriptreact', 'go', 'lua', 'yaml', 'markdown' },
+        filetypes = { 'typescript', 'javascript', 'typescriptreact', 'javascriptreact', 'lua', 'go', 'yaml', 'markdown' },
         init_options = { documentFormatting = true, codeAction = true },
     }
 end
