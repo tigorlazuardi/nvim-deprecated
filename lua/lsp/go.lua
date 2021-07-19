@@ -119,16 +119,7 @@ local function golangcilsp_setup()
             },
         }
     end
-    lspconfig.golangcilsp.setup { filetypes = { 'go' } }
+    lspconfig.golangcilsp.setup { filetypes = { 'go' }, flags = { debounce_text_changes = 150 } }
 end
 
-local function efm_config()
-    return { formatCommand = 'goimports -w', formatStdin = false }
-end
-
-return {
-    lsp_setup = lsp_setup,
-    rayxgo_setup = rayxgo_setup,
-    golangcilsp_setup = golangcilsp_setup,
-    efm_config = efm_config,
-}
+return { lsp_setup = lsp_setup, rayxgo_setup = rayxgo_setup, golangcilsp_setup = golangcilsp_setup }

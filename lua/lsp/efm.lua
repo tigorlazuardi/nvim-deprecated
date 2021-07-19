@@ -7,10 +7,10 @@ local function lsp_setup()
                 augroup formatter
                     autocmd!
                     autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting()
-                    autocmd InsertLeave *.go,*.lua lua vim.lsp.buf.formatting()
                 augroup end
             ]])
         end,
+        flags = { debounce_text_changes = 150 },
         filetypes = { 'typescript', 'javascript', 'typescriptreact', 'javascriptreact', 'go', 'lua', 'yaml', 'markdown' },
         init_options = { documentFormatting = true, codeAction = true },
     }
