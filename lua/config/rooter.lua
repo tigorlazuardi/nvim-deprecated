@@ -1,8 +1,8 @@
 return function(use)
     use {
-        "ahmedkhalf/lsp-rooter.nvim",
+        'ahmedkhalf/lsp-rooter.nvim',
         config = function()
-            require("lsp-rooter").setup {}
+            require('lsp-rooter').setup {}
         end,
     }
 end

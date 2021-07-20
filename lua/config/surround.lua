@@ -1,8 +1,8 @@
 return function(use)
     use {
-        "blackCauldron7/surround.nvim",
+        'blackCauldron7/surround.nvim',
         config = function()
-            require"surround".setup {}
+            require'surround'.setup {}
         end,
     }
 end

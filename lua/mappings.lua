@@ -21,7 +21,7 @@ remap('n', '<S-TAB>', ':bp!<cr>', opts)
 
 -- remap gx to open browser url
 if vim.fn.has('mac') == 1 or vim.fn.has('unix') == 1 then
-    remap('n', 'gx', '<Cmd>call jobstart(["open", expand("<cfile>")], {"detach": v:true})<CR>', opts)
+    remap('n', 'gx', '<Cmd>call jobstart(["xdg-open", expand("<cfile>")], {"detach": v:true})<CR>', opts)
 else
     remap('n', 'gx', '<Cmd>lua print("Error: gx is not supported on this OS!")<CR>', opts)
 end
