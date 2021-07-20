@@ -6,6 +6,11 @@ function M.lsp_setup()
         lua = require('lsp.lua').efm_config,
         go = require('lsp.go').efm_config,
         typescript = require('lsp.typescript').efm_config,
+        typescriptreact = require('lsp.typescript').efm_config,
+        ['typescript.tsx'] = require('lsp.typescript').efm_config,
+        javascript = require('lsp.typescript').efm_config,
+        javascriptreact = require('lsp.typescript').efm_config,
+        ['javascript.jsx'] = require('lsp.typescript').efm_config,
         yaml = require('lsp.yaml').efm_config,
     }
     lspconfig.efm.setup {
