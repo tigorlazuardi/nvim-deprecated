@@ -51,7 +51,7 @@ tools:
 languages:
     go:
         - <<: *go-format
-        - <<: *golangci-lint
+        # - <<: *golangci-lint
 
     lua:
         - <<: *lua-format

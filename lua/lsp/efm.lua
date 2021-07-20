@@ -1,7 +1,7 @@
 local function lsp_setup()
     local lspconfig = require('lspconfig')
     lspconfig.efm.setup {
-        cmd = { 'efm-langserver', '-c', _G.CONFIG_PATH .. '/efm/config.yaml' },
+        cmd = { 'efm-langserver', '-c', vim.fn.stdpath('config') .. '/efm/config.yaml' },
         on_attach = function()
             vim.cmd([[
                 augroup formatter
