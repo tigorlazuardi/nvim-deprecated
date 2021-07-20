@@ -45,6 +45,7 @@ local function run()
         augroup nvimtreerefresh
         autocmd!
             autocmd BufLeave * silent! NvimTreeRefresh
+            autocmd BufWritePost * silent! NvimTreeRefresh
         augroup end
     ]])
 end
