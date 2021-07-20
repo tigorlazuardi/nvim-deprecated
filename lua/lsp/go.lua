@@ -1,6 +1,8 @@
-local function lsp_setup()
+local M = {}
+
+function M.lsp_setup()
     local lspconfig = require 'lspconfig'
-    local capabilities = require('lsp.capabilities')()
+    local capabilities = require('lsp.capabilities')
     lspconfig.gopls.setup {
         capabilities = capabilities,
         on_attach = function(client, bufnr)
@@ -26,18 +28,14 @@ local function lsp_setup()
                 staticcheck = false, -- handled by efm
                 matcher = 'fuzzy',
                 experimentalDiagnosticsDelay = '1000ms',
-                -- diagnosticsDelay = '500ms',
-                -- experimentalWatchedFileDelay = "100ms",
                 symbolMatcher = 'fuzzy',
                 gofumpt = true, -- true, -- turn on for new repos, gofmpt is good but also create code turmoils
-                -- buildFlags = { '-tags', 'integration' },
-                -- buildFlags = {"-tags", "functional"}
             },
         },
     }
 end
 
-local function rayxgo_setup()
+function M.rayxgo_setup()
     require('go').setup({
         goimport = 'gofumports', -- goimport command
         gofmt = 'gofumpt', -- gofmt cmd,
@@ -58,7 +56,7 @@ local function rayxgo_setup()
     })
 end
 
-local function golangcilsp_setup()
+function M.golangcilsp_setup()
     local lspconfig = require 'lspconfig'
     local configs = require 'lspconfig/configs'
 
@@ -119,4 +117,6 @@ local function golangcilsp_setup()
     lspconfig.golangcilsp.setup { filetypes = { 'go' } }
 end
 
-return { lsp_setup = lsp_setup, rayxgo_setup = rayxgo_setup, golangcilsp_setup = golangcilsp_setup }
+M.efm_config = { { formatCommand = 'goimports', formatStdin = true } }
+
+return M

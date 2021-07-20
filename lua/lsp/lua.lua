@@ -1,20 +1,23 @@
-local function lsp_setup()
-    local capabilities = require("lsp.capabilities")()
+local M = {}
 
-    require"lspconfig".sumneko_lua.setup(require"lua-dev".setup({
-        library = { vimruntime = true, types = true, plugins = true },
-        lspconfig = { cmd = { "lua-language-server" }, capabilities = capabilities,
-                      on_attach = require("lsp.on_attach") },
-    }))
+function M.lsp_setup()
+    local capabilities = require('lsp.capabilities')
+
+    require'lspconfig'.sumneko_lua.setup(
+        require'lua-dev'.setup({
+            library = { vimruntime = true, types = true, plugins = true },
+            lspconfig = {
+                cmd = { 'lua-language-server' },
+                capabilities = capabilities,
+                on_attach = require('lsp.on_attach'),
+            },
+        }))
 end
 
-local function emf_config()
-    local formatCmd =
-        "lua-format -i --single-quote-to-double-quote  --column-limit=120  --spaces-inside-table-braces  --no-keep-simple-function-one-line  --no-keep-simple-control-block-one-line  --extra-sep-at-table-end  --no-align-args --no-align-parameter --chop-down-table"
+local formatCmd = string.format('lua-format -i --config="%s"', vim.fn
+                                    .stdpath('config') ..
+                                    '/linter-config/luaformat.yaml')
 
-    local formatStdin = true
+M.efm_config = { { formatCommand = formatCmd, formatStdin = true } }
 
-    return { formatCmd = formatCmd, formatStdin = formatStdin }
-end
-
-return { lsp_setup = lsp_setup, efm_config = emf_config }
+return M
