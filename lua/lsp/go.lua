@@ -59,64 +59,19 @@ end
 function M.golangcilsp_setup()
     local lspconfig = require 'lspconfig'
     local configs = require 'lspconfig/configs'
-    -- local cmd = {
-    --     'golangci-lint',
-    --     'run',
-    --     '--out-format=json',
-    --     -- '--disable-all',
-    --     '--fix',
-    --     -- default golang
-    --     '--enable=deadcode',
-    --     '--enable=errcheck',
-    --     '--enable=gosimple',
-    --     '--enable=govet',
-    --     '--enable=ineffassign',
-    --     '--enable=staticcheck',
-    --     '--enable=structcheck',
-    --     '--enable=typecheck',
-    --     '--enable=unused',
-    --     '--enable=varcheck',
-    --     -- errors and bugs
-    --     '--enable=asciicheck',
-    --     '--enable=bodyclose',
-    --     '--enable=durationcheck',
-    --     '--enable=errorlint',
-    --     '--enable=exhaustive',
-    --     '--enable=exportloopref',
-    --     '--enable=gosec',
-    --     '--enable=makezero',
-    --     '--enable=nilerr',
-    --     '--enable=noctx',
-    --     '--enable=rowserrcheck',
-    --     '--enable=sqlclosecheck',
-    --     '--enable=gocritic',
-    --     '--enable=revive', -- annoying
-    --     -- style
-    --     '--enable=dupl',
-    --     '--enable=goconst',
-    --     -- fixes
-    --     '--enable=godot',
-    --     '--enable=gofumpt',
-    --     '--enable=whitespace',
-    --     '--enable=goimports',
-    --     -- exclusions
-    --     -- '--exclude=capitalized',
-    -- }
-
+    local exist = vim.fn.filereadable(vim.fn.getcwd() .. '/.golangci.yml') ~= 0
+    local cmd = { 'golangci-lint', 'run', '--out-format=json' }
+    if not exist then
+        table.insert(cmd, '-c')
+        table.insert(cmd,
+                     vim.fn.stdpath('config') .. '/linter-config/.golangci.yml')
+    end
     if not lspconfig.golangcilsp then
         configs.golangcilsp = {
             default_config = {
                 cmd = { 'golangci-lint-langserver' },
                 root_dir = lspconfig.util.root_pattern('.git', 'go.mod'),
-                init_options = {
-                    command = {
-                        'golangci-lint',
-                        'run',
-                        '-c',
-                        vim.fn.stdpath('config') ..
-                            '/linter-config/.golangci.yaml',
-                    },
-                },
+                init_options = { command = cmd },
             },
         }
     end
