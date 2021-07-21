@@ -5,6 +5,10 @@ local function setup()
     vim.g.nvim_tree_git_hl = 1
     vim.g.nvim_tree_lsp_diagnostics = 1
     vim.g.nvim_tree_disable_window_picker = 0
+    vim.g.nvim_tree_window_picker_exclude = {
+        filetype = { 'packer', 'qf', 'Trouble', 'TelescopePrompt' },
+        buftype = { 'terminal' },
+    }
 
     vim.g.nvim_tree_icons = {
         default = '',
@@ -30,7 +34,12 @@ local function setup()
         },
         lsp = { hint = '', info = '', warning = '', error = '' },
     }
-    vim.g.nvim_tree_special_files = { ['README.md'] = 1, Makefile = 1, MAKEFILE = 1, ['readme.md'] = 1 }
+    vim.g.nvim_tree_special_files = {
+        ['README.md'] = 1,
+        Makefile = 1,
+        MAKEFILE = 1,
+        ['readme.md'] = 1,
+    }
 end
 
 local function run()
@@ -52,5 +61,9 @@ end
 
 return function(use)
     setup()
-    use { 'kyazdani42/nvim-tree.lua', requires = 'kyazdani42/nvim-web-devicons', config = run }
+    use {
+        'kyazdani42/nvim-tree.lua',
+        requires = 'kyazdani42/nvim-web-devicons',
+        config = run,
+    }
 end

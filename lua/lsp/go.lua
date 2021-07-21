@@ -59,9 +59,14 @@ end
 function M.golangcilsp_setup()
     local lspconfig = require 'lspconfig'
     local configs = require 'lspconfig/configs'
-    local exist = vim.fn.filereadable(vim.fn.getcwd() .. '/.golangci.yml') ~= 0
+    local projectConfigPath = vim.fn.getcwd() .. '/.golangci.yml'
+    local exist = vim.fn.filereadable(projectConfigPath) ~= 0
+
     local cmd = { 'golangci-lint', 'run', '--out-format=json' }
-    if not exist then
+    if exist then
+        table.insert(cmd, '-c')
+        table.insert(cmd, projectConfigPath)
+    else
         table.insert(cmd, '-c')
         table.insert(cmd,
                      vim.fn.stdpath('config') .. '/linter-config/.golangci.yml')

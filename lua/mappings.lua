@@ -2,7 +2,7 @@ local opts = { silent = true, noremap = true }
 
 local remap = vim.api.nvim_set_keymap
 
-remap('n', '<SPACE>', '<NOP', {})
+-- remap('n', '<SPACE>', '<NOP', {})
 
 -- change leader
 vim.cmd([[let mapleader = " "]])
@@ -16,14 +16,17 @@ vim.cmd([[
     vnoremap <silent> <A-k> :m '<-2<CR>gv=gv
 ]])
 
-remap('n', '<TAB>', ':bn!<CR>', opts)
-remap('n', '<S-TAB>', ':bp!<cr>', opts)
+remap('n', ']t', ':bn!<CR>', opts)
+remap('n', '[t', ':bp!<cr>', opts)
 
 -- remap gx to open browser url
-if vim.fn.has('mac') == 1 or vim.fn.has('unix') == 1 then
-    remap('n', 'gx', '<Cmd>call jobstart(["xdg-open", expand("<cfile>")], {"detach": v:true})<CR>', opts)
+if not _G.is_windows() then
+    remap('n', 'gx',
+          '<Cmd>call jobstart(["xdg-open", expand("<cfile>")], {"detach": v:true})<CR>',
+          opts)
 else
-    remap('n', 'gx', '<Cmd>lua print("Error: gx is not supported on this OS!")<CR>', opts)
+    remap('n', 'gx',
+          '<Cmd>lua print("Error: gx is not supported on this OS!")<CR>', opts)
 end
 
 return {}

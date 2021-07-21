@@ -44,9 +44,6 @@ linters:
         - gocyclo
 
 issues:
-    exclude:
-        - capitalized
-        - potentially unused parameter.*
     fix: true
 
 linter-settings:
@@ -64,13 +61,13 @@ linter-settings:
     revive:
         rules:
             - name: var-naming
-              disabled: true
+              Disabled: true
             - name: unused-parameter
-              disabled: true
+              Disabled: true
             - name: waitgroup-by-value
-              disabled: false
+              Disabled: false
             - name: receiver-naming
-              disabled: true
+              Disabled: true
     gosec:
         excludes:
             # disable false positive string name that

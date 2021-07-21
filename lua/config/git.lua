@@ -1,11 +1,26 @@
 local signs_config = function()
     -- BUG: Gitsigns broken on windows
-    if not _G.IsWindows() then
+    if not _G.is_windows() then
         require('gitsigns').setup {
             signs = {
-                add = { hl = 'GitSignsAdd', text = '│', numhl = 'GitSignsAddNr', linehl = 'GitSignsAddLn' },
-                change = { hl = 'GitSignsChange', text = '│', numhl = 'GitSignsChangeNr', linehl = 'GitSignsChangeLn' },
-                delete = { hl = 'GitSignsDelete', text = '_', numhl = 'GitSignsDeleteNr', linehl = 'GitSignsDeleteLn' },
+                add = {
+                    hl = 'GitSignsAdd',
+                    text = '│',
+                    numhl = 'GitSignsAddNr',
+                    linehl = 'GitSignsAddLn',
+                },
+                change = {
+                    hl = 'GitSignsChange',
+                    text = '│',
+                    numhl = 'GitSignsChangeNr',
+                    linehl = 'GitSignsChangeLn',
+                },
+                delete = {
+                    hl = 'GitSignsDelete',
+                    text = '_',
+                    numhl = 'GitSignsDeleteNr',
+                    linehl = 'GitSignsDeleteLn',
+                },
                 topdelete = {
                     hl = 'GitSignsDelete',
                     text = '‾',
@@ -26,8 +41,14 @@ local signs_config = function()
                 noremap = true,
                 buffer = true,
 
-                ['n ]c'] = { expr = true, '&diff ? \']c\' : \'<cmd>lua require"gitsigns.actions".next_hunk()<CR>\'' },
-                ['n [c'] = { expr = true, '&diff ? \'[c\' : \'<cmd>lua require"gitsigns.actions".prev_hunk()<CR>\'' },
+                ['n ]c'] = {
+                    expr = true,
+                    '&diff ? \']c\' : \'<cmd>lua require"gitsigns.actions".next_hunk()<CR>\'',
+                },
+                ['n [c'] = {
+                    expr = true,
+                    '&diff ? \'[c\' : \'<cmd>lua require"gitsigns.actions".prev_hunk()<CR>\'',
+                },
 
                 ['n <leader>hs'] = '<cmd>lua require"gitsigns".stage_hunk()<CR>',
                 ['v <leader>hs'] = '<cmd>lua require"gitsigns".stage_hunk({vim.fn.line("."), vim.fn.line("v")})<CR>',
@@ -57,5 +78,9 @@ local signs_config = function()
 end
 
 return function(use)
-    use { 'lewis6991/gitsigns.nvim', requires = 'nvim-lua/plenary.nvim', config = signs_config }
+    use {
+        'lewis6991/gitsigns.nvim',
+        requires = 'nvim-lua/plenary.nvim',
+        config = signs_config,
+    }
 end

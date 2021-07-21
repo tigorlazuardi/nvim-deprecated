@@ -77,4 +77,6 @@ return require('packer').startup(function(use)
 
     require('config.lint')(use)
 
+    require('config.which-key')(use)
+
 end)
