@@ -5,6 +5,8 @@ else
     set guifont=DejaVuSansMono\ Nerd\ Font:h12
 endif
 
+nnoremap <silent> <leader><tab> :bp!<cr>
+
 if exists('g:fvim_loaded')
     if has('win32') || has('win64')
         set guifont=Hack\ NF,\ Medium:h16

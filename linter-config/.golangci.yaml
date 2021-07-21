@@ -1,0 +1,80 @@
+---
+output:
+    format: json
+    print-issued-lines: true
+    print-linter-name: true
+    uniq-by-line: true
+
+linters:
+    disable-all: true
+    enable:
+        # default golang
+        - deadcode
+        - errcheck
+        - gosimple
+        - govet
+        - ineffassign
+        - staticcheck
+        - structcheck
+        - unused
+        - varcheck
+        - asciicheck
+        - bodyclose
+        - durationcheck
+        - errorlint
+        - exhaustive
+        - exportloopref
+        - gosec
+        - makezero
+        - nilerr
+        - noctx
+        - rowserrcheck
+        - sqlclosecheck
+        - gocritic
+        - revive # annoying
+        # style
+        - dupl
+        - goconst
+        # fixes
+        - godot
+        - gofumpt
+        - whitespace
+        - goimports
+        # complexity
+        - gocyclo
+
+issues:
+    exclude:
+        - capitalized
+        - potentially unused parameter.*
+    fix: true
+
+linter-settings:
+    staticcheck:
+        go: "1.16"
+        # -ST1005 is error string guideline no capitalized
+        # see: https://staticcheck.io/docs/checks#ST1005
+        checks: ["all", "-ST1005"]
+
+    gosimple:
+        go: "1.16"
+        checks: ["all"]
+
+    # revive rules: https://github.com/mgechev/revive#available-rules
+    revive:
+        rules:
+            - name: var-naming
+              disabled: true
+            - name: unused-parameter
+              disabled: true
+            - name: waitgroup-by-value
+              disabled: false
+            - name: receiver-naming
+              disabled: true
+    gosec:
+        excludes:
+            # disable false positive string name that
+            # contains the word `token` or anything sensitive.
+            - G101
+
+exclude-use-default: true

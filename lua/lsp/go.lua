@@ -59,6 +59,49 @@ end
 function M.golangcilsp_setup()
     local lspconfig = require 'lspconfig'
     local configs = require 'lspconfig/configs'
+    -- local cmd = {
+    --     'golangci-lint',
+    --     'run',
+    --     '--out-format=json',
+    --     -- '--disable-all',
+    --     '--fix',
+    --     -- default golang
+    --     '--enable=deadcode',
+    --     '--enable=errcheck',
+    --     '--enable=gosimple',
+    --     '--enable=govet',
+    --     '--enable=ineffassign',
+    --     '--enable=staticcheck',
+    --     '--enable=structcheck',
+    --     '--enable=typecheck',
+    --     '--enable=unused',
+    --     '--enable=varcheck',
+    --     -- errors and bugs
+    --     '--enable=asciicheck',
+    --     '--enable=bodyclose',
+    --     '--enable=durationcheck',
+    --     '--enable=errorlint',
+    --     '--enable=exhaustive',
+    --     '--enable=exportloopref',
+    --     '--enable=gosec',
+    --     '--enable=makezero',
+    --     '--enable=nilerr',
+    --     '--enable=noctx',
+    --     '--enable=rowserrcheck',
+    --     '--enable=sqlclosecheck',
+    --     '--enable=gocritic',
+    --     '--enable=revive', -- annoying
+    --     -- style
+    --     '--enable=dupl',
+    --     '--enable=goconst',
+    --     -- fixes
+    --     '--enable=godot',
+    --     '--enable=gofumpt',
+    --     '--enable=whitespace',
+    --     '--enable=goimports',
+    --     -- exclusions
+    --     -- '--exclude=capitalized',
+    -- }
 
     if not lspconfig.golangcilsp then
         configs.golangcilsp = {
@@ -69,45 +112,9 @@ function M.golangcilsp_setup()
                     command = {
                         'golangci-lint',
                         'run',
-                        '--out-format=json',
-                        -- '--disable-all',
-                        '--fix',
-                        -- default golang
-                        '--enable=deadcode',
-                        '--enable=errcheck',
-                        '--enable=gosimple',
-                        '--enable=govet',
-                        '--enable=ineffassign',
-                        '--enable=staticcheck',
-                        '--enable=structcheck',
-                        '--enable=typecheck',
-                        '--enable=unused',
-                        '--enable=varcheck',
-                        -- errors and bugs
-                        '--enable=asciicheck',
-                        '--enable=bodyclose',
-                        '--enable=durationcheck',
-                        '--enable=errorlint',
-                        '--enable=exhaustive',
-                        '--enable=exportloopref',
-                        '--enable=gosec',
-                        '--enable=makezero',
-                        '--enable=nilerr',
-                        '--enable=noctx',
-                        '--enable=rowserrcheck',
-                        '--enable=sqlclosecheck',
-                        '--enable=gocritic',
-                        '--enable=revive', -- annoying
-                        -- style
-                        '--enable=dupl',
-                        '--enable=goconst',
-                        -- fixes
-                        '--enable=godot',
-                        '--enable=gofumpt',
-                        '--enable=whitespace',
-                        '--enable=goimports',
-                        -- exclusions
-                        -- '--exclude=capitalized',
+                        '-c',
+                        vim.fn.stdpath('config') ..
+                            '/linter-config/.golangci.yaml',
                     },
                 },
             },

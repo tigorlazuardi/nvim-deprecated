@@ -5,7 +5,10 @@ local function run()
         indent = { enable = true },
         textsubjects = {
             enable = true,
-            keymaps = { ['.'] = 'textsubjects-smart', [';'] = 'textsubjects-container-outer' },
+            keymaps = {
+                ['.'] = 'textsubjects-smart',
+                [';'] = 'textsubjects-container-outer',
+            },
         },
         textobjects = {
             select = {
@@ -28,15 +31,30 @@ local function run()
             move = {
                 enable = true,
                 set_jumps = true, -- whether to set jumps in the jumplist
-                goto_next_start = { [']]'] = '@function.outer', [']m'] = '@class.outer' },
-                goto_next_end = { [']['] = '@function.outer', [']M'] = '@class.outer' },
-                goto_previous_start = { ['[['] = '@function.outer', ['[m'] = '@class.outer' },
-                goto_previous_end = { ['[]'] = '@function.outer', ['[m'] = '@class.outer' },
+                goto_next_start = {
+                    [']]'] = '@function.outer',
+                    [']m'] = '@class.outer',
+                },
+                goto_next_end = {
+                    [']['] = '@function.outer',
+                    [']M'] = '@class.outer',
+                },
+                goto_previous_start = {
+                    ['[['] = '@function.outer',
+                    ['[m'] = '@class.outer',
+                },
+                goto_previous_end = {
+                    ['[]'] = '@function.outer',
+                    ['[m'] = '@class.outer',
+                },
             },
             lsp_interop = {
                 enable = true,
                 border = 'none',
-                peek_definition_code = { ['<leader>df'] = '@function.outer', ['<leader>dF'] = '@class.outer' },
+                peek_definition_code = {
+                    ['<leader>df'] = '@function.outer',
+                    ['<leader>dF'] = '@class.outer',
+                },
             },
         },
         playground = {
@@ -80,20 +98,21 @@ end
 
 return function(use)
     use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
-    use { 'nvim-treesitter/nvim-treesitter-textobjects', requires = 'nvim-treesitter/nvim-treesitter', config = run }
+    use {
+        'nvim-treesitter/nvim-treesitter-textobjects',
+        requires = 'nvim-treesitter/nvim-treesitter',
+        config = run,
+    }
     use {
         'windwp/nvim-ts-autotag',
         config = function()
             require('nvim-ts-autotag').setup()
-            -- vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(
-            --     vim.lsp.diagnostic.on_publish_diagnostics, {
-            --         underline = true,
-            --         virtual_text = { spacing = 5, severity_limit = 'Warning' },
-            --         update_in_insert = true,
-            --     })
         end,
     }
-    use { 'JoosepAlviste/nvim-ts-context-commentstring', config = configure_kommentary }
+    use {
+        'JoosepAlviste/nvim-ts-context-commentstring',
+        config = configure_kommentary,
+    }
     use 'RRethy/nvim-treesitter-textsubjects'
     use 'nvim-treesitter/playground'
 end
