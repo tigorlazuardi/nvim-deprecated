@@ -44,7 +44,9 @@ linters:
         - gocyclo
 
 issues:
-    fix: true
+    exclude:
+        - potentially unused parameter
+    fix: false
 
 linter-settings:
     staticcheck:
