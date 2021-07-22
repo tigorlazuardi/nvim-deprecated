@@ -13,5 +13,20 @@ local function run()
 end
 
 return function(use)
-	use({ "mfussenegger/nvim-lint", config = run })
+	use({
+		"mfussenegger/nvim-lint",
+		cond = function()
+			return O.enable_nvim_lint
+		end,
+		config = run,
+	})
+
+	use({
+		"jose-elias-alvarez/null-ls.nvim",
+		cond = function()
+			return O.enable_null_ls
+		end,
+		requires = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
+		config = require("lsp.null_ls").lsp_setup,
+	})
 end

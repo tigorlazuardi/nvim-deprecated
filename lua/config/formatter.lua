@@ -31,5 +31,11 @@ local function run()
 end
 
 return function(use)
-	use({ "lukas-reineke/format.nvim", config = run })
+	use({
+		"lukas-reineke/format.nvim",
+		cond = function()
+			return O.enable_formatter
+		end,
+		config = run,
+	})
 end

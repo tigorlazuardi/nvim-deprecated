@@ -71,9 +71,9 @@ return require("packer").startup(function(use)
 
 	require("config.discord")(use)
 
-	require('config.lint')(use)
+	require("config.lint")(use)
 
 	require("config.which-key")(use)
 
-    require("config.formatter")(use)
+	require("config.formatter")(use)
 end)

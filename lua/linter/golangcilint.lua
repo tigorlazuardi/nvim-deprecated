@@ -46,10 +46,16 @@ M.generator = helpers.generator_factory({
 		local item_list = {}
 		for _, issue in ipairs(decoded["Issues"]) do
 			local filename = vim.fn.getcwd() .. "/" .. issue.Pos.Filename
+			local col
+			if issue.Pos.Column - 1 < 0 then
+				col = 0
+			else
+				col = issue.Pos.Column - 1
+			end
 			table.insert(item_list, {
 				filename = filename,
 				lnum = issue.Pos.Line,
-				col = issue.Pos.Column - 1,
+				col = col,
 				text = issue.Text,
 				type = "W",
 			})
@@ -58,9 +64,9 @@ M.generator = helpers.generator_factory({
 			if current_file == filename then
 				table.insert(diagnostics, {
 					row = issue.Pos.Line,
-					col = issue.Pos.Column,
+					col = col,
 					source = issue.FromLinter,
-					message = issue.Test,
+					message = issue.Text,
 					severity = 2,
 				})
 			end

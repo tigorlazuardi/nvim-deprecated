@@ -57,30 +57,32 @@ function M.rayxgo_setup()
 end
 
 function M.golangcilsp_setup()
-	local lspconfig = require("lspconfig")
-	local configs = require("lspconfig/configs")
-	local projectConfigPath = vim.fn.getcwd() .. "/.golangci.yml"
-	local exist = vim.fn.filereadable(projectConfigPath) ~= 0
+	if O.enable_golangcilint_langserver then
+		local lspconfig = require("lspconfig")
+		local configs = require("lspconfig/configs")
+		local projectConfigPath = vim.fn.getcwd() .. "/.golangci.yml"
+		local exist = vim.fn.filereadable(projectConfigPath) ~= 0
 
-	local cmd = { "golangci-lint", "run", "--out-format=json" }
-	if exist then
-		table.insert(cmd, "-c")
-		table.insert(cmd, projectConfigPath)
-	else
-		table.insert(cmd, "-c")
-		table.insert(cmd, vim.fn.stdpath("config") .. "/linter-config/.golangci.yml")
-	end
-	if not lspconfig.golangcilsp then
-		configs.golangcilsp = {
-			default_config = {
-				cmd = { "golangci-lint-langserver" },
-				root_dir = lspconfig.util.root_pattern(".git", "go.mod"),
-				init_options = { command = cmd },
-			},
-		}
-	end
+		local cmd = { "golangci-lint", "run", "--out-format=json" }
+		if exist then
+			table.insert(cmd, "-c")
+			table.insert(cmd, projectConfigPath)
+		else
+			table.insert(cmd, "-c")
+			table.insert(cmd, vim.fn.stdpath("config") .. "/linter-config/.golangci.yml")
+		end
+		if not lspconfig.golangcilsp then
+			configs.golangcilsp = {
+				default_config = {
+					cmd = { "golangci-lint-langserver" },
+					root_dir = lspconfig.util.root_pattern(".git", "go.mod"),
+					init_options = { command = cmd },
+				},
+			}
+		end
 
-	lspconfig.golangcilsp.setup({ filetypes = { "go" } })
+		lspconfig.golangcilsp.setup({ filetypes = { "go" } })
+	end
 end
 
 M.efm_config = {

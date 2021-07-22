@@ -1,38 +1,54 @@
-local lsputilsconf = function()
-    vim.lsp.handlers['textDocument/codeAction'] =
-        require'lsputil.codeAction'.code_action_handler
-    vim.lsp.handlers['textDocument/references'] =
-        require'lsputil.locations'.references_handler
-    vim.lsp.handlers['textDocument/definition'] =
-        require'lsputil.locations'.definition_handler
-    vim.lsp.handlers['textDocument/declaration'] =
-        require'lsputil.locations'.declaration_handler
-    vim.lsp.handlers['textDocument/typeDefinition'] =
-        require'lsputil.locations'.typeDefinition_handler
-    vim.lsp.handlers['textDocument/implementation'] =
-        require'lsputil.locations'.implementation_handler
-    vim.lsp.handlers['textDocument/documentSymbol'] =
-        require'lsputil.symbols'.document_handler
-    vim.lsp.handlers['workspace/symbol'] =
-        require'lsputil.symbols'.workspace_handler
+local function signs_config()
+	local signs = { Error = " ", Warning = " ", Hint = " ", Information = " " }
+
+	for type, icon in pairs(signs) do
+		local hl = "LspDiagnosticsSign" .. type
+		vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
+	end
 end
 
-local lsp_extensions_conf = function()
-    vim.lsp.handlers['textDocument/publishDiagnostics'] =
-        vim.lsp.with(require('lsp_extensions.workspace.diagnostic').handler,
-                     { signs = { severity_limit = 'Warning' } })
-end
+local function misc_lsp_configs()
+	vim.cmd([[autocmd CursorHold,CursorHoldI * lua vim.lsp.diagnostic.show_line_diagnostics({focusable=false})]])
 
+	vim.lsp.handlers["textDocument/publishDiagnostics"] = function(_, _, params, client_id, _)
+		local config = { -- your config
+			underline = true,
+			virtual_text = {
+				prefix = "■ ",
+				spacing = 4,
+			},
+			signs = true,
+			update_in_insert = false,
+		}
+		local uri = params.uri
+		local bufnr = vim.uri_to_bufnr(uri)
+
+		if not bufnr then
+			return
+		end
+
+		local diagnostics = params.diagnostics
+
+		for i, v in ipairs(diagnostics) do
+			diagnostics[i].message = string.format("%s: %s", v.source, v.message)
+		end
+
+		vim.lsp.diagnostic.save(diagnostics, bufnr, client_id)
+
+		if not vim.api.nvim_buf_is_loaded(bufnr) then
+			return
+		end
+
+		vim.lsp.diagnostic.display(diagnostics, bufnr, client_id, config)
+	end
+end
 
 return function(use)
-    use { 'neovim/nvim-lspconfig', config = require('lsp.setup') }
-    use 'ray-x/lsp_signature.nvim'
-    use {
-        'RishabhRD/nvim-lsputils',
-        requires = 'RishabhRD/popfix',
-        config = lsputilsconf,
-    }
-    use { 'folke/lua-dev.nvim' }
-    use { 'folke/lsp-colors.nvim' }
-    use { 'nvim-lua/lsp_extensions.nvim', config = lsp_extensions_conf }
+	signs_config()
+	misc_lsp_configs()
+	use({ "neovim/nvim-lspconfig", config = require("lsp.setup") })
+	use("ray-x/lsp_signature.nvim")
+	use({ "folke/lua-dev.nvim" })
+	use({ "folke/lsp-colors.nvim" })
+	use({ "nvim-lua/lsp_extensions.nvim" })
 end
