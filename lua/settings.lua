@@ -1,27 +1,31 @@
-local cmd = vim.api.nvim_command
+local c = vim.api.nvim_command
 
-cmd('syntax enable')
-cmd('filetype plugin indent on')
+c("set nocompatible") -- disable compability with vi
+c("set ignorecase") -- case insensitive search
+c("set mouse=va") -- mouse to paste middleclick ('v'), and select via click ('a')
+c("set cursorline") -- highlight cursors line
 
-cmd('set nu rnu')
-cmd('set completeopt=menuone,noinsert,noselect')
-cmd('set shortmess+=c')
-cmd('set expandtab')
-cmd('set smartindent')
-cmd('set shiftwidth=4')
-cmd('set tabstop=4')
-cmd('set softtabstop=4')
-cmd('set cmdheight=2')
-cmd('set updatetime=50')
-cmd('set signcolumn=yes:1')
-cmd('set hidden')
-cmd('set clipboard+=unnamedplus')
+c("syntax enable")
+c("filetype plugin indent on")
 
--- see https://unix.stackexchange.com/questions/149209/refresh-changed-content-of-file-opened-in-vim#:~:text=If%20you%20have%20made%20modifications,thus%20be%20done%20by%20%3Ae!&text=to%20make%20Vim%20automatically%20refresh,t%20been%20edited%20by%20Vim.
--- auto refresh if file is edited outside
--- cmd('set autoread')
--- trigger autoread on focus gain
--- cmd([[au FocusGained,BufEnter * :checktime]])
+c("set nu") -- line numbers
+c("set completeopt=menuone,noinsert,noselect")
+c("set shortmess+=c")
+
+-- use spaces instead of tabs
+-- cmd('set expandtab')
+-- cmd('set smartindent')
+-- cmd('set shiftwidth=4')
+-- cmd('set tabstop=4')
+-- cmd('set softtabstop=4')
+
+-- uses tabs instead of spaces
+c("set autoindent noexpandtab tabstop=4 shiftwidth=4 softtabstop=-1")
+c("set cmdheight=2")
+c("set updatetime=50")
+c("set signcolumn=yes:1")
+c("set hidden")
+c("set clipboard+=unnamedplus")
 
 vim.cmd([[
     augroup highlight_yank
@@ -30,14 +34,23 @@ vim.cmd([[
     augroup end
 ]])
 
-if vim.fn.has('termguicolors') then
-    vim.cmd('set termguicolors')
+if vim.fn.has("termguicolors") == 1 then
+	vim.cmd("set termguicolors")
 end
 
-cmd('set noswapfile')
+c("set noswapfile") -- disable swap file
 
-vim.cmd([[autocmd FileType yaml setlocal shiftwidth=4 tabstop=4]])
--- disable left indenting in yaml
-vim.cmd([[autocmd FileType yaml setlocal indentkeys-=0-,0#]])
+vim.cmd([[
+	augroup yaml_options
+		autocmd!
+		autocmd FileType yaml setlocal shiftwidth=4 tabstop=4
+		autocmd FileType yaml setlocal indentkeys-=0-,0#
+	augroup end
+]])
 
-return {}
+vim.cmd([[
+	augroup term_options
+		autocmd!
+		autocmd BufEnter * if &buftype == 'terminal' | :setlocal iskeyword-=@ | endif
+	augroup end
+]])

@@ -1,11 +1,16 @@
 local M = {}
 
 function M.lsp_setup()
-	require("null-ls").config({
+	local null_ls = require("null-ls")
+	null_ls.config({
 		sources = {
-			require("null-ls").builtins.formatting.stylua,
-			require("linter.goimports"),
+			-- WARN: Do not add sources that uses "*" filetype. It broke nvim-tree.
+			null_ls.builtins.formatting.stylua,
+			null_ls.builtins.diagnostics.shellcheck,
+			null_ls.builtins.formatting.shfmt,
 			require("linter.golangcilint"),
+			null_ls.builtins.diagnostics.hadolint,
+			null_ls.builtins.formatting.prettierd,
 		},
 	})
 

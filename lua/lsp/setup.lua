@@ -5,4 +5,5 @@ return function()
 	require("lsp.typescript").lsp_setup()
 	require("lsp.yaml").lsp_setup()
 	require("lsp.vim").lsp_setup()
+	require("lsp.json").lspsetup()
 end

@@ -13,10 +13,6 @@ local function misc_lsp_configs()
 	vim.lsp.handlers["textDocument/publishDiagnostics"] = function(_, _, params, client_id, _)
 		local config = { -- your config
 			underline = true,
-			virtual_text = {
-				prefix = "■ ",
-				spacing = 4,
-			},
 			signs = true,
 			update_in_insert = false,
 		}

@@ -1,5 +1,3 @@
-vim.cmd([[autocmd BufWritePost plugins.lua source <afile> | PackerCompile]])
-
 return require("packer").startup(function(use)
 	-- Let the packer manages itself
 	use("wbthomason/packer.nvim")
@@ -76,4 +74,6 @@ return require("packer").startup(function(use)
 	require("config.which-key")(use)
 
 	require("config.formatter")(use)
+
+	require("config.typescript")(use)
 end)

@@ -1,13 +1,35 @@
 local M = {}
 
+function OrgImports(wait_ms)
+	local params = vim.lsp.util.make_range_params()
+	params.context = { only = { "source.organizeImports" } }
+	local result = vim.lsp.buf_request_sync(0, "textDocument/codeAction", params, wait_ms)
+	for _, res in pairs(result or {}) do
+		for _, r in pairs(res.result or {}) do
+			if r.edit then
+				vim.lsp.util.apply_workspace_edit(r.edit)
+			else
+				vim.lsp.buf.execute_command(r.command)
+			end
+		end
+	end
+end
+
 function M.lsp_setup()
 	local lspconfig = require("lspconfig")
 	local capabilities = require("lsp.capabilities")
 	lspconfig.gopls.setup({
 		capabilities = capabilities,
 		on_attach = function(client, bufnr)
-			client.resolved_capabilities.document_formatting = false
+			client.resolved_capabilities.document_formatting = true
 			require("lsp.on_attach")(client, bufnr)
+
+			vim.cmd([[
+				augroup golang_format
+					autocmd!
+					autocmd BufWritePre *.go lua OrgImports(100)
+				augroup end
+			]])
 		end,
 		cmd = {
 			"gopls", -- share the gopls instance if there is one already
@@ -17,7 +39,6 @@ function M.lsp_setup()
 		settings = {
 			gopls = {
 				-- more settings: https://github.com/golang/tools/blob/master/gopls/doc/settings.md
-				["local"] = "goimports -local",
 				analyses = { unusedparams = true, unreachable = false },
 				codelenses = {
 					generate = true, -- show the `go generate` lens.
@@ -25,11 +46,11 @@ function M.lsp_setup()
 				},
 				usePlaceholders = false,
 				completeUnimported = true,
-				staticcheck = false, -- handled by efm
+				staticcheck = false, -- handled by null_ls
 				matcher = "fuzzy",
 				experimentalDiagnosticsDelay = "1000ms",
 				symbolMatcher = "fuzzy",
-				gofumpt = true, -- true, -- turn on for new repos, gofmpt is good but also create code turmoils
+				gofumpt = false, -- true, -- turn on for new repos, gofmpt is good but also create code turmoils
 			},
 		},
 	})
