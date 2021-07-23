@@ -32,6 +32,8 @@ return require("packer").startup(function(use)
 
 	require("config.dashboard")(use)
 
+	require("config.session")(use)
+
 	use({
 		"glacambre/firenvim",
 		run = function()
