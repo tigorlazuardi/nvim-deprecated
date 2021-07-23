@@ -1,6 +1,6 @@
 local function setup()
 	vim.g.nvim_tree_width = "15%"
-	vim.g.nvim_tree_ignore = { ".git", "node_modules", ".cache" }
+	vim.g.nvim_tree_ignore = { ".git", ".cache" }
 	vim.g.nvim_tree_follow = 1
 	vim.g.nvim_tree_git_hl = 1
 	vim.g.nvim_tree_lsp_diagnostics = 1
@@ -50,13 +50,13 @@ local function run()
 	vim.api.nvim_set_keymap("n", "<leader>tn", ":NvimTreeFindFile<CR>", options)
 	vim.cmd([[hi! link NvimTreeGitDirty GitSignsChange]])
 	vim.cmd([[hi! link NvimTreeGitNew GitSignsAdd]])
-	vim.cmd([[
-        augroup nvimtreerefresh
-        autocmd!
-            autocmd BufLeave * silent! NvimTreeRefresh
-            autocmd BufWritePost * silent! NvimTreeRefresh
-        augroup end
-    ]])
+	-- vim.cmd([[
+	--        augroup nvimtreerefresh
+	--        autocmd!
+	--            autocmd BufLeave * silent! NvimTreeRefresh
+	--            autocmd BufWritePost * silent! NvimTreeRefresh
+	--        augroup end
+	--    ]])
 end
 
 return function(use)
