@@ -18,7 +18,6 @@ git clone https://github.com/wbthomason/packer.nvim "$env:LOCALAPPDATA\nvim-data
 ```
 
 Run `:PackerInstall` then followed by `:PackerCompile`
-langaguge
 
 # Language / Filetype Supports
 
