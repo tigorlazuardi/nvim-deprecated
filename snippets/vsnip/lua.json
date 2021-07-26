@@ -1,0 +1,12 @@
+{
+  "Error handle require": {
+    "prefix": "preq",
+    "body": [
+      "local present, $1 = pcall(require, '$1')",
+      "if not present then",
+      "\treturn",
+      "end"
+    ],
+    "description": "Error handle require"
+  }
+}

@@ -19,8 +19,7 @@ local function run()
 			nvim_lsp = true,
 			nvim_lua = true,
 			vsnip = true,
-			["nvim-treesitter"] = true,
-			treesitter = true,
+			treesitter = false,
 			spell = true,
 			emoji = true,
 		},
@@ -38,22 +37,12 @@ local function run()
     ]])
 
 	require("lspkind").init({
-		-- enables text annotations
-		--
-		-- default: true
 		with_text = true,
-
-		-- default symbol map
-		-- can be either 'default' or
-		-- 'codicons' for codicon preset (requires vscode-codicons font installed)
-		--
-		-- default: 'default'
 		preset = "default",
 		symbol_map = { Field = "" },
 	})
 end
 
 return function(use)
-	use({ "hrsh7th/nvim-compe", config = run })
-	use({ "onsails/lspkind-nvim" })
+	use({ "hrsh7th/nvim-compe", requires = { "onsails/lspkind-nvim" }, config = run })
 end

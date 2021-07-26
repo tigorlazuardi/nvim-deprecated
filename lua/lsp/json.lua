@@ -1,7 +1,11 @@
 local M = {}
 
 function M.lspsetup()
-	require("lspconfig").jsonls.setup({
+	local present, lspconfig = pcall(require, "lspconfig")
+	if not present then
+		return
+	end
+	lspconfig.jsonls.setup({
 		cmd = { "vscode-json-language-server", "--stdio" },
 		on_attach = function(client)
 			client.resolved_capabilities.document_formatting = false

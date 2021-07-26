@@ -1,7 +1,11 @@
 local M = {}
 
 function M.lsp_setup()
-	require("lspconfig").yamlls.setup({
+	local present, lspconfig = pcall(require, "lspconfig")
+	if not present then
+		return
+	end
+	lspconfig.yamlls.setup({
 		on_attach = require("lsp.on_attach"),
 		settings = {
 			yaml = {

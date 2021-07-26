@@ -1,7 +1,10 @@
 local M = {}
 
 function M.lsp_setup()
-	local lspconfig = require("lspconfig")
+	local present, lspconfig = pcall(require, "lspconfig")
+	if not present then
+		return
+	end
 	local languages = {
 		lua = require("lsp.lua").efm_config,
 		go = require("lsp.go").efm_config,

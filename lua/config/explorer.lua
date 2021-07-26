@@ -50,13 +50,6 @@ local function run()
 	vim.api.nvim_set_keymap("n", "<leader>tn", ":NvimTreeFindFile<CR>", options)
 	vim.cmd([[hi! link NvimTreeGitDirty GitSignsChange]])
 	vim.cmd([[hi! link NvimTreeGitNew GitSignsAdd]])
-	-- vim.cmd([[
-	--        augroup nvimtreerefresh
-	--        autocmd!
-	--            autocmd BufLeave * silent! NvimTreeRefresh
-	--            autocmd BufWritePost * silent! NvimTreeRefresh
-	--        augroup end
-	--    ]])
 end
 
 return function(use)

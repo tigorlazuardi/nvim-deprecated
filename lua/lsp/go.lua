@@ -16,7 +16,10 @@ function OrgImports(wait_ms)
 end
 
 function M.lsp_setup()
-	local lspconfig = require("lspconfig")
+	local present, lspconfig = pcall(require, "lspconfig")
+	if not present then
+		return
+	end
 	local capabilities = require("lsp.capabilities")
 	lspconfig.gopls.setup({
 		capabilities = capabilities,
@@ -33,8 +36,8 @@ function M.lsp_setup()
 		end,
 		cmd = {
 			"gopls", -- share the gopls instance if there is one already
-			"-remote=auto", --[[ debug options ]] --
-			"-remote.debug=:0",
+			-- "-remote=auto", --[[ debug options ]] --
+			-- "-remote.debug=:0",
 		},
 		settings = {
 			gopls = {
@@ -57,7 +60,11 @@ function M.lsp_setup()
 end
 
 function M.rayxgo_setup()
-	require("go").setup({
+	local present, go = pcall(require, "go")
+	if not present then
+		return
+	end
+	go.setup({
 		goimport = "gofumports", -- goimport command
 		gofmt = "gofumpt", -- gofmt cmd,
 		max_line_len = 120, -- max line length in goline format
@@ -79,7 +86,10 @@ end
 
 function M.golangcilsp_setup()
 	if O.enable_golangcilint_langserver then
-		local lspconfig = require("lspconfig")
+		local present, lspconfig = pcall(require, "lspconfig")
+		if not present then
+			return
+		end
 		local configs = require("lspconfig/configs")
 		local projectConfigPath = vim.fn.getcwd() .. "/.golangci.yml"
 		local exist = vim.fn.filereadable(projectConfigPath) ~= 0

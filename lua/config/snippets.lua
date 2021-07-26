@@ -11,12 +11,8 @@ local function run()
     ]])
 end
 
-local function globals()
-	vim.g.completion_enable_snippet = "vim-vsnip"
-end
-
 return function(use)
-	globals()
+	vim.g.vsnip_snippet_dir = vim.fn.stdpath("config") .. "/snippets/vsnip/"
 	use("rafamadriz/friendly-snippets")
 	use({ "hrsh7th/vim-vsnip-integ", requires = "hrsh7th/vim-vsnip", config = run })
 end

@@ -1,9 +1,13 @@
 local M = {}
 
 function M.lsp_setup()
+	local present, lspconfig = pcall(require, "lspconfig")
+	if not present then
+		return
+	end
 	local capabilities = require("lsp.capabilities")
 
-	require("lspconfig").sumneko_lua.setup(require("lua-dev").setup({
+	lspconfig.sumneko_lua.setup(require("lua-dev").setup({
 		library = { vimruntime = true, types = true, plugins = true },
 		lspconfig = {
 			cmd = { "lua-language-server" },
@@ -24,6 +28,7 @@ function M.lsp_setup()
 							"awesome",
 							"client",
 							"root",
+							"screen",
 						},
 					},
 				},

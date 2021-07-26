@@ -1,5 +1,5 @@
 local function globals()
-	vim.g.auto_session_pre_save_cmds = { "tabdo NvimTreeClose", "tabdo ToggleTermCloseAll" }
+	vim.g.auto_session_pre_save_cmds = { "tabdo NvimTreeClose", "tabdo ToggleTermCloseAll", "tabdo TroubleClose" }
 end
 
 return function(use)
@@ -9,7 +9,7 @@ return function(use)
 		config = function()
 			local opts = {
 				log_level = "info",
-				auto_session_enable_last_session = true,
+				auto_session_enable_last_session = false,
 				auto_session_root_dir = vim.fn.stdpath("config") .. "/sessions/",
 				auto_session_enabled = true,
 				auto_save_enabled = true,

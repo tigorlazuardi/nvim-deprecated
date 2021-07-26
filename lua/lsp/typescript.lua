@@ -1,7 +1,10 @@
 local M = {}
 
 function M.lsp_setup()
-	local lspconfig = require("lspconfig")
+	local present, lspconfig = pcall(require, "lspconfig")
+	if not present then
+		return
+	end
 	local capabilities = require("lsp.capabilities")
 
 	lspconfig.tsserver.setup({
