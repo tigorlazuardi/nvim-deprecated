@@ -1,5 +1,8 @@
 local function run()
-	local gl = require('galaxyline')
+	local present, gl = pcall(require, 'galaxyline')
+	if not present then
+		return
+	end
 	local colors = require('galaxyline.theme').default
 	local condition = require('galaxyline.condition')
 	local gls = gl.section

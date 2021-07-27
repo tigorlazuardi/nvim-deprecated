@@ -1,8 +1,12 @@
 return function(use)
 	use({
-		"ahmedkhalf/lsp-rooter.nvim",
+		'ahmedkhalf/lsp-rooter.nvim',
 		config = function()
-			require("lsp-rooter").setup({})
+			local present, lsprooter = pcall(require, 'lsprooter')
+			if not present then
+				return
+			end
+			lsprooter.setup({})
 		end,
 	})
 end
