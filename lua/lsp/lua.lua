@@ -6,7 +6,6 @@ function M.lsp_setup()
 		return
 	end
 	local capabilities = require("lsp.capabilities")
-
 	lspconfig.sumneko_lua.setup(require("lua-dev").setup({
 		library = { vimruntime = true, types = true, plugins = true },
 		lspconfig = {
@@ -21,7 +20,7 @@ function M.lsp_setup()
 						},
 					},
 					diagnostics = {
-						enable = true,
+						enable = false,
 						globals = {
 							"vim",
 							"use",

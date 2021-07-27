@@ -10,12 +10,13 @@ function M.lsp_setup()
 	null_ls.config({
 		sources = {
 			-- WARN: Do not add sources that uses "*" filetype. It broke nvim-tree.
-			null_ls.builtins.formatting.stylua,
-			null_ls.builtins.diagnostics.shellcheck,
-			null_ls.builtins.formatting.shfmt,
-			require("linter.golangcilint"),
-			null_ls.builtins.diagnostics.hadolint,
-			null_ls.builtins.formatting.prettierd,
+			null_ls.builtins.formatting.stylua, -- lua
+			null_ls.builtins.diagnostics.shellcheck, -- shell script
+			null_ls.builtins.formatting.shfmt, -- shell script
+			require("linter.golangcilint"), -- golang
+			null_ls.builtins.diagnostics.hadolint, -- docker
+			null_ls.builtins.formatting.prettierd, -- js gang
+			null_ls.builtins.diagnostics.selene, -- lua
 		},
 	})
 

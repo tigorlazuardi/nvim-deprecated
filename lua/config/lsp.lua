@@ -8,7 +8,7 @@ local function signs_config()
 end
 
 local function misc_lsp_configs()
-	vim.cmd([[autocmd CursorHold,CursorHoldI * lua vim.lsp.diagnostic.show_line_diagnostics({focusable=false})]])
+	-- vim.cmd([[autocmd CursorHold,CursorHoldI * lua vim.lsp.diagnostic.show_line_diagnostics({focusable=false})]])
 
 	vim.lsp.handlers["textDocument/publishDiagnostics"] = function(_, _, params, client_id, _)
 		local config = { -- your config

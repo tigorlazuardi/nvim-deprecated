@@ -9,6 +9,7 @@ function _G.t(str)
 	return vim.api.nvim_replace_termcodes(str, true, true, true)
 end
 
+-- selene: allow(unscoped_variables)
 O = {}
 
 O.enable_nvim_lint = false
