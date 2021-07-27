@@ -3,7 +3,7 @@ local M = {}
 function M.lsp_setup()
 	local present, null_ls = pcall(require, "null-ls")
 	local present2, lspconfig = pcall(require, "lspconfig")
-	if not present or present2 then
+	if not present or not present2 then
 		return
 	end
 
