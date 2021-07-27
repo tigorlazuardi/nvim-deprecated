@@ -41,7 +41,6 @@ M.generator = helpers.generator_factory({
 		end
 
 		local diagnostics = {}
-		local item_list = {}
 		for _, issue in ipairs(decoded["Issues"]) do
 			local filename = vim.fn.getcwd() .. "/" .. issue.Pos.Filename
 			local col
@@ -50,13 +49,6 @@ M.generator = helpers.generator_factory({
 			else
 				col = issue.Pos.Column - 1
 			end
-			table.insert(item_list, {
-				filename = filename,
-				lnum = issue.Pos.Line,
-				col = col,
-				text = issue.Text,
-				type = "W",
-			})
 
 			local current_file = vim.api.nvim_buf_get_name(params.bufnr)
 			if current_file == filename then
@@ -69,11 +61,6 @@ M.generator = helpers.generator_factory({
 				})
 			end
 		end
-
-		vim.fn.setqflist({}, " ", {
-			title = "Golangci-lint Workspace Diagnostics",
-			items = item_list,
-		})
 
 		return diagnostics
 	end,
