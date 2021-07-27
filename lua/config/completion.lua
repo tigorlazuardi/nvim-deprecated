@@ -58,7 +58,7 @@ local function run()
 			nvim_lsp = true,
 			nvim_lua = true,
 			vsnip = true,
-			treesitter = false,
+			treesitter = true,
 			spell = true,
 			emoji = true,
 		},
