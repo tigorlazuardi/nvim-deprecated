@@ -13,8 +13,6 @@ if exist then
 	args = {
 		"--out-format=json",
 		"run",
-		"-c",
-		vim.fn.getcwd() .. "/.golangci.yml",
 	}
 else
 	args = {
