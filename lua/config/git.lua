@@ -82,5 +82,6 @@ return function(use)
 		"lewis6991/gitsigns.nvim",
 		requires = "nvim-lua/plenary.nvim",
 		config = signs_config,
+		cond = require("config.firenvim").not_run,
 	})
 end

@@ -19,5 +19,9 @@ local function run()
 end
 
 return function(use)
-	use({ "andweeb/presence.nvim", config = run })
+	use({
+		"andweeb/presence.nvim",
+		config = run,
+		cond = require("config.firenvim").not_run,
+	})
 end

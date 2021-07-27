@@ -43,5 +43,9 @@ local function run()
 end
 
 return function(use)
-	use({ "akinsho/nvim-toggleterm.lua", config = run })
+	use({
+		"akinsho/nvim-toggleterm.lua",
+		config = run,
+		cond = require("config.firenvim").not_run,
+	})
 end

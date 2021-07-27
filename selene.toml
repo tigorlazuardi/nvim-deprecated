@@ -1,3 +1,4 @@
 [rules]
 undefined_variable = "allow"
 global_usage = "allow"
+unscoped_variables = "allow"
