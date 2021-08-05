@@ -1,0 +1,10 @@
+{
+  "APM Span Type": {
+    "prefix": "apm:span",
+    "body": [
+      "span, ctx := apm.StartSpan(ctx, \"${1:name}\", \"${2:type}\")",
+      "defer span.End()"
+    ],
+    "description": "APM Span Type"
+    }
+}
