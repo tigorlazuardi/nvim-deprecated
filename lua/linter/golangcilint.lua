@@ -1,48 +1,50 @@
 local M = {}
-local methods = require("null-ls.methods").internal
-local helpers = require("null-ls.helpers")
+local methods = require('null-ls.methods').internal
+local helpers = require('null-ls.helpers')
 -- local null_ls = require("null-ls")
 
 M.method = methods.DIAGNOSTICS
 
-M.filetypes = { "go" }
+M.filetypes = { 'go' }
 
-local exist = vim.fn.filereadable(vim.fn.getcwd() .. "/.golangci.yml") ~= 0
+local exist = vim.fn.filereadable(vim.fn.getcwd() .. '/.golangci.yml') ~= 0
 local args = {}
 if exist then
 	args = {
-		"--out-format=json",
-		"run",
+		'--out-format=json',
+		'run',
+		'-c',
+		vim.fn.getcwd() .. '/.golangci.yml',
 	}
 else
 	args = {
-		"--out-format=json",
-		"run",
-		"-c",
-		vim.fn.stdpath("config") .. "/linter-config/.golangci.yml",
+		'--out-format=json',
+		'run',
+		'-c',
+		vim.fn.stdpath('config') .. '/linter-config/.golangci.yml',
 	}
 end
 
 M.generator = helpers.generator_factory({
-	command = "golangci-lint",
+	command = 'golangci-lint',
 	args = args,
 	to_stdin = true,
 	to_stderr = true,
-	format = "json",
+	format = 'json_raw',
 	on_output = function(params)
-		if not params.output then
+		if params.err or not params.output then
 			return nil
 		end
 
 		local decoded = params.output
 
-		if decoded["Issues"] == nil or type(decoded["Issues"]) == "userdata" then
+		if decoded['Issues'] == nil or type(decoded['Issues']) == 'userdata' then
 			return nil
 		end
 
 		local diagnostics = {}
-		for _, issue in ipairs(decoded["Issues"]) do
-			local filename = vim.fn.getcwd() .. "/" .. issue.Pos.Filename
+		for _, issue in ipairs(decoded['Issues']) do
+			local filename = vim.fn.getcwd() .. '/' .. issue.Pos.Filename
 			local col
 			if issue.Pos.Column - 1 < 0 then
 				col = 0
