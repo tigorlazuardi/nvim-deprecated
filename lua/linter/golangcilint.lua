@@ -28,8 +28,8 @@ end
 M.generator = helpers.generator_factory({
 	command = 'golangci-lint',
 	args = args,
-	to_stdin = true,
-	to_stderr = true,
+	to_stdin = false,
+	to_stderr = false,
 	format = 'json_raw',
 	on_output = function(params)
 		if params.err or not params.output then

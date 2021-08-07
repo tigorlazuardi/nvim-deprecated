@@ -1,6 +1,6 @@
 local M = {}
 
-function M.lspsetup()
+function M.lsp_setup()
 	local present, lspconfig = pcall(require, 'lspconfig')
 	if not present then
 		return
