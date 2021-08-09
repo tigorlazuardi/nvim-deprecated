@@ -53,7 +53,7 @@ function M.lsp_setup()
 				completeUnimported = true,
 				staticcheck = false, -- handled by null_ls
 				matcher = 'fuzzy',
-				experimentalDiagnosticsDelay = '1000ms',
+				diagnosticsDelay = '500ms',
 				symbolMatcher = 'fuzzy',
 				gofumpt = false, -- true, -- turn on for new repos, gofmpt is good but also create code turmoils
 			},
