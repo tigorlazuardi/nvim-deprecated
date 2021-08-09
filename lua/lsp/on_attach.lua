@@ -4,7 +4,7 @@ return function(client, bufnr)
 		lsp_signature.on_attach({
 			bind = true,
 			zindex = 1,
-			floating_window = false,
+			floating_window = true,
 		})
 	end
 	local function buf_set_keymap(...)
