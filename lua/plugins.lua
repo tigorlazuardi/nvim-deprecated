@@ -72,4 +72,6 @@ return require('packer').startup(function(use)
 	require('config.formatter')(use)
 
 	require('config.typescript')(use)
+
+	require('config.rust')(use)
 end)
