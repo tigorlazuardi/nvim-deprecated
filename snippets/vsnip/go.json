@@ -6,5 +6,10 @@
       "defer span.End()"
     ],
     "description": "APM Span Type"
-    }
+  },
+  "map[string]interface": {
+    "prefix": "msi",
+    "body": ["map[string]interface{}{$0}"],
+    "description": "map[string]interface{}"
+  }
 }
