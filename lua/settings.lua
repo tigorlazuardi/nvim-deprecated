@@ -57,3 +57,10 @@ vim.cmd([[
 		autocmd BufEnter * if &buftype == 'terminal' | :setlocal iskeyword-=@ | endif
 	augroup end
 ]])
+
+vim.cmd([[
+	augroup xml_treesitter
+		autocmd!
+		autocmd BufNewFile,BufRead *.xml set filetype=html
+	augroup end
+]])
