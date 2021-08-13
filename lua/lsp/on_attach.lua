@@ -1,12 +1,4 @@
 return function(client, bufnr)
-	local present, lsp_signature = pcall(require, 'lsp_signature')
-	if present then
-		lsp_signature.on_attach({
-			bind = true,
-			zindex = 1,
-			floating_window = true,
-		})
-	end
 	local function buf_set_keymap(...)
 		vim.api.nvim_buf_set_keymap(bufnr, ...)
 	end
