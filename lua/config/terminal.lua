@@ -43,7 +43,12 @@ local function run()
 		lazygit:toggle()
 	end
 
-	vim.api.nvim_set_keymap('n', '<leader>g', '<cmd>lua _lazygit_toggle()<CR>', { noremap = true, silent = true })
+	local ok, wk = pcall(require, 'which-key')
+	if not ok then
+		return
+	end
+
+	wk.register({ ['<leader>g'] = { '<cmd>lua _lazygit_toggle()<CR>', 'Lazygit' } })
 end
 
 return function(use)
