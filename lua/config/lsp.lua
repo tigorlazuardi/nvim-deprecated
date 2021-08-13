@@ -48,7 +48,25 @@ local function lsp_signature_setup()
 	})
 end
 
+local function mappings()
+	local ok, wk = pcall(require, 'which-key')
+	if not ok then
+		return
+	end
+
+	wk.register({
+		['<leader>l'] = {
+			name = '+lsp',
+			i = { '<cmd>LspInfo<cr>', 'LSP Info' },
+			r = { '<cmd>LspRestart<cr>', 'LSP Restart' },
+			S = { '<cmd>LspStop<cr>', 'LSP Stop' },
+			s = { '<cmd>LspStart<cr>', 'LSP Start' },
+		},
+	})
+end
+
 return function(use)
+	mappings()
 	signs_config()
 	misc_lsp_configs()
 	use({ 'neovim/nvim-lspconfig', config = require('lsp.setup') })
