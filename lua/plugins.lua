@@ -2,7 +2,7 @@ return require('packer').startup(function(use)
 	-- Let the packer manages itself
 	use('wbthomason/packer.nvim')
 	-- Auto cwd to workspace root
-	require('config.rooter')(use)
+	-- require('config.rooter')(use)
 	require('config.theme')(use)
 	require('config.autopairs')(use)
 
