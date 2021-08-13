@@ -43,11 +43,20 @@ local function setup()
 end
 
 local function run()
-	local options = { noremap = true, silent = true }
-	vim.api.nvim_set_keymap('n', '<leader>e', ':NvimTreeToggle<CR>', options)
-	vim.api.nvim_set_keymap('n', '<leader>tt', ':NvimTreeToggle<CR>', options)
-	vim.api.nvim_set_keymap('n', '<leader>tr', ':NvimTreeRefresh<CR>', options)
-	vim.api.nvim_set_keymap('n', '<leader>tn', ':NvimTreeFindFile<CR>', options)
+	local ok, wk = pcall(require, 'which-key')
+	if not ok then
+		return
+	end
+
+	wk.register({
+		['<leader>'] = {
+			e = { '<cmd>NvimTreeToggle<cr>', 'Toggle Explorer' },
+			tt = { '<cmd>NvimTreeToggle<cr>', 'Toggle Explorer' },
+			tr = { '<cmd>NvimTreeRefresh<cr>', 'Refresh Explorer Window' },
+			tn = { '<cmd>NvimTreeFindFile<cr>', 'Find File in Explorer' },
+		},
+	})
+
 	vim.cmd([[hi! link NvimTreeGitDirty GitSignsChange]])
 	vim.cmd([[hi! link NvimTreeGitNew GitSignsAdd]])
 end

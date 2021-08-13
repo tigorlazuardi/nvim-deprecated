@@ -1,26 +1,26 @@
 return function(use)
 	-- https://github.com/folke/trouble.nvim#%EF%B8%8F-configuration
 	use({
-		"folke/trouble.nvim",
-		requires = "kyazdani42/nvim-web-devicons",
+		'folke/trouble.nvim',
+		requires = 'kyazdani42/nvim-web-devicons',
 		config = function()
-			require("trouble").setup({})
-			vim.api.nvim_set_keymap("n", "<leader>xx", "<cmd>Trouble<cr>", { silent = true, noremap = true })
-			vim.api.nvim_set_keymap(
-				"n",
-				"<leader>xw",
-				"<cmd>Trouble lsp_workspace_diagnostics<cr>",
-				{ silent = true, noremap = true }
-			)
-			vim.api.nvim_set_keymap(
-				"n",
-				"<leader>xd",
-				"<cmd>Trouble lsp_document_diagnostics<cr>",
-				{ silent = true, noremap = true }
-			)
-			vim.api.nvim_set_keymap("n", "<leader>xl", "<cmd>Trouble loclist<cr>", { silent = true, noremap = true })
-			vim.api.nvim_set_keymap("n", "<leader>xq", "<cmd>Trouble quickfix<cr>", { silent = true, noremap = true })
-			vim.api.nvim_set_keymap("n", "gR", "<cmd>Trouble lsp_references<cr>", { silent = true, noremap = true })
+			require('trouble').setup({})
+			local ok, wk = pcall(require, 'which-key')
+			if not ok then
+				return
+			end
+
+			wk.register({
+				['<leader>x'] = {
+					name = '+trouble',
+					x = { '<cmd>TroubleToggle<cr>', 'Toggle Trouble' },
+					w = { '<cmd>TroubleToggle lsp_workspace_diagnostics<cr>', 'Toggle Trouble LSP Workspace Diagnostics' },
+					d = { '<cmd>TroubleToggle lsp_document_diagnostics<cr>', 'Toggle Trouble LSP Document Diagnostics' },
+					l = { '<cmd>TroubleToggle loclist<cr>', 'Toggle Trouble loclist' },
+					q = { '<cmd>TroubleToggle quickfix<cr>', 'Toggle Trouble quickfix' },
+				},
+				gR = { '<cmd>TroubleToggle lsp_references<cr>', 'Toggle Trouble LSP References' },
+			})
 		end,
 	})
 end
