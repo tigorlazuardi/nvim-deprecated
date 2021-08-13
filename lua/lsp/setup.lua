@@ -7,4 +7,5 @@ return function()
 	require('lsp.vim').lsp_setup()
 	require('lsp.json').lsp_setup()
 	require('lsp.python').lsp_setup()
+	require('lsp.rust-analyzer').lsp_setup()
 end

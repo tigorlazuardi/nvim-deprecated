@@ -1,12 +1,9 @@
 return function(use)
 	use({
 		'ahmedkhalf/lsp-rooter.nvim',
+		event = 'BufReadPost',
 		config = function()
-			local present, lsprooter = pcall(require, 'lsprooter')
-			if not present then
-				return
-			end
-			lsprooter.setup({})
+			require('lsp-rooter').setup({})
 		end,
 	})
 end
