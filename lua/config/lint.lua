@@ -1,6 +1,6 @@
 local function run()
-	local lint = require("lint")
-	lint.linters.custom_golangcilint = require("linter.go")
+	local lint = require('lint')
+	lint.linters.custom_golangcilint = require('linter.go')
 	vim.cmd([[
         augroup Linters
             autocmd!
@@ -11,7 +11,7 @@ end
 
 return function(use)
 	use({
-		"mfussenegger/nvim-lint",
+		'mfussenegger/nvim-lint',
 		cond = function()
 			return O.enable_nvim_lint
 		end,
@@ -19,11 +19,11 @@ return function(use)
 	})
 
 	use({
-		"jose-elias-alvarez/null-ls.nvim",
+		'jose-elias-alvarez/null-ls.nvim',
 		cond = function()
 			return O.enable_null_ls
 		end,
-		requires = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
-		config = require("lsp.null_ls").lsp_setup,
+		requires = { 'nvim-lua/plenary.nvim', 'neovim/nvim-lspconfig' },
+		config = require('lsp.null_ls').lsp_setup,
 	})
 end
