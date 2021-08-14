@@ -9,7 +9,7 @@ function OrgImports(wait_ms)
 			if r.edit then
 				vim.lsp.util.apply_workspace_edit(r.edit)
 			else
-				vim.lsp.buf.execute_command(r.command)
+				pcall(vim.lsp.buf.execute_command, r.command)
 			end
 		end
 	end
