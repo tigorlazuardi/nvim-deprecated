@@ -18,7 +18,8 @@ function M.lsp_setup()
 			null_ls.builtins.formatting.prettierd, -- js gang
 			null_ls.builtins.diagnostics.selene, -- lua
 			null_ls.builtins.code_actions.gitsigns,
-			null_ls.builtins.formatting.rustfmt, -- rust
+			require('linter.toml-fmt'),
+			-- null_ls.builtins.formatting.rustfmt, -- rust
 		},
 	})
 
