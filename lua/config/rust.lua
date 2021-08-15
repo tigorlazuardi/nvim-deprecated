@@ -2,7 +2,17 @@ local function rust_tools_config()
 	local capabilities = require('lsp.capabilities')
 	require('rust-tools').setup({
 		server = {
-			on_attach = require('lsp.on_attach'),
+			on_attach = function(client, bufnr)
+				client.resolved_capabilities.document_formatting = false
+				require('lsp.on_attach')(client, bufnr)
+				vim.api.nvim_buf_set_keymap(
+					bufnr,
+					'n',
+					'K',
+					"<cmd>lua require'rust-tools.hover_actions'.hover_actions()<cr>",
+					{ silent = true, noremap = true }
+				)
+			end,
 			capabilities = capabilities,
 			settings = {
 				['rust-analyzer'] = {

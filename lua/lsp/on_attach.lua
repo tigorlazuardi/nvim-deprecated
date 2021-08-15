@@ -42,8 +42,6 @@ return function(client, bufnr)
 		buf_set_keymap('n', 'gR', "<cmd>lua require'lspsaga.provider'.lsp_finder()<CR>", opts)
 		buf_set_keymap('n', 'ga', "<cmd>lua require('lspsaga.codeaction').code_action()<CR>", opts)
 		buf_set_keymap('v', 'ga', ":<C-U>lua require('lspsaga.codeaction').range_code_action()<CR>", opts)
-		buf_set_keymap('n', 'K', "<cmd>lua require('lspsaga.hover').render_hover_doc()<CR>", opts)
-		buf_set_keymap('n', '<c-d>', "<cmd>lua require('lspsaga.action').smart_scroll_with_saga(1)<cr>", opts)
-		buf_set_keymap('n', '<c-u>', "<cmd>lua require('lspsaga.action').smart_scroll_with_saga(-1)<cr>", opts)
+		buf_set_keymap('n', '<leader>rn', "<cmd>lua require('lspsaga.rename').rename()<CR>", opts)
 	end
 end

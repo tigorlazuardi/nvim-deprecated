@@ -46,10 +46,6 @@ local function lsp_signature_setup()
 		zindex = 1,
 		hint_enable = false,
 	}
-	local sagapresent, _ = pcall(require, 'lspsaga')
-	if sagapresent then
-		setup.use_lspsaga = true
-	end
 	require('lsp_signature').setup(setup)
 end
 
