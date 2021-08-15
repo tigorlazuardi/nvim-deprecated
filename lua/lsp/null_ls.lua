@@ -9,7 +9,6 @@ function M.lsp_setup()
 
 	null_ls.config({
 		sources = {
-			-- WARN: Do not add sources that uses "*" filetype. It broke nvim-tree.
 			null_ls.builtins.formatting.stylua, -- lua
 			null_ls.builtins.diagnostics.shellcheck, -- shell script
 			null_ls.builtins.formatting.shfmt, -- shell script
@@ -17,7 +16,7 @@ function M.lsp_setup()
 			null_ls.builtins.diagnostics.hadolint, -- docker
 			null_ls.builtins.formatting.prettierd, -- js gang
 			null_ls.builtins.diagnostics.selene, -- lua
-			null_ls.builtins.code_actions.gitsigns,
+			-- null_ls.builtins.code_actions.gitsigns,
 			require('linter.toml-fmt'),
 			-- null_ls.builtins.formatting.rustfmt, -- rust
 		},

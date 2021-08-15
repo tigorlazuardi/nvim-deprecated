@@ -18,8 +18,8 @@ return function(use)
 					d = { '<cmd>TroubleToggle lsp_document_diagnostics<cr>', 'Toggle Trouble LSP Document Diagnostics' },
 					l = { '<cmd>TroubleToggle loclist<cr>', 'Toggle Trouble loclist' },
 					q = { '<cmd>TroubleToggle quickfix<cr>', 'Toggle Trouble quickfix' },
+					r = { '<cmd>TroubleToggle lsp_references<cr>', 'Toggle Trouble LSP References' },
 				},
-				gR = { '<cmd>TroubleToggle lsp_references<cr>', 'Toggle Trouble LSP References' },
 			})
 		end,
 	})

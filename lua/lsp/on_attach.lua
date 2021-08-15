@@ -9,7 +9,7 @@ return function(client, bufnr)
 
 	-- Replaced by telescope
 	-- buf_set_keymap("n", "gd", "<Cmd>lua vim.lsp.buf.definition()<CR>", opts)
-	vim.api.nvim_buf_set_keymap(bufnr, 'n', 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
+	buf_set_keymap('n', 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
 
 	-- Replaced by telescope
 	-- buf_set_keymap("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
@@ -26,7 +26,6 @@ return function(client, bufnr)
 	buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
 	-- uses telescope instead
 	-- buf_set_keymap("n", "<leader>q", "<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>", opts)
-
 	-- Set autocommands conditional on server_capabilities
 	if client.resolved_capabilities.document_highlight then
 		vim.cmd([[
@@ -36,5 +35,15 @@ return function(client, bufnr)
                 autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
             augroup END
         ]])
+	end
+
+	local sagapresent, _ = pcall(require, 'lspsaga')
+	if sagapresent then
+		buf_set_keymap('n', 'gR', "<cmd>lua require'lspsaga.provider'.lsp_finder()<CR>", opts)
+		buf_set_keymap('n', 'ga', "<cmd>lua require('lspsaga.codeaction').code_action()<CR>", opts)
+		buf_set_keymap('v', 'ga', ":<C-U>lua require('lspsaga.codeaction').range_code_action()<CR>", opts)
+		buf_set_keymap('n', 'K', "<cmd>lua require('lspsaga.hover').render_hover_doc()<CR>", opts)
+		buf_set_keymap('n', '<c-d>', "<cmd>lua require('lspsaga.action').smart_scroll_with_saga(1)<cr>", opts)
+		buf_set_keymap('n', '<c-u>', "<cmd>lua require('lspsaga.action').smart_scroll_with_saga(-1)<cr>", opts)
 	end
 end

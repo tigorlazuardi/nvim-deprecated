@@ -40,12 +40,17 @@ local function misc_lsp_configs()
 end
 
 local function lsp_signature_setup()
-	require('lsp_signature').setup({
+	local setup = {
 		bind = true,
 		trigger_on_newline = false,
 		zindex = 1,
 		hint_enable = false,
-	})
+	}
+	local sagapresent, _ = pcall(require, 'lspsaga')
+	if sagapresent then
+		setup.use_lspsaga = true
+	end
+	require('lsp_signature').setup(setup)
 end
 
 local function mappings()
@@ -65,6 +70,10 @@ local function mappings()
 	})
 end
 
+local function lsp_saga_setup()
+	require('lspsaga').init_lsp_saga()
+end
+
 return function(use)
 	mappings()
 	signs_config()
@@ -74,4 +83,5 @@ return function(use)
 	use({ 'folke/lua-dev.nvim' })
 	use({ 'folke/lsp-colors.nvim' })
 	use({ 'nvim-lua/lsp_extensions.nvim' })
+	use({ 'glepnir/lspsaga.nvim', config = lsp_saga_setup })
 end

@@ -32,7 +32,7 @@ local function run()
 			"<cmd>lua require('telescope.builtin').lsp_workspace_diagnostics()<cr>",
 			'(LSP) Get Workspace Diagnostics',
 		},
-		ga = {
+		gA = {
 			"<cmd>lua require('telescope.builtin').lsp_code_actions()<cr>",
 			'(LSP) Get Code Actions',
 		},
