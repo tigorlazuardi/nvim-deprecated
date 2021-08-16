@@ -3,7 +3,7 @@ local function rust_tools_config()
 	require('rust-tools').setup({
 		server = {
 			on_attach = function(client, bufnr)
-				client.resolved_capabilities.document_formatting = false
+				client.resolved_capabilities.document_formatting = true
 				require('lsp.on_attach')(client, bufnr)
 				vim.api.nvim_buf_set_keymap(
 					bufnr,
@@ -12,12 +12,18 @@ local function rust_tools_config()
 					"<cmd>lua require'rust-tools.hover_actions'.hover_actions()<cr>",
 					{ silent = true, noremap = true }
 				)
+				vim.cmd([[
+					augroup rust_format
+						autocmd!
+						autocmd BufWritePre *.rs lua vim.lsp.buf.formatting_sync()
+					augroup end
+				]])
 			end,
 			capabilities = capabilities,
 			settings = {
 				['rust-analyzer'] = {
 					assist = {
-						importGranularity = 'module',
+						importEnforceGranularity = true,
 						importPrefix = 'by_self',
 					},
 					cargo = {
