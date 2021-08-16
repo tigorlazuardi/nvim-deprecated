@@ -11,10 +11,10 @@ local function misc_lsp_configs()
 	-- vim.cmd([[autocmd CursorHold,CursorHoldI * lua vim.lsp.diagnostic.show_line_diagnostics({focusable=false})]])
 
 	vim.lsp.handlers['textDocument/publishDiagnostics'] = function(_, _, params, client_id, _)
-		local config = { -- your config
+		local config = {
 			underline = true,
 			signs = true,
-			update_in_insert = false,
+			update_in_insert = true,
 		}
 		local uri = params.uri
 		local bufnr = vim.uri_to_bufnr(uri)
@@ -79,5 +79,4 @@ return function(use)
 	use({ 'folke/lua-dev.nvim' })
 	use({ 'folke/lsp-colors.nvim' })
 	use({ 'nvim-lua/lsp_extensions.nvim' })
-	use({ 'glepnir/lspsaga.nvim', config = lsp_saga_setup })
 end

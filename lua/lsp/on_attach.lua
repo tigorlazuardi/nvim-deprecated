@@ -36,12 +36,4 @@ return function(client, bufnr)
             augroup END
         ]])
 	end
-
-	local sagapresent, _ = pcall(require, 'lspsaga')
-	if sagapresent then
-		buf_set_keymap('n', 'gR', "<cmd>lua require'lspsaga.provider'.lsp_finder()<CR>", opts)
-		buf_set_keymap('n', 'ga', "<cmd>lua require('lspsaga.codeaction').code_action()<CR>", opts)
-		buf_set_keymap('v', 'ga', ":<C-U>lua require('lspsaga.codeaction').range_code_action()<CR>", opts)
-		buf_set_keymap('n', '<leader>rn', "<cmd>lua require('lspsaga.rename').rename()<CR>", opts)
-	end
 end
