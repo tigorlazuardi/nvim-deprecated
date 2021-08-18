@@ -26,6 +26,7 @@ return function(use)
 
 	use({
 		'glepnir/dashboard-nvim',
+		event = 'VimEnter',
 		cond = require('config.firenvim').not_run,
 	})
 end
