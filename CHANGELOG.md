@@ -1,6 +1,19 @@
 <a name="unreleased"></a>
 ## [Unreleased]
 
+### Chore
+- format
+
+### Doc
+- update CHANGELOG.md
+
+### Keymap
+- changed leader-d to leader-D to handle overlaps
+
+### Refactor
+- consolidate publishDiagnostic handling
+- cleanup efm settings
+
 
 <a name="v1.0.1"></a>
 ## [v1.0.1] - 2021-08-18
