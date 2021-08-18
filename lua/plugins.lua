@@ -76,4 +76,6 @@ return require('packer').startup(function(use)
 	require('config.rust')(use)
 
 	require('config.tabout')(use)
+
+	require('config.project')(use)
 end)
