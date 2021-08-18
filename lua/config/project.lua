@@ -8,7 +8,6 @@ return function(use)
 				manual_mode = false,
 				detection_methods = { 'lsp', 'pattern' },
 				patterns = { '.git', '_darcs', '.hg', '.bzr', '.svn', 'Makefile', 'package.json', 'go.mod', 'cargo.toml' },
-				ignore_lsp = { 'efm', 'null_ls' },
 				silent_chdir = true,
 			})
 
