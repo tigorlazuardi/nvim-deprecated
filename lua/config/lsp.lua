@@ -16,10 +16,10 @@ local function misc_lsp_configs()
 			signs = true,
 			update_in_insert = true,
 			virtual_text = {
-				prefix = "■ ",
+				prefix = '■ ',
 				spacing = 4,
-				severity_limit = "Warning",
-			}
+				severity_limit = 'Warning',
+			},
 		}
 		local uri = params.uri
 		local bufnr = vim.uri_to_bufnr(uri)
