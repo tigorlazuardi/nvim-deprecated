@@ -15,6 +15,11 @@ local function misc_lsp_configs()
 			underline = true,
 			signs = true,
 			update_in_insert = true,
+			virtual_text = {
+				prefix = "■ ",
+				spacing = 4,
+				severity_limit = "Warning",
+			}
 		}
 		local uri = params.uri
 		local bufnr = vim.uri_to_bufnr(uri)
@@ -64,10 +69,6 @@ local function mappings()
 			s = { '<cmd>LspStart<cr>', 'LSP Start' },
 		},
 	})
-end
-
-local function lsp_saga_setup()
-	require('lspsaga').init_lsp_saga()
 end
 
 return function(use)

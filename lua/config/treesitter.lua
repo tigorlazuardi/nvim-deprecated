@@ -119,20 +119,6 @@ return function(use)
 	use({
 		'windwp/nvim-ts-autotag',
 		requires = 'nvim-treesitter/nvim-treesitter',
-		config = function()
-			vim.lsp.handlers['textDocument/publishDiagnostics'] =
-				vim.lsp.with(
-					vim.lsp.diagnostic.on_publish_diagnostics,
-					{
-						underline = true,
-						virtual_text = {
-							spacing = 5,
-							severity_limit = 'Error',
-						},
-						update_in_insert = true,
-					}
-				)
-		end,
 	})
 	use({
 		'JoosepAlviste/nvim-ts-context-commentstring',
