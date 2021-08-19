@@ -2,6 +2,16 @@
 ## [Unreleased]
 
 
+<a name="v1.0.3"></a>
+## [v1.0.3] - 2021-08-19
+### Config
+- **treesitter:** removed lsp_interop and changed `<leader>d` key to show line diagnostics
+
+### Doc
+- update changelog.md
+- **chglog:** update changelog settings
+
+
 <a name="v1.0.2"></a>
 ## [v1.0.2] - 2021-08-18
 ### Chore
@@ -46,11 +56,19 @@
 - added dashboard custom section
 - added projects nvim
 - added taboout plugin
+- **lsp:** added rust lsp
+
+### Fix
+- **lsp:** use rust lsp as formatter
 
 ### Refactor
 - moved vim guifont to settings lua
 
+### Revert
+- **lsp:** removed lspsaga
 
-[Unreleased]: https://github.com/tigorlazuardi/nvim/compare/v1.0.2...HEAD
+
+[Unreleased]: https://github.com/tigorlazuardi/nvim/compare/v1.0.3...HEAD
+[v1.0.3]: https://github.com/tigorlazuardi/nvim/compare/v1.0.2...v1.0.3
 [v1.0.2]: https://github.com/tigorlazuardi/nvim/compare/v1.0.1...v1.0.2
 [v1.0.1]: https://github.com/tigorlazuardi/nvim/compare/v1.0.0...v1.0.1
