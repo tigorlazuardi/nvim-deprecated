@@ -2,7 +2,7 @@ local function run()
 	require('nvim-treesitter.configs').setup({
 		context_commentstring = { enable = true },
 		highlight = { enable = true },
-		indent = { enable = true },
+		indent = { enable = true, disable = { 'python', 'yaml' } },
 		autopairs = { enable = true },
 		autotag = {
 			enable = true,
@@ -59,14 +59,6 @@ local function run()
 				goto_previous_end = {
 					['[]'] = '@function.outer',
 					['[m'] = '@class.outer',
-				},
-			},
-			lsp_interop = {
-				enable = true,
-				border = 'none',
-				peek_definition_code = {
-					['<leader>df'] = '@function.outer',
-					['<leader>dF'] = '@class.outer',
 				},
 			},
 		},
