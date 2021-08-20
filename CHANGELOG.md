@@ -1,6 +1,9 @@
 <a name="unreleased"></a>
 ## [Unreleased]
 
+### License
+- create MIT License
+
 
 <a name="v1.0.3"></a>
 ## [v1.0.3] - 2021-08-19
