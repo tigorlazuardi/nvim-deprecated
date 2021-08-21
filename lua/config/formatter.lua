@@ -1,23 +1,23 @@
 local function run()
-	require("format").setup({
-		["*"] = {
+	require('format').setup({
+		['*'] = {
 			{ cmd = { "sed -i 's/[ \t]*$//'" } }, -- remove trailing whitespace
 		},
 		lua = {
 			{ cmd = {
 				function(file)
-					return string.format("stylua %s", file)
+					return string.format('stylua %s', file)
 				end,
 			} },
 		},
 		go = {
 			{
-				cmd = { "goimports -w" },
-				tempfile_postfix = ".tmp",
+				cmd = { 'goimports -w' },
+				tempfile_postfix = '.tmp',
 			},
 		},
 		markdown = {
-			{ cmd = { "prettier -w" } },
+			{ cmd = { 'prettier -w' } },
 		},
 	})
 
@@ -32,7 +32,8 @@ end
 
 return function(use)
 	use({
-		"lukas-reineke/format.nvim",
+		'lukas-reineke/format.nvim',
+		disable = vim.g.vscode,
 		cond = function()
 			return O.enable_formatter
 		end,

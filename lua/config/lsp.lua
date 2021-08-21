@@ -75,9 +75,27 @@ return function(use)
 	mappings()
 	signs_config()
 	misc_lsp_configs()
-	use({ 'neovim/nvim-lspconfig', config = require('lsp.setup') })
-	use({ 'ray-x/lsp_signature.nvim', config = lsp_signature_setup })
-	use({ 'folke/lua-dev.nvim' })
-	use({ 'folke/lsp-colors.nvim' })
-	use({ 'nvim-lua/lsp_extensions.nvim' })
+	local disable = vim.g.vscode
+	use({
+		'neovim/nvim-lspconfig',
+		disable = disable,
+		config = require('lsp.setup'),
+	})
+	use({
+		'ray-x/lsp_signature.nvim',
+		disable = disable,
+		config = lsp_signature_setup,
+	})
+	use({
+		'folke/lua-dev.nvim',
+		disable = disable,
+	})
+	use({
+		'folke/lsp-colors.nvim',
+		disable = disable,
+	})
+	use({
+		'nvim-lua/lsp_extensions.nvim',
+		disable = disable,
+	})
 end

@@ -3,6 +3,7 @@ return function(use)
 	vim.g.nvim_tree_respect_buf_cwd = 1
 	use({
 		'ahmedkhalf/project.nvim',
+		disable = vim.g.vscode,
 		config = function()
 			require('project_nvim').setup({
 				manual_mode = false,

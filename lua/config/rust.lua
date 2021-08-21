@@ -41,6 +41,7 @@ end
 return function(use)
 	use({
 		'simrat39/rust-tools.nvim',
+		disable = vim.g.vscode,
 		requires = { 'neovim/nvim-lspconfig' },
 		config = rust_tools_config,
 		ft = { 'rust' },

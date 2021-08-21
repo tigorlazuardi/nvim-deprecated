@@ -63,6 +63,7 @@ return function(use)
 	use({
 		'abecodes/tabout.nvim',
 		config = configure,
+		disable = vim.g.vscode,
 		want = { 'nvim-treesitter' }, -- or require if not used so far
 		after = { 'nvim-compe' }, -- if a completion plugin is using tabs load it before
 	})

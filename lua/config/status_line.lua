@@ -216,6 +216,7 @@ end
 return function(use)
 	use({
 		'glepnir/galaxyline.nvim',
+		disable = vim.g.vscode,
 		config = run,
 		cond = require('config.firenvim').not_run,
 	})

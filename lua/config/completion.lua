@@ -4,46 +4,46 @@ local function run()
 	end
 
 	local check_back_space = function()
-		local col = vim.fn.col(".") - 1
-		return col == 0 or vim.fn.getline("."):sub(col, col):match("%s") ~= nil
+		local col = vim.fn.col('.') - 1
+		return col == 0 or vim.fn.getline('.'):sub(col, col):match('%s') ~= nil
 	end
 
 	-- Use (s-)tab to:
 	--- move to prev/next item in completion menuone
 	--- jump to prev/next snippet's placeholder
 	_G.tab_complete = function()
-		if vim.fn["vsnip#available"](1) == 1 then
-			return t("<Plug>(vsnip-expand-or-jump)")
+		if vim.fn['vsnip#available'](1) == 1 then
+			return t('<Plug>(vsnip-expand-or-jump)')
 		elseif vim.fn.pumvisible() == 1 then
-			return t("<C-n>")
+			return t('<C-n>')
 		elseif check_back_space() then
-			return t("<Tab>")
+			return t('<Tab>')
 		else
-			return vim.fn["compe#complete"]()
+			return vim.fn['compe#complete']()
 		end
 	end
 	_G.s_tab_complete = function()
-		if vim.fn["vsnip#jumpable"](-1) == 1 then
-			return t("<Plug>(vsnip-jump-prev)")
+		if vim.fn['vsnip#jumpable'](-1) == 1 then
+			return t('<Plug>(vsnip-jump-prev)')
 		elseif vim.fn.pumvisible() == 1 then
-			return t("<C-p>")
+			return t('<C-p>')
 		else
 			-- If <S-Tab> is not working in your terminal, change it to <C-h>
-			return t("<S-Tab>")
+			return t('<S-Tab>')
 		end
 	end
 
-	vim.api.nvim_set_keymap("i", "<Tab>", "v:lua.tab_complete()", { expr = true })
-	vim.api.nvim_set_keymap("s", "<Tab>", "v:lua.tab_complete()", { expr = true })
-	vim.api.nvim_set_keymap("i", "<S-Tab>", "v:lua.s_tab_complete()", { expr = true })
-	vim.api.nvim_set_keymap("s", "<S-Tab>", "v:lua.s_tab_complete()", { expr = true })
+	vim.api.nvim_set_keymap('i', '<Tab>', 'v:lua.tab_complete()', { expr = true })
+	vim.api.nvim_set_keymap('s', '<Tab>', 'v:lua.tab_complete()', { expr = true })
+	vim.api.nvim_set_keymap('i', '<S-Tab>', 'v:lua.s_tab_complete()', { expr = true })
+	vim.api.nvim_set_keymap('s', '<S-Tab>', 'v:lua.s_tab_complete()', { expr = true })
 
-	require("compe").setup({
+	require('compe').setup({
 		enabled = true,
 		autocomplete = true,
 		debug = false,
 		min_length = 1,
-		preselect = "enable",
+		preselect = 'enable',
 		throttle_time = 80,
 		source_timeout = 200,
 		resolve_timeout = 800,
@@ -64,7 +64,7 @@ local function run()
 		},
 	})
 
-	vim.o.completeopt = "menuone,noselect"
+	vim.o.completeopt = 'menuone,noselect'
 
 	vim.cmd([[
         inoremap <silent><expr> <C-Space> compe#complete()
@@ -75,13 +75,18 @@ local function run()
         inoremap <silent><expr> <C-y>     compe#confirm('<c-y>')
     ]])
 
-	require("lspkind").init({
+	require('lspkind').init({
 		with_text = true,
-		preset = "default",
-		symbol_map = { Field = "" },
+		preset = 'default',
+		symbol_map = { Field = '' },
 	})
 end
 
 return function(use)
-	use({ "hrsh7th/nvim-compe", requires = { "onsails/lspkind-nvim" }, config = run })
+	use({
+		'hrsh7th/nvim-compe',
+		disable = vim.g.vscode,
+		requires = { 'onsails/lspkind-nvim' },
+		config = run,
+	})
 end

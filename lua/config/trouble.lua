@@ -2,6 +2,7 @@ return function(use)
 	-- https://github.com/folke/trouble.nvim#%EF%B8%8F-configuration
 	use({
 		'folke/trouble.nvim',
+		disable = vim.g.vscode,
 		requires = 'kyazdani42/nvim-web-devicons',
 		config = function()
 			require('trouble').setup({})

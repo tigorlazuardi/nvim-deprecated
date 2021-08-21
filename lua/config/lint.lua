@@ -12,6 +12,7 @@ end
 return function(use)
 	use({
 		'mfussenegger/nvim-lint',
+		disable = vim.g.vscode,
 		cond = function()
 			return O.enable_nvim_lint
 		end,
@@ -20,6 +21,7 @@ return function(use)
 
 	use({
 		'jose-elias-alvarez/null-ls.nvim',
+		disable = vim.g.vscode,
 		cond = function()
 			return O.enable_null_ls
 		end,

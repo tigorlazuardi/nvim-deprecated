@@ -6,8 +6,8 @@ end
 
 return function(use)
 	set_globals()
-	use('tversteeg/registers.nvim')
+	use({ 'tversteeg/registers.nvim', disable = vim.g.vscode })
 
 	-- rotates clipboard yanks to 0-9 register
-	use('svermeulen/vim-yoink')
+	use({ 'svermeulen/vim-yoink', disable = vim.g.vscode })
 end

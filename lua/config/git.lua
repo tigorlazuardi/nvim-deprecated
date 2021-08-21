@@ -80,6 +80,7 @@ end
 return function(use)
 	use({
 		'lewis6991/gitsigns.nvim',
+		disable = vim.g.vscode,
 		requires = 'nvim-lua/plenary.nvim',
 		config = signs_config,
 		cond = require('config.firenvim').not_run,

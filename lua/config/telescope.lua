@@ -63,6 +63,7 @@ end
 return function(use)
 	use({
 		'nvim-telescope/telescope.nvim',
+		disable = vim.g.vscode,
 		requires = { { 'nvim-lua/popup.nvim' }, { 'nvim-lua/plenary.nvim' } },
 		config = run,
 	})

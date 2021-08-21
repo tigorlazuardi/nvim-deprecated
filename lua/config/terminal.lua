@@ -54,6 +54,7 @@ end
 return function(use)
 	use({
 		'akinsho/nvim-toggleterm.lua',
+		disable = vim.g.vscode,
 		config = run,
 		cond = require('config.firenvim').not_run,
 	})

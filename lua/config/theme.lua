@@ -26,6 +26,7 @@ return function(use)
 
 	use({
 		'folke/tokyonight.nvim',
+		disable = vim.g.vscode,
 		config = function()
 			-- vim.cmd([[colorscheme tokyonight]])
 		end,
@@ -34,6 +35,7 @@ return function(use)
 	use({ 'dracula/vim', as = 'dracula' })
 	use({
 		'EdenEast/nightfox.nvim',
+		disable = vim.g.vscode,
 		config = function()
 			vim.cmd([[colorscheme nightfox]])
 		end,

@@ -3,6 +3,7 @@ local M = {}
 function M.exec(use)
 	use({
 		'iamcco/markdown-preview.nvim',
+		disable = vim.g.vscode,
 		run = function()
 			vim.fn['mkdp#util#install']()
 		end,

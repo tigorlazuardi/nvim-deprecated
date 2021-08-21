@@ -1,6 +1,7 @@
 return function(use)
 	use({
 		'xiyaowong/nvim-transparent',
+		disable = vim.g.vscode,
 		config = function()
 			require('transparent').setup({
 				enable = require('config.firenvim').run(), -- boolean: enable transparent

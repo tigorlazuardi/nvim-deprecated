@@ -6,6 +6,7 @@ return function(use)
 	globals()
 	use({
 		'rmagatti/auto-session',
+		disable = vim.g.vscode,
 		config = function()
 			local present, autosession = pcall(require, 'autosession')
 			if not present then
