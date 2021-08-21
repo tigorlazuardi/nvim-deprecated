@@ -26,7 +26,12 @@ function M.lsp_setup()
 		lspconfig['null-ls'].setup({
 			on_attach = function(client)
 				if client.resolved_capabilities.document_formatting then
-					vim.cmd('autocmd BufWritePost <buffer> lua vim.lsp.buf.formatting()')
+					vim.cmd([[
+						augroup null_ls_format
+							au!		
+							au BufWritePost <buffer> lua vim.lsp.buf.formatting_sync() 
+						augroup end
+					]])
 				end
 			end,
 		})
