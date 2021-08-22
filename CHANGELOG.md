@@ -1,8 +1,19 @@
 <a name="unreleased"></a>
 ## [Unreleased]
 
+
+<a name="v1.0.4"></a>
+## [v1.0.4] - 2021-08-22
+### Feature
+- **vscode:** support for vscode-neovim
+
 ### License
 - create MIT License
+
+### Update
+- **gitsigns:** update configuration
+- **null_ls:** formatting now done in sync manner and autocmd is grouped
+- **rust:** disabled info spam for proc macro
 
 
 <a name="v1.0.3"></a>
@@ -71,7 +82,8 @@
 - **lsp:** removed lspsaga
 
 
-[Unreleased]: https://github.com/tigorlazuardi/nvim/compare/v1.0.3...HEAD
+[Unreleased]: https://github.com/tigorlazuardi/nvim/compare/v1.0.4...HEAD
+[v1.0.4]: https://github.com/tigorlazuardi/nvim/compare/v1.0.3...v1.0.4
 [v1.0.3]: https://github.com/tigorlazuardi/nvim/compare/v1.0.2...v1.0.3
 [v1.0.2]: https://github.com/tigorlazuardi/nvim/compare/v1.0.1...v1.0.2
 [v1.0.1]: https://github.com/tigorlazuardi/nvim/compare/v1.0.0...v1.0.1
