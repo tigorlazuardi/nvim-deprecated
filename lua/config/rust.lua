@@ -32,6 +32,9 @@ local function rust_tools_config()
 					procMacro = {
 						enable = true,
 					},
+					diagnostics = {
+						disabled = {"unresolved-proc-macro"}
+					}
 				},
 			},
 		},
