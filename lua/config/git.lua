@@ -65,8 +65,10 @@ local signs_config = function()
 			},
 			watch_index = { interval = 1000, follow_files = true },
 			current_line_blame = true,
-			current_line_blame_delay = 500,
-			current_line_blame_position = 'eol',
+			current_line_blame_opts = {
+				delay = 500,
+				virt_text_pos = 'eol'
+			},
 			sign_priority = 6,
 			update_debounce = 100,
 			status_formatter = nil, -- Use default
