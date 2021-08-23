@@ -2,6 +2,20 @@
 ## [Unreleased]
 
 
+<a name="v1.0.5"></a>
+## [v1.0.5] - 2021-08-23
+### Chore
+- format
+- cleanup unused codes
+
+### Feature
+- **sneak:** added vim-sneak
+- **tabout:** tabout now completely handle tabs
+
+### Update
+- **keymaps:** tab will not move autocomplete selection or jump. it replaced by c-j
+
+
 <a name="v1.0.4"></a>
 ## [v1.0.4] - 2021-08-22
 ### Feature
@@ -82,7 +96,8 @@
 - **lsp:** removed lspsaga
 
 
-[Unreleased]: https://github.com/tigorlazuardi/nvim/compare/v1.0.4...HEAD
+[Unreleased]: https://github.com/tigorlazuardi/nvim/compare/v1.0.5...HEAD
+[v1.0.5]: https://github.com/tigorlazuardi/nvim/compare/v1.0.4...v1.0.5
 [v1.0.4]: https://github.com/tigorlazuardi/nvim/compare/v1.0.3...v1.0.4
 [v1.0.3]: https://github.com/tigorlazuardi/nvim/compare/v1.0.2...v1.0.3
 [v1.0.2]: https://github.com/tigorlazuardi/nvim/compare/v1.0.1...v1.0.2
