@@ -1,4 +1,4 @@
-require("globals")
-require("settings")
-require("mappings")
-require("plugins")
+require('globals')
+require('settings')
+require('mappings')
+require('plugins')
