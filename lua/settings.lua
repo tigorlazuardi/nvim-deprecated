@@ -69,6 +69,6 @@ vim.cmd([[
 	if has('win32') || has('win64')
 		set guifont=Hack\ NF,\ Medium:h12
 	else
-		set guifont=FiraCode\ Nerd\ Font:h13
+		set guifont=FiraCode\ Nerd\ Font:h17
 	endif
 ]])
