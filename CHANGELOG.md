@@ -2,6 +2,15 @@
 ## [Unreleased]
 
 
+<a name="v1.1.0"></a>
+## [v1.1.0] - 2021-08-23
+### Feature
+- **auto-session:** added auto session with session lens
+
+### Update
+- **font:** increase font size for neovide
+
+
 <a name="v1.0.5"></a>
 ## [v1.0.5] - 2021-08-23
 ### Chore
@@ -96,7 +105,8 @@
 - **lsp:** removed lspsaga
 
 
-[Unreleased]: https://github.com/tigorlazuardi/nvim/compare/v1.0.5...HEAD
+[Unreleased]: https://github.com/tigorlazuardi/nvim/compare/v1.1.0...HEAD
+[v1.1.0]: https://github.com/tigorlazuardi/nvim/compare/v1.0.5...v1.1.0
 [v1.0.5]: https://github.com/tigorlazuardi/nvim/compare/v1.0.4...v1.0.5
 [v1.0.4]: https://github.com/tigorlazuardi/nvim/compare/v1.0.3...v1.0.4
 [v1.0.3]: https://github.com/tigorlazuardi/nvim/compare/v1.0.2...v1.0.3
