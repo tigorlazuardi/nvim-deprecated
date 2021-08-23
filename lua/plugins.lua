@@ -78,4 +78,6 @@ return require('packer').startup(function(use)
 	require('config.tabout')(use)
 
 	require('config.project')(use)
+	
+	require("config.sneak")(use)
 end)
