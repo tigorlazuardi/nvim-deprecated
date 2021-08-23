@@ -1,23 +1,23 @@
 return function(use)
 	local custom_section = {
 		a = {
-			description = { '  Find File          ' },
+			description = { '  Find File            ' },
 			command = 'Telescope find_files',
 		},
 		b = {
-			description = { '  Recently Used Files' },
+			description = { '  Recently Opened Files' },
 			command = 'Telescope oldfiles',
 		},
 		c = {
-			description = { '  Recent Projects    ' },
+			description = { '  Recent Projects      ' },
 			command = 'Telescope projects',
 		},
 		d = {
-			description = { '  Load Last Session  ' },
-			command = 'SessionLoad',
+			description = { '  Load Session         ' },
+			command = "lua require('session-lens').search_session()",
 		},
 		e = {
-			description = { '  Find Word          ' },
+			description = { '  Find Word            ' },
 			command = 'Telescope live_grep',
 		},
 	}

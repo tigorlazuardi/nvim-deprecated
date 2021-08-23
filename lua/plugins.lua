@@ -32,7 +32,7 @@ return require('packer').startup(function(use)
 
 	require('config.dashboard')(use)
 
-	-- require('config.session')(use)
+	require('config.session')(use)
 
 	use({
 		'glacambre/firenvim',
@@ -78,6 +78,6 @@ return require('packer').startup(function(use)
 	require('config.tabout')(use)
 
 	require('config.project')(use)
-	
-	require("config.sneak")(use)
+
+	require('config.sneak')(use)
 end)

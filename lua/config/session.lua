@@ -1,29 +1,26 @@
 local function globals()
+	vim.o.sessionoptions = 'blank,buffers,curdir,folds,help,options,tabpages,winsize,resize,winpos,terminal'
 	vim.g.auto_session_pre_save_cmds = { 'tabdo NvimTreeClose', 'tabdo ToggleTermCloseAll', 'tabdo TroubleClose' }
 end
 
 return function(use)
 	globals()
 	use({
-		'rmagatti/auto-session',
-		disable = vim.g.vscode,
+		'rmagatti/session-lens',
+		requires = { 'rmagatti/auto-session', 'nvim-telescope/telescope.nvim' },
 		config = function()
-			local present, autosession = pcall(require, 'autosession')
-			if not present then
-				return
-			end
+			local autosession = require('auto-session')
 			local opts = {
 				log_level = 'info',
 				auto_session_enable_last_session = false,
-				auto_session_root_dir = vim.fn.stdpath('config') .. '/sessions/',
+				auto_session_root_dir = vim.fn.stdpath('data') .. '/sessions/',
 				auto_session_enabled = true,
 				auto_save_enabled = true,
 				auto_restore_enabled = false,
 				auto_session_suppress_dirs = nil,
 			}
-
 			autosession.setup(opts)
+			require('session-lens').setup({})
 		end,
-		cond = require('config.firenvim').not_run,
 	})
 end
