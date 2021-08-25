@@ -6,7 +6,9 @@ return function(use)
 			if not present then
 				return
 			end
-			surround.setup({})
+			surround.setup({
+				prefix = 'x',
+			})
 		end,
 	})
 end
