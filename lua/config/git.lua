@@ -1,5 +1,5 @@
 local signs_config = function()
-	-- BUG: Gitsigns broken on windows
+	-- WARN: Gitsigns broken on windows
 	if not _G.is_windows() then
 		require('gitsigns').setup({
 			signs = {
@@ -67,7 +67,7 @@ local signs_config = function()
 			current_line_blame = true,
 			current_line_blame_opts = {
 				delay = 500,
-				virt_text_pos = 'eol'
+				virt_text_pos = 'eol',
 			},
 			sign_priority = 6,
 			update_debounce = 100,
@@ -87,4 +87,6 @@ return function(use)
 		config = signs_config,
 		cond = require('config.firenvim').not_run,
 	})
+
+	use('tpope/vim-fugitive')
 end
