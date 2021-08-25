@@ -120,4 +120,14 @@ return function(use)
 	})
 	use({ 'RRethy/nvim-treesitter-textsubjects', requires = 'nvim-treesitter/nvim-treesitter' })
 	use({ 'nvim-treesitter/playground', requires = 'nvim-treesitter/nvim-treesitter' })
+
+	use({
+		'lewis6991/spellsitter.nvim',
+		config = function()
+			require('spellsitter').setup({
+				hl = 'SpellBad',
+				captures = { 'comment' }, -- set to {} to spellcheck everything
+			})
+		end,
+	})
 end
