@@ -2,6 +2,21 @@
 ## [Unreleased]
 
 
+<a name="v1.2.0"></a>
+## [v1.2.0] - 2021-08-25
+### Chore
+- formatting
+
+### Feature
+- **fugitive:** added vim fugitive for integrated vimdiff
+
+### Fix
+- **auto-session:** fix sessionoptions break lsp and other plugins
+
+### Mappings
+- **surround:** surround nvim uses 'x' as prefix
+
+
 <a name="v1.1.1"></a>
 ## [v1.1.1] - 2021-08-25
 ### Feature
@@ -111,7 +126,8 @@
 - **lsp:** removed lspsaga
 
 
-[Unreleased]: https://github.com/tigorlazuardi/nvim/compare/v1.1.1...HEAD
+[Unreleased]: https://github.com/tigorlazuardi/nvim/compare/v1.2.0...HEAD
+[v1.2.0]: https://github.com/tigorlazuardi/nvim/compare/v1.1.1...v1.2.0
 [v1.1.1]: https://github.com/tigorlazuardi/nvim/compare/v1.1.0...v1.1.1
 [v1.1.0]: https://github.com/tigorlazuardi/nvim/compare/v1.0.5...v1.1.0
 [v1.0.5]: https://github.com/tigorlazuardi/nvim/compare/v1.0.4...v1.0.5
