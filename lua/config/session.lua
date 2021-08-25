@@ -1,5 +1,4 @@
 local function globals()
-	vim.o.sessionoptions = 'blank,buffers,curdir,folds,help,options,tabpages,winsize,resize,winpos,terminal'
 	vim.g.auto_session_pre_save_cmds = { 'tabdo NvimTreeClose', 'tabdo ToggleTermCloseAll', 'tabdo TroubleClose' }
 end
 
@@ -22,6 +21,15 @@ return function(use)
 			autosession.setup(opts)
 			require('telescope').load_extension('session-lens')
 			require('session-lens').setup({})
+
+			-- Compability mode with projects nvim
+			vim.cmd([[
+				augroup session_save
+					au!
+					au VimLeave * silent! SaveSession
+					au UILeave * silent! SaveSession
+				augroup end
+			]])
 		end,
 	})
 end
