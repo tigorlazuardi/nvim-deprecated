@@ -115,6 +115,7 @@ return function(use)
 	use({
 		'JoosepAlviste/nvim-ts-context-commentstring',
 		requires = 'nvim-treesitter/nvim-treesitter',
+		ft = { 'typescriptreact', 'javascriptreact' },
 		config = configure_kommentary,
 	})
 	use({ 'RRethy/nvim-treesitter-textsubjects', requires = 'nvim-treesitter/nvim-treesitter' })
