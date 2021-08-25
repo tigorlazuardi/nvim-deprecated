@@ -2,6 +2,12 @@
 ## [Unreleased]
 
 
+<a name="v1.1.1"></a>
+## [v1.1.1] - 2021-08-25
+### Feature
+- **session-lens:** registered to telescope extension
+
+
 <a name="v1.1.0"></a>
 ## [v1.1.0] - 2021-08-23
 ### Feature
@@ -105,7 +111,8 @@
 - **lsp:** removed lspsaga
 
 
-[Unreleased]: https://github.com/tigorlazuardi/nvim/compare/v1.1.0...HEAD
+[Unreleased]: https://github.com/tigorlazuardi/nvim/compare/v1.1.1...HEAD
+[v1.1.1]: https://github.com/tigorlazuardi/nvim/compare/v1.1.0...v1.1.1
 [v1.1.0]: https://github.com/tigorlazuardi/nvim/compare/v1.0.5...v1.1.0
 [v1.0.5]: https://github.com/tigorlazuardi/nvim/compare/v1.0.4...v1.0.5
 [v1.0.4]: https://github.com/tigorlazuardi/nvim/compare/v1.0.3...v1.0.4
