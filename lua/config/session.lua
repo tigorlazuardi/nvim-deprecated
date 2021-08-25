@@ -1,4 +1,5 @@
 local function globals()
+	vim.o.sessionoptions = 'blank,buffers,curdir,folds,help,options,tabpages,winsize,resize,winpos,terminal'
 	vim.g.auto_session_pre_save_cmds = { 'tabdo NvimTreeClose', 'tabdo ToggleTermCloseAll', 'tabdo TroubleClose' }
 end
 
@@ -27,7 +28,6 @@ return function(use)
 				augroup session_save
 					au!
 					au VimLeave * silent! SaveSession
-					au UILeave * silent! SaveSession
 				augroup end
 			]])
 		end,
