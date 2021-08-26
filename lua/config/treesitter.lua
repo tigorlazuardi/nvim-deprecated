@@ -123,6 +123,7 @@ return function(use)
 
 	use({
 		'lewis6991/spellsitter.nvim',
+		disable = _G.is_windows(),
 		config = function()
 			require('spellsitter').setup({
 				hl = 'SpellBad',
