@@ -1,7 +1,7 @@
 local function tokyonight_globals()
 	vim.g.tokyonight_style = 'storm'
-	vim.g.tokyonight_italic_functions = true
 	vim.g.tokyonight_sidebars = { 'qf', 'vista_kind', 'terminal', 'packer', 'NvimTree' }
+	vim.g.tokyonight_italic_functions = true
 	vim.g.tokyonight_transparent = require('config.firenvim').run()
 
 	vim.g.nord_underline_option = 'underline'
@@ -14,14 +14,9 @@ local function tokyonight_globals()
 	vim.g.edge_disable_italic_comment = 0
 end
 
-local function nightfox_globals()
-	vim.g.nightfox_italic_functions = true
-	vim.g.nightfox_italic_keywords = true
-end
 
 return function(use)
 	tokyonight_globals()
-	nightfox_globals()
 	use('maaslalani/nordbuddy')
 
 	use({
@@ -37,7 +32,14 @@ return function(use)
 		'EdenEast/nightfox.nvim',
 		disable = vim.g.vscode,
 		config = function()
-			vim.cmd([[colorscheme nightfox]])
+			local nightfox = require('nightfox')
+			nightfox.setup({
+				styles = {
+					keywords = 'bold',
+					functions = 'italic,bold',
+				},
+			})
+			nightfox.load()
 		end,
 	})
 	use('sainnhe/edge')
