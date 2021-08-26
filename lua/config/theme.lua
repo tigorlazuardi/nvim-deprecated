@@ -14,11 +14,8 @@ local function tokyonight_globals()
 	vim.g.edge_disable_italic_comment = 0
 end
 
-
 return function(use)
 	tokyonight_globals()
-	use('maaslalani/nordbuddy')
-
 	use({
 		'folke/tokyonight.nvim',
 		disable = vim.g.vscode,
@@ -27,7 +24,6 @@ return function(use)
 		end,
 	})
 
-	use({ 'dracula/vim', as = 'dracula' })
 	use({
 		'EdenEast/nightfox.nvim',
 		disable = vim.g.vscode,
