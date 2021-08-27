@@ -6,4 +6,9 @@ capabilities.textDocument.completion.completionItem.resolveSupport = {
     properties = { 'documentation', 'detail', 'additionalTextEdits' },
 }
 
+local ok, cmp_nvim_lsp = pcall(require, 'cmp_nvim_lsp')
+if ok then
+	cmp_nvim_lsp.update_capabilities(capabilities)
+end
+
 return capabilities

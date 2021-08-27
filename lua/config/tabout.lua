@@ -1,11 +1,4 @@
 local function configure()
-	local function compat_with_compe(setup)
-		setup.tabkey = '<Tab>'
-		setup.backwards_tabkey = '<S-Tab>'
-
-		return setup
-	end
-
 	local setup = {
 		tabkey = '<Tab>', -- key to trigger tabout, set to an empty string to disable
 		backwards_tabkey = '<S-Tab>', -- ke
@@ -25,10 +18,6 @@ local function configure()
 		exclude = {}, -- tabout will ignore these filetypes
 	}
 
-	local compepresent, _ = pcall(require, 'compe')
-	if compepresent then
-		setup = compat_with_compe(setup)
-	end
 	require('tabout').setup(setup)
 end
 
@@ -38,6 +27,5 @@ return function(use)
 		config = configure,
 		disable = vim.g.vscode,
 		want = { 'nvim-treesitter' }, -- or require if not used so far
-		after = { 'nvim-compe' }, -- if a completion plugin is using tabs load it before
 	})
 end
