@@ -2,6 +2,15 @@
 ## [Unreleased]
 
 
+<a name="v2.0.3"></a>
+## [v2.0.3] - 2021-08-27
+### Delete
+- **plugins:** formatter and snippets
+
+### Feature
+- **autopairs:** refactor
+
+
 <a name="v2.0.2"></a>
 ## [v2.0.2] - 2021-08-27
 ### Feature
@@ -178,7 +187,8 @@
 - **lsp:** removed lspsaga
 
 
-[Unreleased]: https://github.com/tigorlazuardi/nvim/compare/v2.0.2...HEAD
+[Unreleased]: https://github.com/tigorlazuardi/nvim/compare/v2.0.3...HEAD
+[v2.0.3]: https://github.com/tigorlazuardi/nvim/compare/v2.0.2...v2.0.3
 [v2.0.2]: https://github.com/tigorlazuardi/nvim/compare/v2.0.1...v2.0.2
 [v2.0.1]: https://github.com/tigorlazuardi/nvim/compare/v2.0.0...v2.0.1
 [v2.0.0]: https://github.com/tigorlazuardi/nvim/compare/v1.2.2...v2.0.0
