@@ -40,6 +40,13 @@ local function run()
 			"<cmd>lua require('telescope.builtin').lsp_definitions()<cr>",
 			'(LSP) Go To Definitions',
 		},
+		gD = {
+			function ()
+				vim.cmd('vsplit')
+				vim.lsp.buf.definition()
+			end,
+			'(LSP) Go To Definitions (V-Split)'
+		}
 	})
 	local present, trouble = pcall(require, 'trouble.providers.telescope')
 	if not present then

@@ -26,6 +26,8 @@ c('set updatetime=50')
 c('set signcolumn=yes:1')
 c('set hidden')
 c('set clipboard+=unnamedplus')
+c('set splitright')
+c('set splitbelow')
 
 vim.cmd([[
     augroup highlight_yank
