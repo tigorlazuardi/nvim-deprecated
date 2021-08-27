@@ -39,6 +39,7 @@ local function setup()
 		Makefile = 1,
 		MAKEFILE = 1,
 		['readme.md'] = 1,
+		['CHANGELOG.md'] = 1,
 	}
 end
 
