@@ -7,7 +7,7 @@ return function(use)
 				return
 			end
 			surround.setup({
-				prefix = 'x',
+				prefix = 's',
 			})
 		end,
 	})
