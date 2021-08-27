@@ -4,7 +4,6 @@ return require('packer').startup(function(use)
 	-- Auto cwd to workspace root
 	-- require('config.rooter')(use)
 	require('config.theme')(use)
-	require('config.autopairs')(use)
 
 	require('config.kommentary')(use)
 
@@ -17,8 +16,6 @@ return require('packer').startup(function(use)
 	require('config.lsp')(use)
 
 	require('config.status_line')(use)
-
-	-- require('config.snippets')(use)
 
 	require('config.todo')(use)
 
@@ -68,8 +65,6 @@ return require('packer').startup(function(use)
 	require('config.lint')(use)
 
 	require('config.which-key')(use)
-
-	require('config.formatter')(use)
 
 	require('config.typescript')(use)
 

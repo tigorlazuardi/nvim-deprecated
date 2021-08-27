@@ -97,6 +97,14 @@ local function cmp_config()
 			{ name = 'luasnip' },
 		},
 	})
+	require('nvim-autopairs').setup({
+		disable_filetype = { 'TelescopePrompt', 'vim' },
+	})
+	require('nvim-autopairs.completion.cmp').setup({
+		map_cr = true, --  map <CR> on insert mode
+		map_complete = true, -- it will auto insert `(` after select function or method item
+		auto_select = true, -- automatically select the first item
+	})
 
 	local opts = { silent = true }
 	vim.api.nvim_set_keymap('i', '<c-j>', '<Plug>luasnip-expand-or-jump', opts)
@@ -123,6 +131,7 @@ return function(use)
 			'f3fora/cmp-spell',
 			'hrsh7th/cmp-calc',
 			'hrsh7th/cmp-emoji',
+			'windwp/nvim-autopairs',
 		},
 		config = cmp_config,
 	})
