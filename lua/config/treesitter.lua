@@ -130,5 +130,9 @@ return function(use)
 				captures = { 'comment' }, -- set to {} to spellcheck everything
 			})
 		end,
+		cond = function()
+			-- WARN: Seems to be broken on rust. Disable it for now.
+			return not vim.bo.filetype == 'rust'
+		end,
 	})
 end
