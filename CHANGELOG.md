@@ -2,6 +2,12 @@
 ## [Unreleased]
 
 
+<a name="v2.0.1"></a>
+## [v2.0.1] - 2021-08-27
+### Fix
+- **completion:** fixed bad mapping on completion confirm
+
+
 <a name="v2.0.0"></a>
 ## [v2.0.0] - 2021-08-27
 ### Chore
@@ -166,7 +172,8 @@
 - **lsp:** removed lspsaga
 
 
-[Unreleased]: https://github.com/tigorlazuardi/nvim/compare/v2.0.0...HEAD
+[Unreleased]: https://github.com/tigorlazuardi/nvim/compare/v2.0.1...HEAD
+[v2.0.1]: https://github.com/tigorlazuardi/nvim/compare/v2.0.0...v2.0.1
 [v2.0.0]: https://github.com/tigorlazuardi/nvim/compare/v1.2.2...v2.0.0
 [v1.2.2]: https://github.com/tigorlazuardi/nvim/compare/v1.2.1...v1.2.2
 [v1.2.1]: https://github.com/tigorlazuardi/nvim/compare/v1.2.0...v1.2.1
