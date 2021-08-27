@@ -18,7 +18,7 @@ return require('packer').startup(function(use)
 
 	require('config.status_line')(use)
 
-	require('config.snippets')(use)
+	-- require('config.snippets')(use)
 
 	require('config.todo')(use)
 

@@ -49,7 +49,6 @@ local function cmp_config()
 	})
 
 	local cmp = require('cmp')
-
 	cmp.setup({
 		mapping = {
 			['<C-p>'] = cmp.mapping.select_prev_item(),
@@ -62,6 +61,11 @@ local function cmp_config()
 				behavior = cmp.ConfirmBehavior.Insert,
 				select = true,
 			}),
+		},
+		snippet = {
+			expand = function(args)
+				require('luasnip').lsp_expand(args.body)
+			end,
 		},
 		formatting = {
 			format = function(entry, vim_item)
@@ -84,15 +88,23 @@ local function cmp_config()
 		sources = {
 			{ name = 'nvim_lsp' },
 			{ name = 'nvim_lua' },
-			{ name = 'vsnip' },
 			{ name = 'path' },
 			{ name = 'buffer' },
 			{ name = 'crates' },
 			{ name = 'spell' },
 			{ name = 'calc' },
 			{ name = 'emoji' },
+			{ name = 'luasnip' },
 		},
 	})
+
+	local opts = { silent = true }
+	vim.api.nvim_set_keymap('i', '<c-j>', '<Plug>luasnip-expand-or-jump', opts)
+	vim.api.nvim_set_keymap('s', '<c-j>', '<Plug>luasnip-expand-or-jump', opts)
+	vim.api.nvim_set_keymap('i', '<c-k>', '<Plug>luasnip-jump-prev', opts)
+	vim.api.nvim_set_keymap('s', '<c-k>', '<Plug>luasnip-jump-prev', opts)
+	-- load snippets
+	pcall(require, vim.fn.stdpath('config') .. '/snippets/luasnip')
 end
 
 return function(use)
@@ -100,9 +112,11 @@ return function(use)
 		'hrsh7th/nvim-cmp',
 		requires = {
 			'onsails/lspkind-nvim',
+			'rafamadriz/friendly-snippets',
+			'L3MON4D3/LuaSnip',
 			'hrsh7th/cmp-nvim-lsp',
 			'hrsh7th/cmp-nvim-lua',
-			'hrsh7th/cmp-vsnip',
+			'saadparwaiz1/cmp_luasnip',
 			'hrsh7th/cmp-path',
 			'hrsh7th/cmp-buffer',
 			'Saecki/crates.nvim',
