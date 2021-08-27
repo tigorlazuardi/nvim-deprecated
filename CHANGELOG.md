@@ -2,6 +2,29 @@
 ## [Unreleased]
 
 
+<a name="v1.2.2"></a>
+## [v1.2.2] - 2021-08-27
+### Chore
+- **subversive:** removed unused codes
+
+### Feature
+- **nightfox:** update deprecated configurations
+- **sneak:** changed `s` and `S` to `<leader>m` and `<leader>M` respectively
+- **spellsitter:** disabled spellsitter on rust files
+- **spellsitter:** spellsitter is disabled on windows
+- **surround:** prefix now return to `s` from `x`
+- **transparent:** disabled
+
+### Mappings
+- **lsp:** `gD` now open definition in split window
+
+### Settings
+- **font:** increase gui font size to 16
+
+### Uninstall
+- **theme:** removed nordbuddy and dracula/vim
+
+
 <a name="v1.2.1"></a>
 ## [v1.2.1] - 2021-08-25
 ### Feature
@@ -133,7 +156,8 @@
 - **lsp:** removed lspsaga
 
 
-[Unreleased]: https://github.com/tigorlazuardi/nvim/compare/v1.2.1...HEAD
+[Unreleased]: https://github.com/tigorlazuardi/nvim/compare/v1.2.2...HEAD
+[v1.2.2]: https://github.com/tigorlazuardi/nvim/compare/v1.2.1...v1.2.2
 [v1.2.1]: https://github.com/tigorlazuardi/nvim/compare/v1.2.0...v1.2.1
 [v1.2.0]: https://github.com/tigorlazuardi/nvim/compare/v1.1.1...v1.2.0
 [v1.1.1]: https://github.com/tigorlazuardi/nvim/compare/v1.1.0...v1.1.1
