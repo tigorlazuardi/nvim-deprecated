@@ -6,7 +6,6 @@ return function(use)
 			if not ok then
 				return
 			end
-
 			wk.register({
 				['<leader>s'] = { '<Plug>(SubversiveSubstitute)', 'Substitute (Motion)' },
 				['<leader>ss'] = { '<Plug>(SubversiveSubstituteLine)', 'Substitute Line' },
