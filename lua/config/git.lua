@@ -87,6 +87,4 @@ return function(use)
 		config = signs_config,
 		cond = require('config.firenvim').not_run,
 	})
-
-	use('tpope/vim-fugitive')
 end
