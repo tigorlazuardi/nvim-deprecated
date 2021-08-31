@@ -25,6 +25,10 @@ function M.lsp_setup()
 	if lspconfig['null-ls'] then
 		lspconfig['null-ls'].setup({
 			on_attach = function(client)
+				local ok, lsp_status = pcall(require, 'lsp-status')
+				if ok then
+					lsp_status.on_attach(client)
+			end
 				if client.resolved_capabilities.document_formatting then
 					vim.cmd([[
 						augroup null_ls_format

@@ -104,6 +104,10 @@ local function run()
 		DiagnosticInfo = { provider = 'DiagnosticInfo', icon = '  ', highlight = { colors.blue, colors.bg } },
 	}
 
+
+	local lsp_status = require('lsp-status')
+	lsp_status.register_progress()
+
 	gls.mid[1] = {
 		ShowLspClient = {
 			provider = 'GetLspClient',
@@ -117,6 +121,13 @@ local function run()
 			icon = ' LSP:',
 			highlight = { colors.cyan, colors.bg, 'bold' },
 		},
+	}
+
+	gls.mid[2] = {
+		LspStatus = {
+			provider = lsp_status.status,
+			highlight = { colors.cyan, colors.bg, 'bold' },
+		}
 	}
 
 	gls.right[1] = {
@@ -216,6 +227,7 @@ end
 return function(use)
 	use({
 		'glepnir/galaxyline.nvim',
+		requires = { 'nvim-lua/lsp-status.nvim' },
 		disable = vim.g.vscode,
 		config = run,
 		cond = require('config.firenvim').not_run,

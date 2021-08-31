@@ -15,7 +15,9 @@ return require('packer').startup(function(use)
 
 	require('config.lsp')(use)
 
-	require('config.status_line')(use)
+	-- require('config.status_line')(use)
+
+	require('config.lualine')(use)
 
 	require('config.todo')(use)
 
