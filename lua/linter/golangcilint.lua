@@ -7,23 +7,12 @@ M.method = methods.DIAGNOSTICS
 
 M.filetypes = { 'go' }
 
-local exist = vim.fn.filereadable(vim.fn.getcwd() .. '/.golangci.yml') ~= 0
-local args = {}
-if exist then
-	args = {
-		'--out-format=json',
-		'run',
-		'-c',
-		vim.fn.getcwd() .. '/.golangci.yml',
-	}
-else
-	args = {
-		'--out-format=json',
-		'run',
-		'-c',
-		vim.fn.stdpath('config') .. '/linter-config/.golangci.yml',
-	}
-end
+local args = {
+	'--out-format=json',
+	'run',
+	'-c',
+	vim.fn.stdpath('config') .. '/linter-config/.golangci.yml',
+}
 
 M.generator = helpers.generator_factory({
 	command = 'golangci-lint',
