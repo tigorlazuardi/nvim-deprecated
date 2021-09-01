@@ -26,15 +26,19 @@ local function rust_tools_config()
 						importEnforceGranularity = true,
 						importPrefix = 'by_self',
 					},
+					checkOnSave = {
+						enable = true,
+					},
 					cargo = {
 						loadOutDirsFromCheck = true,
+						autoreload = true,
 					},
 					procMacro = {
 						enable = true,
 					},
 					diagnostics = {
-						disabled = {"unresolved-proc-macro"}
-					}
+						disabled = { 'unresolved-proc-macro' },
+					},
 				},
 			},
 		},
