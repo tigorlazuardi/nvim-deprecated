@@ -87,7 +87,7 @@ local function cmp_config()
 		},
 		sources = {
 			{ name = 'nvim_lsp' },
-			{ name = 'nvim_lua' },
+			-- { name = 'nvim_lua' },
 			{ name = 'path' },
 			{ name = 'buffer' },
 			{ name = 'crates' },
