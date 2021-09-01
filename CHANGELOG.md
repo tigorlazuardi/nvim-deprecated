@@ -2,6 +2,16 @@
 ## [Unreleased]
 
 
+<a name="v2.0.5"></a>
+## [v2.0.5] - 2021-09-01
+### Feature
+- **diagnostics:** virtual text default level is hint
+- **lualine:** moved all lualines to left side because of length
+- **lualine:** now requires nvim-web-devicons and added lsp name
+- **lualine:** added diagnostic message source
+- **rust:** enabled cargo check on save
+
+
 <a name="v2.0.4"></a>
 ## [v2.0.4] - 2021-09-01
 ### Feature
@@ -206,7 +216,8 @@
 - **lsp:** removed lspsaga
 
 
-[Unreleased]: https://github.com/tigorlazuardi/nvim/compare/v2.0.4...HEAD
+[Unreleased]: https://github.com/tigorlazuardi/nvim/compare/v2.0.5...HEAD
+[v2.0.5]: https://github.com/tigorlazuardi/nvim/compare/v2.0.4...v2.0.5
 [v2.0.4]: https://github.com/tigorlazuardi/nvim/compare/v2.0.3...v2.0.4
 [v2.0.3]: https://github.com/tigorlazuardi/nvim/compare/v2.0.2...v2.0.3
 [v2.0.2]: https://github.com/tigorlazuardi/nvim/compare/v2.0.1...v2.0.2
