@@ -9,6 +9,9 @@ function M.lsp_setup()
 
 	lspconfig.tsserver.setup({
 		capabilities = capabilities,
+		handlers = {
+			["textDocument/publishDiagnostics"] = require('lsp.publish_diagnostics')('hint')
+		},
 		on_attach = function(client, buffer)
 			if client.config.flags then
 				client.config.flags.allow_incremental_sync = true
@@ -41,7 +44,7 @@ function M.lsp_setup()
 				eslint_enable_diagnostics = true,
 
 				-- formatting
-				enable_formatting = false,
+				enable_formatting = true,
 				formatter = "prettierd",
 				formatter_config_fallback = vim.fn.stdpath("config") .. "/linter-config/.prettierrc.json",
 
