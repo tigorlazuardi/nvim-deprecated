@@ -40,6 +40,10 @@ function run()
 
 	vim.api.nvim_command('set cmdheight=1')
 	local lsp_status = require('lsp-status')
+	lsp_status.config({
+		status_symbol = '',
+		indicator_hint = ''
+	})
 	lsp_status.register_progress()
 
 	require('lualine').setup({
