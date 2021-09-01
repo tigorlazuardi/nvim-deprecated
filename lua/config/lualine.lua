@@ -22,6 +22,22 @@ function run()
 		return message
 	end
 
+	local function lsp_name()
+		local msg = 'No Active Lsp'
+		local buf_ft = vim.api.nvim_buf_get_option(0, 'filetype')
+		local clients = vim.lsp.get_active_clients()
+		if next(clients) == nil then
+			return msg
+		end
+		for _, client in ipairs(clients) do
+			local filetypes = client.config.filetypes
+			if filetypes and vim.fn.index(filetypes, buf_ft) ~= -1 then
+				return client.name
+			end
+		end
+		return msg
+	end
+
 	vim.api.nvim_command('set cmdheight=1')
 	local lsp_status = require('lsp-status')
 	lsp_status.register_progress()
@@ -37,7 +53,11 @@ function run()
 		sections = {
 			lualine_a = { 'mode' },
 			lualine_b = { 'branch', 'filename', 'encoding', 'fileformat', 'filetype' },
-			lualine_c = { { lsp_status.status }, { diagnostic_message, color = 'WarningMsg' } },
+			lualine_c = {
+				{ lsp_name, icon = ' LSP:' },
+				{ lsp_status.status },
+				{ diagnostic_message, color = 'LspDiagnosticsDefaultWarning' },
+			},
 			lualine_x = {},
 			lualine_y = {},
 			lualine_z = { 'location' },
@@ -56,5 +76,9 @@ function run()
 end
 
 return function(use)
-	use({ 'hoob3rt/lualine.nvim', requires = { 'tigorlazuardi/lsp-status.nvim', 'kyazdani42/nvim-web-devicons' }, config = run })
+	use({
+		'hoob3rt/lualine.nvim',
+		requires = { 'tigorlazuardi/lsp-status.nvim', 'kyazdani42/nvim-web-devicons' },
+		config = run,
+	})
 end
