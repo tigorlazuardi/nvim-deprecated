@@ -2,6 +2,25 @@
 ## [Unreleased]
 
 
+<a name="v2.0.4"></a>
+## [v2.0.4] - 2021-09-01
+### Feature
+- **cmp:** removed nvim_lua from source because nvim lua has problems
+- **golangcilint:** golangcilint config now hardcoded to nvim config dir
+- **linter:** update prettierrc json
+- **lualine:** moved from galaxyline to lualine
+- **null_ls:** removed lsp status from being attached to null_ls
+
+### Fix
+- **completion:** fix cmp logic for lsp symbols
+
+### Refactor
+- **publish_diagnostics:** now can generate publish diagnostics based on levels
+
+### Removed
+- **fugitive:** removed fugitive in favor of lazygit for conflict handling
+
+
 <a name="v2.0.3"></a>
 ## [v2.0.3] - 2021-08-27
 ### Delete
@@ -187,7 +206,8 @@
 - **lsp:** removed lspsaga
 
 
-[Unreleased]: https://github.com/tigorlazuardi/nvim/compare/v2.0.3...HEAD
+[Unreleased]: https://github.com/tigorlazuardi/nvim/compare/v2.0.4...HEAD
+[v2.0.4]: https://github.com/tigorlazuardi/nvim/compare/v2.0.3...v2.0.4
 [v2.0.3]: https://github.com/tigorlazuardi/nvim/compare/v2.0.2...v2.0.3
 [v2.0.2]: https://github.com/tigorlazuardi/nvim/compare/v2.0.1...v2.0.2
 [v2.0.1]: https://github.com/tigorlazuardi/nvim/compare/v2.0.0...v2.0.1
