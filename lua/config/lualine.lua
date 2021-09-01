@@ -52,7 +52,7 @@ function run()
 		},
 		sections = {
 			lualine_a = { 'mode' },
-			lualine_b = { 'branch', 'filename', 'encoding', 'fileformat', 'filetype' },
+			lualine_b = { 'branch', 'filename', 'encoding', 'location', 'filetype' },
 			lualine_c = {
 				{ lsp_name, icon = ' LSP:' },
 				{ lsp_status.status },
@@ -60,7 +60,7 @@ function run()
 			},
 			lualine_x = {},
 			lualine_y = {},
-			lualine_z = { 'location' },
+			lualine_z = {},
 		},
 		inactive_sections = {
 			lualine_a = {},
