@@ -2,6 +2,15 @@
 ## [Unreleased]
 
 
+<a name="v2.0.6"></a>
+## [v2.0.6] - 2021-09-02
+### Feature
+- **autopairs:** autopairs now check ts and does not enter completion on enter
+- **lualine:** update lsp_status symbols
+- **on_attach:** update in insert now false
+- **tabout:** update tabout to add '<' and '>' and disable completion check
+
+
 <a name="v2.0.5"></a>
 ## [v2.0.5] - 2021-09-01
 ### Feature
@@ -216,7 +225,8 @@
 - **lsp:** removed lspsaga
 
 
-[Unreleased]: https://github.com/tigorlazuardi/nvim/compare/v2.0.5...HEAD
+[Unreleased]: https://github.com/tigorlazuardi/nvim/compare/v2.0.6...HEAD
+[v2.0.6]: https://github.com/tigorlazuardi/nvim/compare/v2.0.5...v2.0.6
 [v2.0.5]: https://github.com/tigorlazuardi/nvim/compare/v2.0.4...v2.0.5
 [v2.0.4]: https://github.com/tigorlazuardi/nvim/compare/v2.0.3...v2.0.4
 [v2.0.3]: https://github.com/tigorlazuardi/nvim/compare/v2.0.2...v2.0.3
