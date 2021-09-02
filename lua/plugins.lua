@@ -77,4 +77,6 @@ return require('packer').startup(function(use)
 	require('config.project')(use)
 
 	require('config.sneak')(use)
+
+	use 'vuki656/package-info.nvim'
 end)
