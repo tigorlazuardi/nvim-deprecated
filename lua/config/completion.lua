@@ -130,7 +130,7 @@ local function cmp_config()
 	vim.api.nvim_set_keymap('i', '<c-k>', '<Plug>luasnip-jump-prev', opts)
 	vim.api.nvim_set_keymap('s', '<c-k>', '<Plug>luasnip-jump-prev', opts)
 	-- load snippets
-	pcall(require, vim.fn.stdpath('config') .. '/snippets/luasnip')
+	require('snippets.luasnip')
 end
 
 return function(use)
