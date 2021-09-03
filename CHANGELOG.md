@@ -2,6 +2,18 @@
 ## [Unreleased]
 
 
+<a name="v2.1.0"></a>
+## [v2.1.0] - 2021-09-04
+### Feature
+- **font:** reduce font size for GUI
+- **font:** update firacode font setting
+- **golang:** added goimpl plugin `<leader>im` for filetype go
+- **luasnip:** fix luasnip friendly-snippets and add golang snippet
+- **package-info:** added virtual text support for `package.json`
+- **package.json:** added virtual text for dependency versions
+- **telescope:** Get Code actions changed from `gA` to `ga`
+
+
 <a name="v2.0.6"></a>
 ## [v2.0.6] - 2021-09-02
 ### Feature
@@ -225,7 +237,8 @@
 - **lsp:** removed lspsaga
 
 
-[Unreleased]: https://github.com/tigorlazuardi/nvim/compare/v2.0.6...HEAD
+[Unreleased]: https://github.com/tigorlazuardi/nvim/compare/v2.1.0...HEAD
+[v2.1.0]: https://github.com/tigorlazuardi/nvim/compare/v2.0.6...v2.1.0
 [v2.0.6]: https://github.com/tigorlazuardi/nvim/compare/v2.0.5...v2.0.6
 [v2.0.5]: https://github.com/tigorlazuardi/nvim/compare/v2.0.4...v2.0.5
 [v2.0.4]: https://github.com/tigorlazuardi/nvim/compare/v2.0.3...v2.0.4
