@@ -42,7 +42,7 @@ function run()
 	local lsp_status = require('lsp-status')
 	lsp_status.config({
 		status_symbol = '',
-		indicator_hint = ''
+		indicator_hint = '',
 	})
 	lsp_status.register_progress()
 
@@ -82,7 +82,10 @@ end
 return function(use)
 	use({
 		'hoob3rt/lualine.nvim',
-		requires = { 'tigorlazuardi/lsp-status.nvim', 'kyazdani42/nvim-web-devicons' },
+		requires = {
+			'nvim-lua/lsp-status.nvim',
+			'kyazdani42/nvim-web-devicons',
+		},
 		config = run,
 	})
 end
