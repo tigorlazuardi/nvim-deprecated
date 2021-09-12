@@ -9,9 +9,8 @@ return function(severity)
 		error = vim.lsp.protocol.DiagnosticSeverity.Error,
 		hint = vim.lsp.protocol.DiagnosticSeverity.Hint,
 	}
-	return function(_, _, params, client_id, _)
-		local config = {
-			underline = true,
+	return function(_err, result, ctx, config)
+		local cfg = {
 			signs = true,
 			update_in_insert = false,
 			virtual_text = {
@@ -20,25 +19,26 @@ return function(severity)
 				severity_limit = levels[severity] or vim.lsp.protocol.DiagnosticSeverity.Warning,
 			},
 		}
-		local uri = params.uri
+		config = vim.tbl_extend('force', config or {}, cfg)
+		local uri = result.uri
 		local bufnr = vim.uri_to_bufnr(uri)
 
 		if not bufnr then
 			return
 		end
 
-		local diagnostics = params.diagnostics
+		local diagnostics = result.diagnostics
 
 		for i, v in ipairs(diagnostics) do
 			diagnostics[i].message = string.format('%s: %s', v.source, v.message)
 		end
 
-		vim.lsp.diagnostic.save(diagnostics, bufnr, client_id)
+		vim.lsp.diagnostic.save(diagnostics, bufnr, ctx.client_id)
 
 		if not vim.api.nvim_buf_is_loaded(bufnr) then
 			return
 		end
 
-		vim.lsp.diagnostic.display(diagnostics, bufnr, client_id, config)
+		vim.lsp.diagnostic.display(diagnostics, bufnr, ctx.client_id, config)
 	end
 end
