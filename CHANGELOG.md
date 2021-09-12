@@ -2,6 +2,13 @@
 ## [Unreleased]
 
 
+<a name="v3.0.0"></a>
+## [v3.0.0] - 2021-09-12
+### Feature
+- **lualine:** moved requirement from forked lib to original lib
+- **publishDiagnostics:** moved to 0.6.X publish diagnostic syntax
+
+
 <a name="v2.1.0"></a>
 ## [v2.1.0] - 2021-09-04
 ### Feature
@@ -237,7 +244,8 @@
 - **lsp:** removed lspsaga
 
 
-[Unreleased]: https://github.com/tigorlazuardi/nvim/compare/v2.1.0...HEAD
+[Unreleased]: https://github.com/tigorlazuardi/nvim/compare/v3.0.0...HEAD
+[v3.0.0]: https://github.com/tigorlazuardi/nvim/compare/v2.1.0...v3.0.0
 [v2.1.0]: https://github.com/tigorlazuardi/nvim/compare/v2.0.6...v2.1.0
 [v2.0.6]: https://github.com/tigorlazuardi/nvim/compare/v2.0.5...v2.0.6
 [v2.0.5]: https://github.com/tigorlazuardi/nvim/compare/v2.0.4...v2.0.5
