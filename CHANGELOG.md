@@ -2,6 +2,15 @@
 ## [Unreleased]
 
 
+<a name="v3.0.1"></a>
+## [v3.0.1] - 2021-09-13
+### Feature
+- **gui-font:** change font size to h16
+- **lsp:** added rust_analyzer native setup (but commented)
+- **package-info:** added nui.nvim as dependency
+- **rust-tools:** temporarily move to Joakker's fork until simrat's is updated
+
+
 <a name="v3.0.0"></a>
 ## [v3.0.0] - 2021-09-12
 ### Feature
@@ -244,7 +253,8 @@
 - **lsp:** removed lspsaga
 
 
-[Unreleased]: https://github.com/tigorlazuardi/nvim/compare/v3.0.0...HEAD
+[Unreleased]: https://github.com/tigorlazuardi/nvim/compare/v3.0.1...HEAD
+[v3.0.1]: https://github.com/tigorlazuardi/nvim/compare/v3.0.0...v3.0.1
 [v3.0.0]: https://github.com/tigorlazuardi/nvim/compare/v2.1.0...v3.0.0
 [v2.1.0]: https://github.com/tigorlazuardi/nvim/compare/v2.0.6...v2.1.0
 [v2.0.6]: https://github.com/tigorlazuardi/nvim/compare/v2.0.5...v2.0.6
