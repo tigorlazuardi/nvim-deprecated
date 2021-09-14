@@ -2,6 +2,13 @@
 ## [Unreleased]
 
 
+<a name="v3.0.2"></a>
+## [v3.0.2] - 2021-09-14
+### Feature
+- **easy-align:** added easy align plugin
+- **markdown:** removed markdown preview, uses Glow instead
+
+
 <a name="v3.0.1"></a>
 ## [v3.0.1] - 2021-09-13
 ### Feature
@@ -253,7 +260,8 @@
 - **lsp:** removed lspsaga
 
 
-[Unreleased]: https://github.com/tigorlazuardi/nvim/compare/v3.0.1...HEAD
+[Unreleased]: https://github.com/tigorlazuardi/nvim/compare/v3.0.2...HEAD
+[v3.0.2]: https://github.com/tigorlazuardi/nvim/compare/v3.0.1...v3.0.2
 [v3.0.1]: https://github.com/tigorlazuardi/nvim/compare/v3.0.0...v3.0.1
 [v3.0.0]: https://github.com/tigorlazuardi/nvim/compare/v2.1.0...v3.0.0
 [v2.1.0]: https://github.com/tigorlazuardi/nvim/compare/v2.0.6...v2.1.0
