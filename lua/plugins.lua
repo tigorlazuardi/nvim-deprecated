@@ -40,8 +40,6 @@ return require('packer').startup(function(use)
 		end,
 	})
 
-	require('config.firenvim').exec(use)
-
 	require('config.indent_blankline')(use)
 
 	require('config.subversive')(use)
@@ -77,6 +75,8 @@ return require('packer').startup(function(use)
 	require('config.project')(use)
 
 	require('config.sneak')(use)
+	
+	require('config.easy_align')(use)
 
 	use({
 		'vuki656/package-info.nvim',
@@ -90,4 +90,6 @@ return require('packer').startup(function(use)
 			})
 		end,
 	})
+
+	use({ 'ellisonleao/glow.nvim', ft = {'markdown'} })
 end)
