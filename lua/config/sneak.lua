@@ -1,6 +1,7 @@
 return function(use)
 	use({
 		'justinmk/vim-sneak',
+		disable = vim.g.vscode,
 		config = function()
 			local option = { silent = true }
 			vim.api.nvim_set_keymap('n', '<leader>m', '<Plug>Sneak_s', option)
