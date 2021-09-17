@@ -8,6 +8,7 @@ return function(use)
 	use({
 		'rmagatti/session-lens',
 		requires = { 'rmagatti/auto-session', 'nvim-telescope/telescope.nvim' },
+		disable = vim.g.vscode,
 		config = function()
 			local autosession = require('auto-session')
 			local opts = {
