@@ -47,8 +47,7 @@ end
 
 return function(use)
 	use({
-		-- TODO: restore to 'simrat39/rust-tools.nvim' after the plugin is updated
-		'Joakker/rust-tools.nvim',
+		'simrat39/rust-tools.nvim',
 		disable = vim.g.vscode,
 		requires = { 'neovim/nvim-lspconfig' },
 		config = rust_tools_config,
