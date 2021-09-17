@@ -12,7 +12,7 @@ function M.lsp_setup()
 			null_ls.builtins.formatting.stylua, -- lua
 			null_ls.builtins.diagnostics.shellcheck, -- shell script
 			null_ls.builtins.formatting.shfmt, -- shell script
-			require('linter.golangcilint'), -- golang
+			-- require('linter.golangcilint'), -- golang
 			null_ls.builtins.diagnostics.hadolint, -- docker
 			null_ls.builtins.formatting.prettierd, -- js gang
 			null_ls.builtins.diagnostics.selene, -- lua

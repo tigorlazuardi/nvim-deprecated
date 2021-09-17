@@ -15,4 +15,4 @@ O = {}
 O.enable_nvim_lint = false
 O.enable_null_ls = true
 O.enable_formatter = false
-O.enable_golangcilint_langserver = false
+O.enable_golangcilint_langserver = true

@@ -108,7 +108,7 @@ function M.golangcilsp_setup()
 		if not lspconfig.golangcilsp then
 			configs.golangcilsp = {
 				default_config = {
-					cmd = { 'golangci-lint-langserver' },
+					cmd = { 'golangci-lint-langserver', '-nolintername' },
 					root_dir = lspconfig.util.root_pattern('.git', 'go.mod', 'main.go'),
 					init_options = { command = cmd },
 				},
