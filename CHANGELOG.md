@@ -2,6 +2,28 @@
 ## [Unreleased]
 
 
+<a name="v3.0.3"></a>
+## [v3.0.3] - 2021-09-23
+### Config
+- **gitsigns:** update config to match deprecated value
+
+### Feature
+- **golangci-lint:** moved from null_ls to golangci-lint server
+- **lightbulb:** added plugin to show code action in current line
+- **rust-tools:** move back to simrat's repo
+- **vs-code:** disable session and sneak on vscode neovim
+
+### Fix
+- **publish-diagnostics:** fix error message not removed on insert leave where there is no errors
+
+### Perf
+- **publish_diagnostics:** don't publish on 0 diagnostics
+
+### Revert
+- **null-ls:** removed lsp.go.golangcililsp_setup
+- **null-ls:** revert to use custom implementation of golang-cilint
+
+
 <a name="v3.0.2"></a>
 ## [v3.0.2] - 2021-09-14
 ### Feature
@@ -260,7 +282,8 @@
 - **lsp:** removed lspsaga
 
 
-[Unreleased]: https://github.com/tigorlazuardi/nvim/compare/v3.0.2...HEAD
+[Unreleased]: https://github.com/tigorlazuardi/nvim/compare/v3.0.3...HEAD
+[v3.0.3]: https://github.com/tigorlazuardi/nvim/compare/v3.0.2...v3.0.3
 [v3.0.2]: https://github.com/tigorlazuardi/nvim/compare/v3.0.1...v3.0.2
 [v3.0.1]: https://github.com/tigorlazuardi/nvim/compare/v3.0.0...v3.0.1
 [v3.0.0]: https://github.com/tigorlazuardi/nvim/compare/v2.1.0...v3.0.0
