@@ -19,10 +19,6 @@ return function(severity)
 
 		local diagnostics = result.diagnostics or {}
 
-		if vim.tbl_count(diagnostics) == 0 then
-			return
-		end
-
 		local config = {
 			signs = true,
 			update_in_insert = false,
@@ -40,10 +36,6 @@ return function(severity)
 		local bufnr = ctx.bufnr or vim.uri_to_bufnr(result.uri)
 
 		vim.lsp.diagnostic.save(diagnostics, bufnr, ctx.client_id)
-
-		if not vim.api.nvim_buf_is_loaded(bufnr) then
-			return
-		end
 
 		vim.lsp.diagnostic.display(diagnostics, bufnr, ctx.client_id, config)
 	end
