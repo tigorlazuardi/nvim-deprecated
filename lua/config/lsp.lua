@@ -65,4 +65,7 @@ return function(use)
 		'nvim-lua/lsp_extensions.nvim',
 		disable = disable,
 	})
+	use({'kosayoda/nvim-lightbulb', config= function ()
+		vim.cmd [[autocmd CursorHold,CursorHoldI * lua require'nvim-lightbulb'.update_lightbulb()]]
+	end})
 end
