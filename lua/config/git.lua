@@ -74,7 +74,7 @@ local signs_config = function()
 			status_formatter = nil, -- Use default
 			word_diff = false,
 			-- use_decoration_api = true,
-			use_internal_diff = true, -- If luajit is present
+			diff_opts = {internal = true}
 		})
 	end
 end
