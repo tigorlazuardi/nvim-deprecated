@@ -118,12 +118,6 @@ local function cmp_config()
 
 	remap('i', '<CR>', 'v:lua.MUtils.completion_confirm()', { expr = true, noremap = true })
 
-	-- require('nvim-autopairs.completion.cmp').setup({
-	-- 	map_cr = true, --  map <CR> on insert mode
-	-- 	map_complete = true, -- it will auto insert `(` after select function or method item
-	-- 	auto_select = true, -- automatically select the first item
-	-- })
-
 	local opts = { silent = true }
 	vim.api.nvim_set_keymap('i', '<c-j>', '<Plug>luasnip-expand-or-jump', opts)
 	vim.api.nvim_set_keymap('s', '<c-j>', '<Plug>luasnip-expand-or-jump', opts)
