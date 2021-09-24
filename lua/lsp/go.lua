@@ -1,6 +1,6 @@
 local M = {}
 
-function _G.go_org_imports(wait_ms)
+function OrgImports(wait_ms)
 	local params = vim.lsp.util.make_range_params()
 	params.context = { only = { 'source.organizeImports' } }
 	local result = vim.lsp.buf_request_sync(0, 'textDocument/codeAction', params, wait_ms)
@@ -29,7 +29,7 @@ function M.lsp_setup()
 			vim.cmd([[
 				augroup golang_format
 					autocmd!
-					autocmd BufWritePre *.go v:lua.go_org_imports(1000)
+					autocmd BufWritePre *.go lua OrgImports(1000)
 				augroup end
 			]])
 		end,
