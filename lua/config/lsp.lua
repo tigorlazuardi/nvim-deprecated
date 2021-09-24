@@ -1,8 +1,8 @@
 local function signs_config()
-	local signs = { Error = ' ', Warning = ' ', Hint = ' ', Information = ' ' }
+	local signs = { Error = ' ', Warn = ' ', Hint = ' ', Information = ' ' }
 
 	for type, icon in pairs(signs) do
-		local hl = 'DiagnosticsSign' .. type
+		local hl = 'DiagnosticSign' .. type
 		vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = '' })
 	end
 end
@@ -68,6 +68,11 @@ return function(use)
 	use({
 		'kosayoda/nvim-lightbulb',
 		config = function()
+			require('nvim-lightbulb').update_lightbulb({
+				sign = {
+					priority = 1,
+				},
+			})
 			vim.cmd([[autocmd CursorHold,CursorHoldI * lua require'nvim-lightbulb'.update_lightbulb()]])
 		end,
 	})
