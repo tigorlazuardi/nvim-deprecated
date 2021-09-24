@@ -5,7 +5,8 @@ function M.lsp_setup()
 	if not present then
 		return
 	end
-	lspconfig.jsonls.setup({
+
+	local configuration = {
 		cmd = { 'json-languageserver', '--stdio' },
 		on_attach = function(client)
 			client.resolved_capabilities.document_formatting = false
@@ -63,7 +64,15 @@ function M.lsp_setup()
 				},
 			},
 		},
-	})
+	}
+
+	local coq_present, coq = pcall(require, "coq")
+	if coq_present then
+	lspconfig.jsonls.setup(coq.lsp_ensure_capabilities(configuration))
+	else 
+		configuration.capabilities = require('lsp.capabilities')
+		lspconfig.jsonls.setup(configuration)
+	end
 end
 
 return M

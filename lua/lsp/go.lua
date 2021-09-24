@@ -1,6 +1,6 @@
 local M = {}
 
-function OrgImports(wait_ms)
+function _G.go_org_imports(wait_ms)
 	local params = vim.lsp.util.make_range_params()
 	params.context = { only = { 'source.organizeImports' } }
 	local result = vim.lsp.buf_request_sync(0, 'textDocument/codeAction', params, wait_ms)
@@ -17,23 +17,19 @@ function OrgImports(wait_ms)
 end
 
 function M.lsp_setup()
-	if vim.g.go_lsp_ready then
-		return
-	end
 	local present, lspconfig = pcall(require, 'lspconfig')
 	if not present then
 		return
 	end
-	local capabilities = require('lsp.capabilities')
-	lspconfig.gopls.setup({
-		capabilities = capabilities,
+
+	local configuration = {
 		on_attach = function(client, bufnr)
 			client.resolved_capabilities.document_formatting = true
 			require('lsp.on_attach')(client, bufnr)
 			vim.cmd([[
 				augroup golang_format
 					autocmd!
-					autocmd BufWritePre *.go lua OrgImports(1000)
+					autocmd BufWritePre *.go v:lua.go_org_imports(1000)
 				augroup end
 			]])
 		end,
@@ -58,8 +54,15 @@ function M.lsp_setup()
 				gofumpt = false, -- true, -- turn on for new repos, gofmpt is good but also create code turmoils
 			},
 		},
-	})
-	vim.g.go_lsp_ready = true
+	}
+
+	local coq_present, coq = pcall(require, 'coq')
+	if coq_present then
+		lspconfig.gopls.setup(coq.lsp_ensure_capabilities(configuration))
+	else
+		configuration.capabilities = require('lsp.capabilities')
+		lspconfig.gopls.setup(configuration)
+	end
 end
 
 function M.rayxgo_setup()

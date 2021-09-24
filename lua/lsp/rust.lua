@@ -5,8 +5,7 @@ function M.lsp_setup()
 	if not present then
 		return
 	end
-	local capabilities = require('lsp.capabilities')
-	lspconfig.rust_analyzer.setup({
+	local configuration = {
 		on_attach = function(client, bufnr)
 			client.resolved_capabilities.document_formatting = true
 			require('lsp.on_attach')(client, bufnr)
@@ -17,7 +16,6 @@ function M.lsp_setup()
 				augroup end
 			]])
 		end,
-		capabilities = capabilities,
 		settings = {
 			['rust-analyzer'] = {
 				assist = {
@@ -39,7 +37,14 @@ function M.lsp_setup()
 				},
 			},
 		},
-	})
+	}
+	local coq_present, coq = pcall(require, 'coq')
+	if coq_present then
+		lspconfig.rust_analyzer.setup(coq.lsp_ensure_capabilities(configuration))
+		else
+			configuration.capabilities = require('lsp.capabilities')
+		lspconfig.rust_analyzer.setup(coq.lsp_ensure_capabilities(configuration))
+	end
 end
 
 return M
