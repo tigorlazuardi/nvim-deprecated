@@ -75,7 +75,7 @@ return require('packer').startup(function(use)
 	require('config.project')(use)
 
 	require('config.sneak')(use)
-	
+
 	require('config.easy_align')(use)
 
 	require('config.coq')(use)
@@ -93,5 +93,12 @@ return require('packer').startup(function(use)
 		end,
 	})
 
-	use({ 'ellisonleao/glow.nvim', ft = {'markdown'} })
+	use({
+		'Darazaki/indent-o-matic',
+		config = function()
+			require('indent-o-matic').setup({})
+		end,
+	})
+
+	use({ 'ellisonleao/glow.nvim', ft = { 'markdown' } })
 end)
