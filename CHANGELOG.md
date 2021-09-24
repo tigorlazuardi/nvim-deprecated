@@ -2,6 +2,12 @@
 ## [Unreleased]
 
 
+<a name="v3.1.3"></a>
+## [v3.1.3] - 2021-09-24
+### Feature
+- **indent-o-matic:** added plugin to check indentation and adjust automatically
+
+
 <a name="v3.1.2"></a>
 ## [v3.1.2] - 2021-09-24
 ### Fix
@@ -310,7 +316,8 @@
 - **lsp:** removed lspsaga
 
 
-[Unreleased]: https://github.com/tigorlazuardi/nvim/compare/v3.1.2...HEAD
+[Unreleased]: https://github.com/tigorlazuardi/nvim/compare/v3.1.3...HEAD
+[v3.1.3]: https://github.com/tigorlazuardi/nvim/compare/v3.1.2...v3.1.3
 [v3.1.2]: https://github.com/tigorlazuardi/nvim/compare/v3.1.1...v3.1.2
 [v3.1.1]: https://github.com/tigorlazuardi/nvim/compare/v3.1.0...v3.1.1
 [v3.1.0]: https://github.com/tigorlazuardi/nvim/compare/v3.0.3...v3.1.0
