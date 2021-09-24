@@ -11,8 +11,8 @@ if ok then
 	cmp_nvim_lsp.update_capabilities(capabilities)
 end
 
-local oklspstatus, lsp_status = pcall(require, 'lsp-status')
-if oklspstatus then
+local lsp_status_present, lsp_status = pcall(require, 'lsp-status')
+if lsp_status_present then
 	capabilities = vim.tbl_extend('keep', capabilities, lsp_status.capabilities)
 end
 
