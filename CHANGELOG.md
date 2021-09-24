@@ -2,6 +2,15 @@
 ## [Unreleased]
 
 
+<a name="v3.1.1"></a>
+## [v3.1.1] - 2021-09-24
+### Bug
+- **publish_diagnostics:** temporarily disable custom handler
+
+### Fix
+- **diagnostic_signs:** uses the new hl sign
+
+
 <a name="v3.1.0"></a>
 ## [v3.1.0] - 2021-09-24
 ### Chore
@@ -295,7 +304,8 @@
 - **lsp:** removed lspsaga
 
 
-[Unreleased]: https://github.com/tigorlazuardi/nvim/compare/v3.1.0...HEAD
+[Unreleased]: https://github.com/tigorlazuardi/nvim/compare/v3.1.1...HEAD
+[v3.1.1]: https://github.com/tigorlazuardi/nvim/compare/v3.1.0...v3.1.1
 [v3.1.0]: https://github.com/tigorlazuardi/nvim/compare/v3.0.3...v3.1.0
 [v3.0.3]: https://github.com/tigorlazuardi/nvim/compare/v3.0.2...v3.0.3
 [v3.0.2]: https://github.com/tigorlazuardi/nvim/compare/v3.0.1...v3.0.2
