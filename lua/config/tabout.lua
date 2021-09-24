@@ -1,7 +1,8 @@
+
 local function configure()
 	local setup = {
-		tabkey = '<Tab>', -- key to trigger tabout, set to an empty string to disable
-		backwards_tabkey = '<S-Tab>', -- ke
+		tabkey = '', -- key to trigger tabout, set to an empty string to disable
+		backwards_tabkey = '', -- ke
 		act_as_tab = true, -- shift content if tab out is not possible
 		act_as_shift_tab = false, -- reverse shift content if tab out is not possible (if your keyboard/terminal supports <S-Tab>)
 		enable_backwards = true, -- well ...
@@ -20,6 +21,9 @@ local function configure()
 	}
 
 	require('tabout').setup(setup)
+
+	vim.api.nvim_set_keymap('i', '<tab>', '<Plug>(Tabout)', { silent = true })
+	vim.api.nvim_set_keymap('i', '<s-tab>', '<Plug>(TaboutBack)', { silent = true })
 end
 
 return function(use)
@@ -28,5 +32,6 @@ return function(use)
 		config = configure,
 		disable = vim.g.vscode,
 		want = { 'nvim-treesitter' }, -- or require if not used so far
+		after = { 'coq_nvim' },
 	})
 end
