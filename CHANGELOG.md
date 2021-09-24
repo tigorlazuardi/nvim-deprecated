@@ -2,6 +2,12 @@
 ## [Unreleased]
 
 
+<a name="v3.1.2"></a>
+## [v3.1.2] - 2021-09-24
+### Fix
+- **diagnostic_sign:** fix highlight group
+
+
 <a name="v3.1.1"></a>
 ## [v3.1.1] - 2021-09-24
 ### Bug
@@ -304,7 +310,8 @@
 - **lsp:** removed lspsaga
 
 
-[Unreleased]: https://github.com/tigorlazuardi/nvim/compare/v3.1.1...HEAD
+[Unreleased]: https://github.com/tigorlazuardi/nvim/compare/v3.1.2...HEAD
+[v3.1.2]: https://github.com/tigorlazuardi/nvim/compare/v3.1.1...v3.1.2
 [v3.1.1]: https://github.com/tigorlazuardi/nvim/compare/v3.1.0...v3.1.1
 [v3.1.0]: https://github.com/tigorlazuardi/nvim/compare/v3.0.3...v3.1.0
 [v3.0.3]: https://github.com/tigorlazuardi/nvim/compare/v3.0.2...v3.0.3
