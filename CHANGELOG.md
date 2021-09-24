@@ -2,6 +2,19 @@
 ## [Unreleased]
 
 
+<a name="v3.1.0"></a>
+## [v3.1.0] - 2021-09-24
+### Chore
+- **completion:** removed unused codes
+
+### Feature
+- **coq.nvim:** added coq.nvim as completion
+- **telescpoe-fzf-native:** find files now uses fzf-native algorithm
+
+### Revert
+- **lsp-go:** revert autocmd to `lua OrgImports` because using `v:lua.go_org_imports` shows unnecessary messages
+
+
 <a name="v3.0.3"></a>
 ## [v3.0.3] - 2021-09-23
 ### Config
@@ -282,7 +295,8 @@
 - **lsp:** removed lspsaga
 
 
-[Unreleased]: https://github.com/tigorlazuardi/nvim/compare/v3.0.3...HEAD
+[Unreleased]: https://github.com/tigorlazuardi/nvim/compare/v3.1.0...HEAD
+[v3.1.0]: https://github.com/tigorlazuardi/nvim/compare/v3.0.3...v3.1.0
 [v3.0.3]: https://github.com/tigorlazuardi/nvim/compare/v3.0.2...v3.0.3
 [v3.0.2]: https://github.com/tigorlazuardi/nvim/compare/v3.0.1...v3.0.2
 [v3.0.1]: https://github.com/tigorlazuardi/nvim/compare/v3.0.0...v3.0.1
