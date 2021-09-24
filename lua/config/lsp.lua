@@ -8,7 +8,7 @@ local function signs_config()
 end
 
 local function misc_lsp_configs()
-	vim.lsp.handlers['textDocument/publishDiagnostics'] = require('lsp.publish_diagnostics')('hint')
+	-- vim.lsp.handlers['textDocument/publishDiagnostics'] = require('lsp.publish_diagnostics')('hint')
 end
 
 local function lsp_signature_setup()

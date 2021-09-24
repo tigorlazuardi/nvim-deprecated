@@ -35,8 +35,12 @@ return function(severity)
 
 		local bufnr = ctx.bufnr or vim.uri_to_bufnr(result.uri)
 
-		vim.lsp.diagnostic.save(diagnostics, bufnr, ctx.client_id)
+		local ns = vim.api.nvim_create_namespace('what-would-you-do')
 
-		vim.lsp.diagnostic.display(diagnostics, bufnr, ctx.client_id, config)
+		-- vim.diagnostic.save(diagnostics, bufnr, ctx.client_id)
+		vim.diagnostic.set(ns, bufnr, diagnostics, nil)
+
+		vim.diagnostic.show(ns, bufnr, diagnostics, nil)
+		-- vim.diagnostic.display(diagnostics, bufnr, ctx.client_id, config)
 	end
 end
