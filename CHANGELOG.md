@@ -2,6 +2,16 @@
 ## [Unreleased]
 
 
+<a name="v3.1.4"></a>
+## [v3.1.4] - 2021-09-27
+### Doc
+- simplify readme.md
+
+### Refresh
+- **gitsigns:** now follows latest configuration setting
+- **nvim-tree:** now follows latest configuration initialization
+
+
 <a name="v3.1.3"></a>
 ## [v3.1.3] - 2021-09-24
 ### Feature
@@ -316,7 +326,8 @@
 - **lsp:** removed lspsaga
 
 
-[Unreleased]: https://github.com/tigorlazuardi/nvim/compare/v3.1.3...HEAD
+[Unreleased]: https://github.com/tigorlazuardi/nvim/compare/v3.1.4...HEAD
+[v3.1.4]: https://github.com/tigorlazuardi/nvim/compare/v3.1.3...v3.1.4
 [v3.1.3]: https://github.com/tigorlazuardi/nvim/compare/v3.1.2...v3.1.3
 [v3.1.2]: https://github.com/tigorlazuardi/nvim/compare/v3.1.1...v3.1.2
 [v3.1.1]: https://github.com/tigorlazuardi/nvim/compare/v3.1.0...v3.1.1
