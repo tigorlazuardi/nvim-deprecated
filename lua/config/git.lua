@@ -63,7 +63,7 @@ local signs_config = function()
 				['o ih'] = ':<C-U>lua require"gitsigns.actions".select_hunk()<CR>',
 				['x ih'] = ':<C-U>lua require"gitsigns.actions".select_hunk()<CR>',
 			},
-			watch_index = { interval = 1000, follow_files = true },
+			watch_gitdir = { interval = 1000, follow_files = true },
 			current_line_blame = true,
 			current_line_blame_opts = {
 				delay = 500,
