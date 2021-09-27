@@ -1,9 +1,8 @@
 local function setup()
 	vim.g.nvim_tree_width = '15%'
 	vim.g.nvim_tree_ignore = { '.git', '.cache' }
-	vim.g.nvim_tree_follow = 1
+	-- vim.g.nvim_tree_follow = 1
 	vim.g.nvim_tree_git_hl = 1
-	vim.g.nvim_tree_lsp_diagnostics = 1
 	vim.g.nvim_tree_disable_window_picker = 0
 	vim.g.nvim_tree_window_picker_exclude = {
 		filetype = { 'packer', 'qf', 'Trouble', 'TelescopePrompt' },
@@ -44,7 +43,16 @@ local function setup()
 end
 
 local function run()
-	require('nvim-tree').setup({})
+	require('nvim-tree').setup({
+		update_cwd = true,
+		lsp_diagnostics = true,
+		open_on_setup = true,
+		ignore_ft_on_setup = { 'dashboard' },
+		update_focused_file = {
+			enable = true,
+			update_cwd = true,
+		},
+	})
 
 	local ok, wk = pcall(require, 'which-key')
 	if not ok then
