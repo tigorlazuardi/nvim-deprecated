@@ -60,5 +60,6 @@ return function(use)
 		branch = 'coq',
 		config = config,
 		requires = { artifacts, thirdparty, auto_pairs },
+		disable = vim.g.vscode,
 	})
 end
