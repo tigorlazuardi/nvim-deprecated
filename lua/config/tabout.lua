@@ -1,4 +1,3 @@
-
 local function configure()
 	local setup = {
 		tabkey = '', -- key to trigger tabout, set to an empty string to disable
@@ -32,6 +31,5 @@ return function(use)
 		config = configure,
 		disable = vim.g.vscode,
 		want = { 'nvim-treesitter' }, -- or require if not used so far
-		after = { 'coq_nvim' },
 	})
 end

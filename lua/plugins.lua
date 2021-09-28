@@ -54,7 +54,7 @@ return require('packer').startup(function(use)
 
 	require('config.tabs')(use)
 
-	-- require('config.completion')(use)
+	require('config.completion')(use)
 
 	require('config.trouble')(use)
 
@@ -78,7 +78,7 @@ return require('packer').startup(function(use)
 
 	require('config.easy_align')(use)
 
-	require('config.coq')(use)
+	-- require('config.coq')(use)
 
 	use({
 		'vuki656/package-info.nvim',
