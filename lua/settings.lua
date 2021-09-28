@@ -74,3 +74,10 @@ vim.cmd([[
 		set guifont=FiraCode\ Nerd\ Font\ Mono:h16
 	endif
 ]])
+
+if vim.g.fvim_loaded then
+	vim.cmd([[
+        FVimCursorSmoothMove v:true
+        FVimCursorSmoothBlink v:true
+    ]])
+end
