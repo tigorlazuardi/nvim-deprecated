@@ -71,7 +71,7 @@ vim.cmd([[
 	if has('win32') || has('win64')
 		set guifont=Hack\ NF,\ Medium:h16
 	else
-		set guifont=FiraCode\ Nerd\ Font\ Mono:h16
+		set guifont=FiraCode\ Nerd\ Font\ Mono:h14
 	endif
 ]])
 
@@ -81,3 +81,15 @@ if vim.g.fvim_loaded then
         FVimCursorSmoothBlink v:true
     ]])
 end
+
+-- blinking cursor on GUIs
+vim.cmd([[
+    set guicursor=n-v-c-sm:block-nCursor-blinkwait1-blinkon500-blinkoff500
+    set guicursor+=i-ci-ve:ver20-blinkwait1-blinkon500-blinkoff500
+    set guicursor+=r-cr-o:hor20
+]])
+
+-- neovide settings
+vim.g.neovide_remember_window_size = true
+vim.g.neovide_cursor_antialiasing = true
+vim.g.neovide_cursor_vfx_mode = 'wireframe'
