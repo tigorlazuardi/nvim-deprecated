@@ -101,4 +101,6 @@ return require('packer').startup(function(use)
 	})
 
 	use({ 'ellisonleao/glow.nvim', ft = { 'markdown' } })
+
+	require('config.spectre')(use)
 end)
