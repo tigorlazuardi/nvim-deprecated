@@ -2,6 +2,29 @@
 ## [Unreleased]
 
 
+<a name="v3.1.5"></a>
+## [v3.1.5] - 2021-09-30
+### Feature
+- **coq:** disabled on  vscode
+- **dashboard:** chagned dashboard sign
+- **fvim:** added fvim support in setting
+- **mappings:** remap `H` to `^` and remap `L` to `$`
+- **spectre:** added spectre
+- **theme:** github theme now defaults to dimmed
+- **theme:** added github theme
+
+### Refactor
+- **nvim-tree:** moved some config from global to setup
+- **nvim-tree:** removed double option
+
+### Revert
+- **completion:** back to completion nvim from coq because coq still broken on auto import and snippet index
+
+### Settings
+- added neovide transparency settings
+- guicursor now blinks
+
+
 <a name="v3.1.4"></a>
 ## [v3.1.4] - 2021-09-27
 ### Doc
@@ -326,7 +349,8 @@
 - **lsp:** removed lspsaga
 
 
-[Unreleased]: https://github.com/tigorlazuardi/nvim/compare/v3.1.4...HEAD
+[Unreleased]: https://github.com/tigorlazuardi/nvim/compare/v3.1.5...HEAD
+[v3.1.5]: https://github.com/tigorlazuardi/nvim/compare/v3.1.4...v3.1.5
 [v3.1.4]: https://github.com/tigorlazuardi/nvim/compare/v3.1.3...v3.1.4
 [v3.1.3]: https://github.com/tigorlazuardi/nvim/compare/v3.1.2...v3.1.3
 [v3.1.2]: https://github.com/tigorlazuardi/nvim/compare/v3.1.1...v3.1.2
