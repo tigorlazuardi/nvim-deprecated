@@ -19,6 +19,7 @@ git clone https://github.com/wbthomason/packer.nvim "$env:LOCALAPPDATA\nvim-data
 
 Run `:PackerInstall` then followed by `:PackerCompile`
 
+
 # Mappings
 
 After installation is done. Run `:WhichKey` from command mode.
