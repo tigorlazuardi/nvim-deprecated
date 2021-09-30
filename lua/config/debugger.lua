@@ -15,7 +15,10 @@ local function config()
 			name = '+debugger',
 			c = { [[<cmd>lua require('dapui').toggle()<cr>]], 'Open Debugger' },
 			b = { [[<cmd>lua require('dap').toggle_breakpoint()<cr>]], 'Toggle Breakpoints' },
-			e = { [[<cmd>lua require('dap').set_exception_breakpoints({"all"})<cr>]], 'Set Exception Breakpoints (All)' },
+			e = {
+				[[<cmd>lua require('dap').set_exception_breakpoints({"all"})<cr>]],
+				'Set Exception Breakpoints (All)',
+			},
 			n = { [[<cmd>lua require('dap').continue()<cr>]], 'Start/Continue Debugger' },
 			N = { [[<cmd>lua require('dap').run_last()<cr>]], 'Run Last Debugger' },
 			h = { [[<cmd>lua require('dap').step_out()<cr>]], 'Step Out' },
