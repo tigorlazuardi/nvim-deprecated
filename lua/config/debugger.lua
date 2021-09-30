@@ -3,6 +3,8 @@ local function config()
 
 	require('debuggers')
 
+	require('telescope').load_extension('dap')
+
 	local ok, wk = pcall(require, 'which-key')
 	if not ok then
 		return
@@ -13,7 +15,7 @@ local function config()
 			name = '+debugger',
 			c = { [[<cmd>lua require('dapui').toggle()<cr>]], 'Open Debugger' },
 			b = { [[<cmd>lua require('dap').toggle_breakpoint()<cr>]], 'Toggle Breakpoints' },
-			n = { [[<cmd>lua require('dap').continue()<cr>]], 'Continue Debugger' },
+			n = { [[<cmd>lua require('dap').continue()<cr>]], 'Start/Continue Debugger' },
 			o = { [[<cmd>lua require('dap').step_over()<cr>]], 'Step Over' },
 			i = { [[<cmd>lua require('dap').step_into()<cr>]], 'Step Into' },
 			r = { [[<cmd>lua require('dap').repl.open({}, 'vsplit')<cr>]], 'Open Repl' },
@@ -22,6 +24,11 @@ local function config()
 				'Debug Hover',
 			},
 			s = { [[<cmd>lua require('dap.ui.variables').scopes()<cr>]], 'Scope' },
+			l = { [[<cmd>lua require('telescope').extensions.dap.list_breakpoints({})<cr>]], 'List Breakpoints' },
+			x = { [[<cmd>lua require('telescope').extensions.dap.commands({})<cr>]], 'List Commands' },
+			v = { [[<cmd>lua require('telescope').extensions.dap.variables({})<cr>]], 'List Variables' },
+			f = { [[<cmd>lua require('telescope').extensions.dap.frames({})<cr>]], 'List Frames' },
+			m = { [[<cmd>lua require('telescope').extensions.dap.configurations({})<cr>]], 'List Configurations' },
 		},
 	})
 end
@@ -33,7 +40,7 @@ return function(use)
 			'mfussenegger/nvim-dap',
 			'theHamsta/nvim-dap-virtual-text',
 			'nvim-telescope/telescope-dap.nvim',
-'jbyuki/one-small-step-for-vimkind',
+			'jbyuki/one-small-step-for-vimkind',
 		},
 		disable = vim.g.vscode,
 		config = config,
