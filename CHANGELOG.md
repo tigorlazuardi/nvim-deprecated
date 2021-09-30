@@ -2,6 +2,15 @@
 ## [Unreleased]
 
 
+<a name="v3.1.7"></a>
+## [v3.1.7] - 2021-09-30
+### Feature
+- **dap:** added debugger properly
+
+### Fix
+- **nvim-tree:** added symbols outline window to window picker exclusion
+
+
 <a name="v3.1.6"></a>
 ## [v3.1.6] - 2021-09-30
 ### Config
@@ -361,7 +370,8 @@
 - **lsp:** removed lspsaga
 
 
-[Unreleased]: https://github.com/tigorlazuardi/nvim/compare/v3.1.6...HEAD
+[Unreleased]: https://github.com/tigorlazuardi/nvim/compare/v3.1.7...HEAD
+[v3.1.7]: https://github.com/tigorlazuardi/nvim/compare/v3.1.6...v3.1.7
 [v3.1.6]: https://github.com/tigorlazuardi/nvim/compare/v3.1.5...v3.1.6
 [v3.1.5]: https://github.com/tigorlazuardi/nvim/compare/v3.1.4...v3.1.5
 [v3.1.4]: https://github.com/tigorlazuardi/nvim/compare/v3.1.3...v3.1.4
