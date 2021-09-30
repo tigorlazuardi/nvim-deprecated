@@ -76,4 +76,13 @@ return function(use)
 			vim.cmd([[autocmd CursorHold,CursorHoldI * lua require'nvim-lightbulb'.update_lightbulb()]])
 		end,
 	})
+	vim.g.symbols_outline = {
+		width = 15,
+	}
+	use({
+		'simrat39/symbols-outline.nvim',
+		config = function()
+			vim.api.nvim_set_keymap('n', '<leader>v', '<cmd>SymbolsOutline<cr>', { silent = true, noremap = true })
+		end,
+	})
 end
