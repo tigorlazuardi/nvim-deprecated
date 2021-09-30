@@ -8,12 +8,12 @@ dap.adapters.node2 = {
 
 dap.configurations.javascript = {
 	{
-	type = 'node2',
- request = 'launch',
-    program = '${workspaceFolder}/${file}',
-    cwd = vim.fn.getcwd(),
-    sourceMaps = true,
-    protocol = 'inspector',
-    console = 'integratedTerminal',
-},
+		type = 'node2',
+		request = 'launch',
+		program = '${workspaceFolder}/${file}',
+		cwd = vim.fn.getcwd(),
+		sourceMaps = true,
+		protocol = 'inspector',
+		console = 'integratedTerminal',
+	},
 }
