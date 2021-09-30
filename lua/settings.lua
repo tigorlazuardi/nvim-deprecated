@@ -50,9 +50,6 @@ vim.cmd([[
 	augroup end
 ]])
 
-c('set autoread')
-vim.cmd([[au CursorHold,FocusGained,BufEnter * checktime]])
-
 vim.cmd([[
 	augroup term_options
 		autocmd!
