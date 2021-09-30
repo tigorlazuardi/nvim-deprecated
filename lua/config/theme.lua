@@ -43,6 +43,7 @@ return function(use)
 		'projekt0n/github-nvim-theme',
 		config = function()
 			require('github-theme').setup({
+				theme_style = 'dimmed',
 				comment_style = 'italic',
 				keyword_style = 'italic',
 				function_style = 'italic',
