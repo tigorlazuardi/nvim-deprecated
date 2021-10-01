@@ -30,6 +30,7 @@ local function config()
 				'Debug Hover',
 			},
 			s = { [[<cmd>lua require('dap.ui.variables').scopes()<cr>]], 'Scope' },
+			S = { [[<cmd>DapStop<cr>]], 'Stop Debugger' },
 			B = { [[<cmd>lua require('telescope').extensions.dap.list_breakpoints({})<cr>]], 'List Breakpoints' },
 			x = { [[<cmd>lua require('telescope').extensions.dap.commands({})<cr>]], 'List Commands' },
 			v = { [[<cmd>lua require('telescope').extensions.dap.variables({})<cr>]], 'List Variables' },
