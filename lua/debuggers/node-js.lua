@@ -10,6 +10,7 @@ dap.configurations.javascript = {
 	{
 		type = 'node2',
 		request = 'launch',
+		name = 'Debug NodeJS',
 		program = '${workspaceFolder}/${file}',
 		cwd = vim.fn.getcwd(),
 		sourceMaps = true,
