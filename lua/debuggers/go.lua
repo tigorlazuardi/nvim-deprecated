@@ -36,9 +36,10 @@ end
 dap.configurations.go = {
 	{
 		type = 'go',
-		name = 'Debug',
+		name = 'Launch main.go',
+		mode = 'debug',
 		request = 'launch',
-		program = '${file}',
+		program = '${workspaceFolder}/main.go',
 	},
 	{
 		type = 'go',

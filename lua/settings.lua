@@ -43,14 +43,6 @@ end
 c('set noswapfile') -- disable swap file
 
 vim.cmd([[
-	augroup yaml_options
-		autocmd!
-		" autocmd BufEnter,BufNew *.yaml,*.yml setlocal shiftwidth=4 tabstop=4
-		autocmd BufEnter,BufNew *.yaml,*.yml setlocal indentkeys-=0-,0#
-	augroup end
-]])
-
-vim.cmd([[
 	augroup term_options
 		autocmd!
 		autocmd BufEnter * if &buftype == 'terminal' | :setlocal iskeyword-=@ | endif

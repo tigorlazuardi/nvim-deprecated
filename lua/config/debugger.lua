@@ -10,6 +10,18 @@ local function config()
 		return
 	end
 
+	_G.dapui_eval_twice = function()
+		require('dapui').eval()
+		require('dapui').eval()
+	end
+
+	_G.dap_close = function()
+		require('dap').disconnect()
+		require('dap').close()
+		require('dap').repl.close()
+		require('dapui').close()
+	end
+
 	wk.register({
 		['<leader>c'] = {
 			name = '+debugger',
@@ -25,12 +37,9 @@ local function config()
 			l = { [[<cmd>lua require('dap').step_over()<cr>]], 'Step Over' },
 			j = { [[<cmd>lua require('dap').step_into()<cr>]], 'Step Into' },
 			r = { [[<cmd>lua require('dap').repl.open({}, 'vsplit')<cr>]], 'Open Repl' },
-			k = {
-				[[<cmd>lua require('dap.ui.variables').hover(function() return vim.fn.expand("<cexpr>") end)<cr>]],
-				'Debug Hover',
-			},
+			k = { [[<cmd>lua _G.dapui_eval_twice()<cr>]], 'Debug Hover' },
 			s = { [[<cmd>lua require('dap.ui.variables').scopes()<cr>]], 'Scope' },
-			S = { [[<cmd>DapStop<cr>]], 'Stop Debugger' },
+			S = { [[<cmd>lua _G.dap_close()<cr>]], 'Stop Debugger' },
 			B = { [[<cmd>lua require('telescope').extensions.dap.list_breakpoints({})<cr>]], 'List Breakpoints' },
 			x = { [[<cmd>lua require('telescope').extensions.dap.commands({})<cr>]], 'List Commands' },
 			v = { [[<cmd>lua require('telescope').extensions.dap.variables({})<cr>]], 'List Variables' },
@@ -48,6 +57,8 @@ local function config()
 		mode = 'v',
 	})
 
+	vim.cmd([[command! DapLoadVSCode lua require('dap.ext.vscode').load_launchjs()]])
+
 	-- broken format due to emoji. have to be ignored.
 	-- stylua: ignore start
 	vim.fn.sign_define('DapBreakpoint', { text = '🟥', texthl = '', linehl = '', numhl = '' })
@@ -56,6 +67,7 @@ local function config()
 end
 
 return function(use)
+	vim.g.dap_virtual_text = 'all frames'
 	use({
 		'rcarriga/nvim-dap-ui',
 		requires = {
