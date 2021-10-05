@@ -5,7 +5,7 @@ local function setup()
 	vim.g.nvim_tree_git_hl = 1
 	vim.g.nvim_tree_disable_window_picker = 0
 	vim.g.nvim_tree_window_picker_exclude = {
-		filetype = { 'packer', 'qf', 'Trouble', 'TelescopePrompt', 'Outline' },
+		filetype = { 'packer', 'qf', 'Trouble', 'TelescopePrompt', 'Outline', 'dapui_scopes', 'dapui_breakpoints', 'dapui_stacks', 'dapui_watches', 'dapui_repl', 'dap_repl' },
 		buftype = { 'terminal' },
 	}
 

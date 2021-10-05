@@ -42,14 +42,23 @@ local function rust_tools_config()
 
 	local rust_tools = require('rust-tools')
 	local coq_present, coq = pcall(require, 'coq')
+		local extension_path = vim.env.HOME .. '/.vscode/extensions/vadimcn.vscode-lldb-1.6.7/'
+		local codelldb_path = extension_path .. 'adapter/codelldb'
+		local liblldb_path = extension_path .. 'lldb/lib/liblldb.so'
+
+	local dap = { adapter = require('rust-tools.dap').get_codelldb_adapter(codelldb_path, liblldb_path) }
 
 	if coq_present then
 		rust_tools.setup({
 			server = coq.lsp_ensure_capabilities(server_configuration),
+			dap = dap,
 		})
 	else
 		server_configuration.capabilities = require('lsp.capabilities')
-		rust_tools.setup({ server = server_configuration })
+		rust_tools.setup({
+			server = server_configuration,
+			dap = dap,
+		})
 	end
 end
 
