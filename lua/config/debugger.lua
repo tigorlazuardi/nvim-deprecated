@@ -58,13 +58,6 @@ local function config()
 	})
 
 	vim.cmd([[command! DapLoadVSCode lua require('dap.ext.vscode').load_launchjs()]])
-
-	vim.cmd([[
-		augroup dap_load_vscode
-			au!
-			au DirChanged * silent! lua require('dap.ext.vscode').load_launchjs()
-		augroup end
-	]])
 	-- broken format due to emoji. have to be ignored.
 	-- stylua: ignore start
 	vim.fn.sign_define('DapBreakpoint', { text = '🟥', texthl = '', linehl = '', numhl = '' })
