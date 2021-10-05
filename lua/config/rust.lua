@@ -42,9 +42,9 @@ local function rust_tools_config()
 
 	local rust_tools = require('rust-tools')
 	local coq_present, coq = pcall(require, 'coq')
-		local extension_path = vim.env.HOME .. '/.vscode/extensions/vadimcn.vscode-lldb-1.6.7/'
-		local codelldb_path = extension_path .. 'adapter/codelldb'
-		local liblldb_path = extension_path .. 'lldb/lib/liblldb.so'
+	local extension_path = vim.env.HOME .. '/.vscode/extensions/vadimcn.vscode-lldb-1.6.7/'
+	local codelldb_path = extension_path .. 'adapter/codelldb'
+	local liblldb_path = extension_path .. 'lldb/lib/liblldb.so'
 
 	local dap = { adapter = require('rust-tools.dap').get_codelldb_adapter(codelldb_path, liblldb_path) }
 
