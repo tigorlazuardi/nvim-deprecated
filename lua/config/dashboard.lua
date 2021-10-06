@@ -23,37 +23,25 @@ return function(use)
 	}
 
 	local header = [[
-            x        x            
-           xM        Mx           
-          d0 .      . Ox          
-         oM'  .'      .Md         
-        oMX   .x       XMd        
-       oMM,   .MOkd    ,MMo       
-      lMMW   'WMMMKOx   NMMo      
-     lMMM:   X.     Xk  ;MMMl     
-    cMMMM          .Wc   WMMMl    
-   :WMMMMXx    ,k0K    dXMMMMMc   
-  :WMMMx     .KM;         xMMMW:  
- :WMMMM.     cMMx          MMMMW: 
-;WMMMMk   .k.;KMMXd ,.k.   xMMMMW:
-;MMMMMWx  xWWWNMMMMXWWWx  dNMMMMM:
- cMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMl 
-  lMMMMMMMMMMMMMMMMMMMMMMMMMMMMo  
-   oMMMMMxMMMMMMMMMMMMMMxMMMMMo   
-    dMMMM;  x  WMMMk x  ,MMMMx    
-     xMMM       xMMO     MMMO     
-      0MM        MM0     MM0      
-       0MXx      NMx   xXMK       
-        KMMW'    MW  .NMMX        
-         XMM'  .KK   'MMN         
-          WM' .Wx    'MW          
-           M'  xk    'M           
-            '  .M    '            
-              kO                  
-              Ml    .             
-               W0kOc              
-                MMx               
-                 X                
+                   -`                 
+                  .o+`                
+                 `ooo/                
+                `+oooo:               
+               `+oooooo:              
+               -+oooooo+:             
+             `/:-:++oooo+:            
+            `/++++/+++++++:           
+           `/++++++++++++++:          
+          `/+++ooooooooooooo/`        
+         ./ooosssso++osssssso+`       
+        .oossssso-````/ossssss+`      
+       -osssssso.      :ssssssso.     
+      :osssssss/        osssso+++.    
+     /ossssssss/        +ssssooo/-    
+   `/ossssso+/:-        -:/+osssso+-  
+  `+sso+:-`                 `.-/+oso: 
+ `++:.                           `-/+/
+ .`                                 `/
 ]]
 
 	local processed_header = {}
@@ -82,8 +70,7 @@ return function(use)
 
 	use({
 		'glepnir/dashboard-nvim',
-		disable = vim.g.vscode,
+		disable = vim.g.started_by_firenvim or vim.g.vscode,
 		event = 'VimEnter',
-		cond = require('config.firenvim').not_run,
 	})
 end
