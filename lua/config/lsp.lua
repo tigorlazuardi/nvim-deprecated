@@ -77,7 +77,7 @@ return function(use)
 		end,
 	})
 	vim.g.symbols_outline = {
-		width = 15,
+		width = 25,
 	}
 	use({
 		'simrat39/symbols-outline.nvim',
