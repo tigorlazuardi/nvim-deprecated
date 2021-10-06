@@ -87,5 +87,6 @@ return function(use)
 			'kyazdani42/nvim-web-devicons',
 		},
 		config = run,
+		disable = true,
 	})
 end
