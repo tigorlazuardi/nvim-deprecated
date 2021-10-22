@@ -45,7 +45,9 @@ end
 local function run()
 	require('nvim-tree').setup({
 		update_cwd = true,
-		lsp_diagnostics = true,
+		diagnostics = {
+			enable = true,
+		},
 		open_on_setup = true,
 		ignore_ft_on_setup = { 'dashboard' },
 		update_focused_file = {
